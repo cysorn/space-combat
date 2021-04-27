@@ -16,7 +16,7 @@ public class Star extends Entity{
 	{
 		super(texture, xPos, yPos);
 		b = new Blink(this);
-		rnd = (int) (Math.random() * 2) + 1;
+		rnd = (int) (Math.random() * 5) + 1;
 		this.windowWidth = windowWidth;
 		this.windowHeight = windowHeight;
 	}
@@ -31,7 +31,7 @@ public class Star extends Entity{
 		}
 		else
 		{
-			rnd = (int) (Math.random() * 2) + 1;
+			rnd = (int) (Math.random() * 5) + 1;
 			yPos = 0;
 		}
 	}
