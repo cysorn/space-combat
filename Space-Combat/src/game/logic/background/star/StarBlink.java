@@ -1,17 +1,17 @@
 package game.logic.background.star;
 
-public class Blink {
+public class StarBlink {
 
-	Star theStar;
+	Star star;
 	private float destinationAlpha;
 	private float runningSpeed;
 	private int framesCount;
 	private boolean increaseAlpha;
 	private boolean startMakingTheStarOpaque;
 	
-	Blink(Star theStar)
+	StarBlink(Star star)
 	{
-		this.theStar = theStar;
+		this.star = star;
 		startMakingTheStarOpaque = false;
 		generateNewValues();
 	}
@@ -20,10 +20,10 @@ public class Blink {
 	{
 		if(increaseAlpha == true)
 		{
-			if(theStar.currentAlpha < destinationAlpha
-			&& theStar.currentAlpha + runningSpeed <= 1)
+			if(star.currentAlpha < destinationAlpha
+			&& star.currentAlpha + runningSpeed <= 1)
 			{
-				theStar.currentAlpha = theStar.currentAlpha + runningSpeed;
+				star.currentAlpha = star.currentAlpha + runningSpeed;
 			}
 			else
 			{
@@ -32,10 +32,10 @@ public class Blink {
 		}
 		else
 		{
-			if(theStar.currentAlpha > destinationAlpha
-			&& theStar.currentAlpha - runningSpeed > 0)
+			if(star.currentAlpha > destinationAlpha
+			&& star.currentAlpha - runningSpeed > 0)
 			{
-				theStar.currentAlpha = theStar.currentAlpha - runningSpeed;
+				star.currentAlpha = star.currentAlpha - runningSpeed;
 			}
 			else
 			{
@@ -58,8 +58,8 @@ public class Blink {
 		}
 		
 		framesCount = (int) (Math.random() * 50) + 50;
-		runningSpeed = (float) (Math.abs(destinationAlpha - theStar.currentAlpha)) / framesCount;
-		if(theStar.currentAlpha < destinationAlpha)
+		runningSpeed = (float) (Math.abs(destinationAlpha - star.currentAlpha)) / framesCount;
+		if(star.currentAlpha < destinationAlpha)
 		{
 			increaseAlpha = true;
 		}

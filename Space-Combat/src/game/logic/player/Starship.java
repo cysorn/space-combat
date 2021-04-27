@@ -13,11 +13,11 @@ public class Starship extends Entity{
 	private int moveSpeed;
 	private int winWidth;
 	private int winHeight;
-	private int starshipWidth;
-	private int starshipHeight;
+	private int starshipWidth = 80;
+	private int starshipHeight = 110;
 	
 	public Starship(List<BufferedImage> textures, int winWidth, int winHeight) {
-		super(textures, winWidth / 2, (int)(winHeight / 1.2f));
+		super(textures, winWidth / 2 - 40, (int)(winHeight / 1.4f));
 		this.winWidth = winWidth;
 		this.winHeight = winHeight;
 		moveDirections = new StarshipAction[4];
@@ -82,14 +82,15 @@ public class Starship extends Entity{
 	@Override
 	public BufferedImage getTexture() {
 		
-		if(starshipIsHanging() == true)
-		{
-			return textures.get(0);
-		}
-		else
-		{
-			return textures.get(1);
-		}
+		return textures.get(1);
+//		if(starshipIsHanging() == true)
+//		{
+//			return textures.get(0);
+//		}
+//		else
+//		{
+//			return textures.get(1);
+//		}
 	}
 	
 }

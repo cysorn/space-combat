@@ -3,38 +3,29 @@ package game.logic.background.star;
 import java.awt.image.BufferedImage;
 
 import game.logic.Entity;
+import game.logic.background.StarSize;
 
 public class Star extends Entity{
 	
-	private Blink b;
-	private int windowWidth;
-	private int windowHeight;
-	private int starSize;
-	private int rnd;
+	private StarBlink b;
+	private StarPassingBy spb;
 
-	public Star(BufferedImage texture, int windowWidth, int windowHeight, int xPos, int yPos)
+	public Star(BufferedImage texture, int windowWidth, int windowHeight, int xPos, int yPos, StarSize starSize)
 	{
 		super(texture, xPos, yPos);
-		b = new Blink(this);
-		rnd = (int) (Math.random() * 5) + 1;
-		this.windowWidth = windowWidth;
-		this.windowHeight = windowHeight;
+		b = new StarBlink(this);
+		spb = new StarPassingBy(this, windowWidth, windowHeight, starSize);
+		
 	}
 	
 	@Override
 	public void nextFrame()
 	{
 		b.blinking();
-		if(yPos + rnd < windowHeight)
-		{
-			yPos += rnd;
-		}
-		else
-		{
-			rnd = (int) (Math.random() * 5) + 1;
-			yPos = 0;
-		}
+		spb.passingBy();
 	}
+	
+
 	
 	@Override
 	public BufferedImage getTexture()

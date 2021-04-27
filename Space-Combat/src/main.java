@@ -13,7 +13,7 @@ public class main {
 		JFrame frame = new JFrame();
 		
 		SpaceCombatPanel pan = new SpaceCombatPanel(windowWidth, windowHeight);
-		frame.setBounds(25, 25, windowWidth, windowHeight);
+		frame.setBounds(150, 25, windowWidth, windowHeight);
 		frame.setResizable(false);
 		frame.setVisible(true);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
