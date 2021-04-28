@@ -11,6 +11,7 @@ import javax.imageio.ImageIO;
 public abstract class StarshipTextures{
 
 	protected List<BufferedImage> starshipTextures;
+	public List<BufferedImage> starshipEngineTextures;
 
 	public StarshipTextures() throws IOException{
 
@@ -19,5 +20,33 @@ public abstract class StarshipTextures{
 	    starshipTextures.add(ImageIO.read(new File("src/textures/starship/starship_stop.png")));
 	    starshipTextures.add(ImageIO.read(new File("src/textures/starship/starship_flying.png")));
 	    
+	    
+	    //add textures of the starship engine
+	    starshipEngineTextures = new ArrayList<BufferedImage>();
+//	    not fliped animation
+//	    int fileWidth = 640;
+//	    int fileHeight = 384*2;
+//	    int picWidth = 64;
+//	    int picHeight = 64*2;
+//	    for(int picY = 0; picY < fileHeight; picY += picHeight)
+//	    {
+//	    	for(int picX = 0; picX < fileWidth; picX += picWidth)
+//	    	{
+//	    		starshipEngineTextures.add(ImageIO.read(new File("src/textures/starship/fire5_64.png")).getSubimage(picX, picY, picWidth, picHeight));
+//	    	}
+//	    }
+//	    fliped animation
+	    int fileWidth = 640;
+	    int fileHeight = 384*2;
+	    int picWidth = 64;
+	    int picHeight = 64*2;
+	    for(int picY = fileHeight - picHeight; picY >= 0; picY -= picHeight)
+	    {
+	    	for(int picX = 0; picX < fileWidth; picX += picWidth)
+	    	{
+	    		//TODO
+	    		starshipEngineTextures.add(ImageIO.read(new File("src/textures/starship/fire5_64.png")).getSubimage(picX, picY, picWidth, picHeight));
+	    	}
+	    }
 	}
 }

@@ -9,12 +9,14 @@ public class Star extends Entity{
 	
 	private StarBlink b;
 	private StarPassingBy spb;
+	public final StarSize starSize;
 
 	public Star(BufferedImage texture, int windowWidth, int windowHeight, int xPos, int yPos, StarSize starSize)
 	{
 		super(texture, xPos, yPos);
+		this.starSize = starSize;
 		b = new StarBlink(this);
-		spb = new StarPassingBy(this, windowWidth, windowHeight, starSize);
+		spb = new StarPassingBy(this, windowWidth, windowHeight);
 		
 	}
 	

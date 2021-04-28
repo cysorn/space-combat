@@ -82,7 +82,7 @@ public class Starship extends Entity{
 	@Override
 	public BufferedImage getTexture() {
 		
-		return textures.get(1);
+		return textures.get(0);
 //		if(starshipIsHanging() == true)
 //		{
 //			return textures.get(0);

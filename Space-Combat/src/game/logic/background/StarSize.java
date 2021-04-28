@@ -8,15 +8,15 @@ public enum StarSize {
 	
 	public static StarSize getStarSizeByTextureNr(int textureNr)
 	{
-		if (textureNr <= 3)
+		if (textureNr < 3)
 		{
 			return SMALL_STAR;
 		}
-		if(textureNr <= 7)
+		if(textureNr < 7)
 		{
 			return MEDIUM_STAR;
 		}
-		if(textureNr <= 9)
+		if(textureNr < 9)
 		{
 			return BIG_STAR;
 		}

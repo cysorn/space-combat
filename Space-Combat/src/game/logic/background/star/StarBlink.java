@@ -1,5 +1,7 @@
 package game.logic.background.star;
 
+import game.logic.background.StarSize;
+
 public class StarBlink {
 
 	Star star;
@@ -18,6 +20,11 @@ public class StarBlink {
 	
 	void blinking()
 	{
+		//TODO
+//		if(star.starSize == StarSize.LARGE_STAR)
+//		{
+//			return;
+//		}
 		if(increaseAlpha == true)
 		{
 			if(star.currentAlpha < destinationAlpha

@@ -21,7 +21,7 @@ public class BackgroundEntities extends BackgroundTextures{
 	
 	private void createStars()
 	{
-		int starsCountByNr[] = {250, 200, 100, 50, 25, 15, 10, 5, 3, 2};
+		int starsCountByNr[] = {250, 200, 100, 50, 25, 15, 10, 5, 3, 2, 2};
 //		int starsCountByTypes[] = {400, 250, 150, 70, 35, 20, 15, 10, 5, 3};
 		//(9, 2)!, (11, 6), (11, 9)!, (20, 6), (20, 9)!
 		Random[] rand = {

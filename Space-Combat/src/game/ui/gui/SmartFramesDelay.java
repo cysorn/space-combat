@@ -7,7 +7,7 @@ public class SmartFramesDelay {
 	private long currentTime;
 	
 	public SmartFramesDelay() {
-		minMsDelayAfterFrame = 16;
+		minMsDelayAfterFrame = 18;
 		nextFrameAt = 0;
 	}
 	

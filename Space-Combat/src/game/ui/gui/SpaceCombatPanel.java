@@ -17,6 +17,7 @@ import game.Direction;
 import game.StarshipAction;
 import game.logic.background.BackgroundEntities;
 import game.logic.player.Player;
+import game.logic.player.StarshipTextures;
 import game.ui.control.SpaceCombatKeyAdapter;
 
 @SuppressWarnings("serial")
@@ -25,6 +26,9 @@ public class SpaceCombatPanel extends JPanel {
     private BackgroundEntities bgEntities;
     private Player player;
     private SmartFramesDelay sfd;
+    private StarshipTextures temp = new StarshipTextures() {};
+    float frame;
+    float fireAnimationSpeed = 0.5f;
 
     public SpaceCombatPanel(int windowWidth, int windowHeight) throws IOException 
     {
@@ -66,10 +70,45 @@ public class SpaceCombatPanel extends JPanel {
     
     private void paintPlayersStarship(Graphics2D g2d)
     {
+    	paintPlayersStarshipEngine(g2d);
     	g2d.drawImage(player.starship.getTexture(),//
         		player.starship.xPos,
         		player.starship.yPos,
         		this);
         player.starship.nextFrame();
+    }
+    
+    private void paintPlayersStarshipEngine(Graphics2D g2d)
+    {
+        g2d.drawImage(temp.starshipEngineTextures.get((int)frame),
+//        		100,
+//        		100,
+        		player.starship.xPos + 8 - 1,
+        		player.starship.yPos + 15,
+            	this);
+        
+        
+        if(frame + 1 < 60)
+        {
+        	frame += 0.25f;
+        }
+        else
+        {
+        	frame = 0;
+        }
+//        if(frame + fireAnimationSpeed == 31.5f)
+//        {
+//        	fireAnimationSpeed = fireAnimationSpeed * (-1);
+//        	frame = 27;
+//        }
+//        else if(frame + fireAnimationSpeed == -0.5f)
+//        {
+//        	fireAnimationSpeed = fireAnimationSpeed * (-1);
+//        	frame = 6;
+//        }
+//        else
+//        {
+//        	frame += fireAnimationSpeed;
+//        }
     }
 }
