@@ -20,11 +20,6 @@ public class StarBlink {
 	
 	void blinking()
 	{
-		//TODO
-//		if(star.starSize == StarSize.LARGE_STAR)
-//		{
-//			return;
-//		}
 		if(increaseAlpha == true)
 		{
 			if(star.currentAlpha < destinationAlpha
@@ -62,6 +57,7 @@ public class StarBlink {
 		else
 		{
 			destinationAlpha = (float) (Math.random());
+			makeBigStarsNotBeAbleToDisappear();
 		}
 		
 		framesCount = (int) (Math.random() * 50) + 50;
@@ -73,6 +69,16 @@ public class StarBlink {
 		else
 		{
 			increaseAlpha = false;
+		}
+	}
+	
+	private void makeBigStarsNotBeAbleToDisappear()
+	{
+		if((star.starSize == StarSize.LARGE_STAR
+		|| star.starSize == StarSize.BIG_STAR)
+		&& destinationAlpha < 0.5f)
+		{
+			destinationAlpha += 0.5f;
 		}
 	}
 }

@@ -1,6 +1,5 @@
 package game.logic.background.star;
 
-
 public class StarPassingBy {
 	private Star star;
 	private int windowWidth;
