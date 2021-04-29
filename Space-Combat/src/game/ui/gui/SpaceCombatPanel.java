@@ -29,6 +29,7 @@ public class SpaceCombatPanel extends JPanel {
     private StarshipTextures temp = new StarshipTextures() {};
     float frame;
     float fireAnimationSpeed = 0.5f;
+    float additionalY = 0;
 
     public SpaceCombatPanel(int windowWidth, int windowHeight) throws IOException 
     {
@@ -83,14 +84,22 @@ public class SpaceCombatPanel extends JPanel {
         g2d.drawImage(temp.starshipEngineTextures.get((int)frame),
 //        		100,
 //        		100,
-        		player.starship.xPos + 8 - 1,
-        		player.starship.yPos + 15,
+        		player.starship.xPos + 8 + 1,
+        		player.starship.yPos + 15 + 60 + 1,
             	this);
         
         
-        if(frame + 1 < 60)
+        if(frame + 1 < 64)
         {
-        	frame += 0.25f;
+//        	if(frame > 30 && frame <= 40)
+//        	{
+//        		additionalY += 0.5f;
+//        	}
+//        	else if(frame >= 40 && frame < 50)
+//        	{
+//        		additionalY -= 0.5f;
+//        	}
+        	frame += 1f;
         }
         else
         {

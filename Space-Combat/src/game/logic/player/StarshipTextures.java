@@ -24,10 +24,10 @@ public abstract class StarshipTextures{
 	    //add textures of the starship engine
 	    starshipEngineTextures = new ArrayList<BufferedImage>();
 //	    not fliped animation
-//	    int fileWidth = 640;
-//	    int fileHeight = 384*2;
-//	    int picWidth = 64;
-//	    int picHeight = 64*2;
+//	    int fileWidth = 1024;
+//	    int fileHeight = 1024;
+//	    int picWidth = 128;
+//	    int picHeight = 128;
 //	    for(int picY = 0; picY < fileHeight; picY += picHeight)
 //	    {
 //	    	for(int picX = 0; picX < fileWidth; picX += picWidth)
@@ -36,16 +36,16 @@ public abstract class StarshipTextures{
 //	    	}
 //	    }
 //	    fliped animation
-	    int fileWidth = 640;
-	    int fileHeight = 384*2;
+	    int fileWidth = 512;
+	    int fileHeight = 512;
 	    int picWidth = 64;
-	    int picHeight = 64*2;
+	    int picHeight = 64;
 	    for(int picY = fileHeight - picHeight; picY >= 0; picY -= picHeight)
 	    {
 	    	for(int picX = 0; picX < fileWidth; picX += picWidth)
 	    	{
 	    		//TODO
-	    		starshipEngineTextures.add(ImageIO.read(new File("src/textures/starship/fire5_64.png")).getSubimage(picX, picY, picWidth, picHeight));
+	    		starshipEngineTextures.add(ImageIO.read(new File("src/textures/starship/engine.png")).getSubimage(picX, picY, picWidth, picHeight));
 	    	}
 	    }
 	}
