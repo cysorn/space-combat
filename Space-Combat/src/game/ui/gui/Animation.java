@@ -8,19 +8,21 @@ public class Animation {
     private float animationSpeed;
     private List<BufferedImage> animation;
     
-    public Animation(List<BufferedImage> animation)
+    public Animation(List<BufferedImage> animation, float animationSpeed)
     {
     	this.animation = animation;
+    	this.animationSpeed = animationSpeed;
+    	frame = 0;
     }
     
-    public int getCurrentFrame()
+    public BufferedImage getCurrentFrame()
     {
-    	return (int)frame;
+    	return animation.get((int)frame);
     }
     
     public void nextFrame()
     {
-    	if(frame + 1 < animation.size())
+    	if(frame + animationSpeed < animation.size())
         {
         	frame += animationSpeed;
         }

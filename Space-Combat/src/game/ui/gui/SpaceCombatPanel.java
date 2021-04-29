@@ -3,21 +3,13 @@ import java.awt.AlphaComposite;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
 import java.io.IOException;
 
-import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
-import game.Direction;
-import game.StarshipAction;
 import game.logic.background.BackgroundEntities;
 import game.logic.player.Player;
-import game.logic.player.StarshipTextures;
 import game.ui.control.SpaceCombatKeyAdapter;
 
 @SuppressWarnings("serial")
@@ -26,13 +18,11 @@ public class SpaceCombatPanel extends JPanel {
     private BackgroundEntities bgEntities;
     private Player player;
     private SmartFramesDelay sfd;
-//    private Animation starshipEngineAnimation;
 
     public SpaceCombatPanel(int windowWidth, int windowHeight) throws IOException 
     {
         bgEntities = new BackgroundEntities(windowWidth, windowHeight);
         player = new Player(windowWidth, windowHeight);
-//        starshipEngineAnimation = new Animation(player.starship.getStarshipEngineAnimationTextures());
         sfd = new SmartFramesDelay();
 
         setBackground(Color.BLACK);
@@ -59,8 +49,8 @@ public class SpaceCombatPanel extends JPanel {
         {
             g2d.setComposite(AlphaComposite.SrcOver.derive(bgEntities.starsEntities.get(starNr).currentAlpha));
             g2d.drawImage(bgEntities.starsEntities.get(starNr).getStarshipTexture(),
-            		bgEntities.starsEntities.get(starNr).xPos,
-            		bgEntities.starsEntities.get(starNr).yPos,
+            		(int)bgEntities.starsEntities.get(starNr).xPos,
+            		(int)bgEntities.starsEntities.get(starNr).yPos,
             		this);
             bgEntities.starsEntities.get(starNr).nextFrame();
         }
@@ -69,20 +59,10 @@ public class SpaceCombatPanel extends JPanel {
     
     private void paintPlayersStarship(Graphics2D g2d)
     {
-//    	paintPlayersStarshipEngine(g2d);
     	g2d.drawImage(player.starship.getStarshipTexture(),//
-        		player.starship.xPos,
-        		player.starship.yPos,
+    			(int)player.starship.xPos,
+    			(int)player.starship.yPos,
         		this);
         player.starship.nextFrame();
     }
-    
-//    private void paintPlayersStarshipEngine(Graphics2D g2d)
-//    {
-//        g2d.drawImage(player.starship.getStarshipEngineAnimationTextures().get(starshipEngineAnimation.getCurrentFrame()),
-//        		player.starship.xPos + 9,
-//        		player.starship.yPos + 76,
-//            	this);
-//        starshipEngineAnimation.nextFrame();
-//    }
 }

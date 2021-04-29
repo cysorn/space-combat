@@ -23,12 +23,6 @@ public abstract class StarshipTextures{
 	    starshipTextures.add(ImageIO.read(new File("src/textures/starship/starship_fly_2.png")));
 	    starshipTextures.add(ImageIO.read(new File("src/textures/starship/starship_fly_3.png")));
 	    starshipTextures.add(ImageIO.read(new File("src/textures/starship/starship_fly_4.png")));
-	    
-	    
-	    //add textures of the starship engine
-//	    starshipEngineTextures = new ArrayList<BufferedImage>();
-//	    ReadAnimation.readFlipedAnimation(starshipEngineTextures,
-//	    		new File("src/textures/starship/engine__.png"),
-//	    		512, 256, 64, 32);
+	    starshipTextures.add(ImageIO.read(new File("src/textures/starship/starship_fly_5.png")));
 	}
 }

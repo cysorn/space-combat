@@ -7,11 +7,11 @@ import java.util.List;
 public abstract class Entity implements EntityInterface{
 	
 	public float currentAlpha;
-	public int xPos;
-	public int yPos;
+	public float xPos;
+	public float yPos;
 	protected List<BufferedImage> textures;
 	
-	protected Entity(BufferedImage texture, int xPos, int yPos)
+	protected Entity(BufferedImage texture, float xPos, float yPos)
 	{
 		currentAlpha = 1f;
 		this.xPos = xPos;
@@ -20,7 +20,7 @@ public abstract class Entity implements EntityInterface{
 		textures.add(texture);
 	}
 	
-	protected Entity(List<BufferedImage> textures, int xPos, int yPos)
+	protected Entity(List<BufferedImage> textures, float xPos, float yPos)
 	{
 		currentAlpha = 1f;
 		this.xPos = xPos;

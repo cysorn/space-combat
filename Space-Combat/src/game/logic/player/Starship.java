@@ -6,6 +6,7 @@ import java.util.List;
 import game.Direction;
 import game.StarshipAction;
 import game.logic.Entity;
+import game.ui.gui.Animation;
 
 public class Starship extends Entity{
 
@@ -15,13 +16,11 @@ public class Starship extends Entity{
 	private int winHeight;
 	private int starshipWidth = 80;
 	private int starshipHeight = 110;
-	private float frame = 0;
-	//FIXME find a better way to store this
-	private List<BufferedImage> starshipEngineTextures;
+	private Animation flyingAnimation;
 	
-	public Starship(List<BufferedImage> textures, List<BufferedImage> starshipEngineTextures, int winWidth, int winHeight) {
-		super(textures, winWidth / 2 - 40, (int)(winHeight / 1.4f));
-		this.starshipEngineTextures = starshipEngineTextures;
+//	FIXME find a way to store textures
+	public Starship(List<BufferedImage> textures, int winWidth, int winHeight) {
+		super(textures, winWidth / 2 - 40, winHeight / 1.4f);
 		this.winWidth = winWidth;
 		this.winHeight = winHeight;
 		moveDirections = new StarshipAction[4];
@@ -32,6 +31,7 @@ public class Starship extends Entity{
 		starshipWidth = 80;
 		starshipHeight = 110;
 		moveSpeed = 20;
+		flyingAnimation = new Animation(textures, 0.5f);
 	}
 
 	@Override
@@ -57,6 +57,7 @@ public class Starship extends Entity{
 		{
 			yPos -= moveSpeed;
 		}
+		flyingAnimation.nextFrame();
 	}
 	
 	public void moveTo(Direction moveDirection, StarshipAction action)
@@ -86,37 +87,6 @@ public class Starship extends Entity{
 	@Override
 	public BufferedImage getStarshipTexture() {
 		
-//		return textures.get(0);
-		if((int)frame == 0)
-		{
-			frame += 0.25f;
-			return textures.get(0);
-		}
-		else if((int)frame == 1)
-		{
-			frame += 0.25f;
-			return textures.get(1);
-		}
-		else if((int)frame == 2)
-		{
-			frame += 0.25f;
-			return textures.get(2);
-		}
-		else if((int)frame == 3)
-		{
-			frame += 0.25f;
-			return textures.get(3);
-		}
-		else
-		{
-			frame = 0;
-			return textures.get(0);
-		}
+		return flyingAnimation.getCurrentFrame();
 	}
-	
-	public List<BufferedImage> getStarshipEngineAnimationTextures()
-	{
-		return starshipEngineTextures;
-	}
-	
 }

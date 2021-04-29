@@ -8,6 +8,6 @@ public class Player extends StarshipTextures{
 	
 	public Player(int windowWidth, int windowHeight) throws IOException {
 		super();
-		starship = new Starship(starshipTextures, starshipEngineTextures, windowWidth, windowHeight);
+		starship = new Starship(starshipTextures, windowWidth, windowHeight);
 	}
 }
