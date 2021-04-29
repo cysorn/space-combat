@@ -15,9 +15,13 @@ public class Starship extends Entity{
 	private int winHeight;
 	private int starshipWidth = 80;
 	private int starshipHeight = 110;
+	private float frame = 0;
+	//FIXME find a better way to store this
+	private List<BufferedImage> starshipEngineTextures;
 	
-	public Starship(List<BufferedImage> textures, int winWidth, int winHeight) {
+	public Starship(List<BufferedImage> textures, List<BufferedImage> starshipEngineTextures, int winWidth, int winHeight) {
 		super(textures, winWidth / 2 - 40, (int)(winHeight / 1.4f));
+		this.starshipEngineTextures = starshipEngineTextures;
 		this.winWidth = winWidth;
 		this.winHeight = winHeight;
 		moveDirections = new StarshipAction[4];
@@ -80,17 +84,39 @@ public class Starship extends Entity{
 	}
 	
 	@Override
-	public BufferedImage getTexture() {
+	public BufferedImage getStarshipTexture() {
 		
-		return textures.get(0);
-//		if(starshipIsHanging() == true)
-//		{
-//			return textures.get(0);
-//		}
-//		else
-//		{
-//			return textures.get(1);
-//		}
+//		return textures.get(0);
+		if((int)frame == 0)
+		{
+			frame += 0.25f;
+			return textures.get(0);
+		}
+		else if((int)frame == 1)
+		{
+			frame += 0.25f;
+			return textures.get(1);
+		}
+		else if((int)frame == 2)
+		{
+			frame += 0.25f;
+			return textures.get(2);
+		}
+		else if((int)frame == 3)
+		{
+			frame += 0.25f;
+			return textures.get(3);
+		}
+		else
+		{
+			frame = 0;
+			return textures.get(0);
+		}
+	}
+	
+	public List<BufferedImage> getStarshipEngineAnimationTextures()
+	{
+		return starshipEngineTextures;
 	}
 	
 }

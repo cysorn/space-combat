@@ -26,15 +26,13 @@ public class SpaceCombatPanel extends JPanel {
     private BackgroundEntities bgEntities;
     private Player player;
     private SmartFramesDelay sfd;
-    private StarshipTextures temp = new StarshipTextures() {};
-    float frame;
-    float fireAnimationSpeed = 0.5f;
-    float additionalY = 0;
+//    private Animation starshipEngineAnimation;
 
     public SpaceCombatPanel(int windowWidth, int windowHeight) throws IOException 
     {
         bgEntities = new BackgroundEntities(windowWidth, windowHeight);
         player = new Player(windowWidth, windowHeight);
+//        starshipEngineAnimation = new Animation(player.starship.getStarshipEngineAnimationTextures());
         sfd = new SmartFramesDelay();
 
         setBackground(Color.BLACK);
@@ -60,7 +58,7 @@ public class SpaceCombatPanel extends JPanel {
     	for(int starNr = 0; starNr < bgEntities.starsEntities.size(); ++starNr)
         {
             g2d.setComposite(AlphaComposite.SrcOver.derive(bgEntities.starsEntities.get(starNr).currentAlpha));
-            g2d.drawImage(bgEntities.starsEntities.get(starNr).getTexture(),
+            g2d.drawImage(bgEntities.starsEntities.get(starNr).getStarshipTexture(),
             		bgEntities.starsEntities.get(starNr).xPos,
             		bgEntities.starsEntities.get(starNr).yPos,
             		this);
@@ -71,53 +69,20 @@ public class SpaceCombatPanel extends JPanel {
     
     private void paintPlayersStarship(Graphics2D g2d)
     {
-    	paintPlayersStarshipEngine(g2d);
-    	g2d.drawImage(player.starship.getTexture(),//
+//    	paintPlayersStarshipEngine(g2d);
+    	g2d.drawImage(player.starship.getStarshipTexture(),//
         		player.starship.xPos,
         		player.starship.yPos,
         		this);
         player.starship.nextFrame();
     }
     
-    private void paintPlayersStarshipEngine(Graphics2D g2d)
-    {
-        g2d.drawImage(temp.starshipEngineTextures.get((int)frame),
-//        		100,
-//        		100,
-        		player.starship.xPos + 8 + 1,
-        		player.starship.yPos + 15 + 60 + 1,
-            	this);
-        
-        
-        if(frame + 1 < 64)
-        {
-//        	if(frame > 30 && frame <= 40)
-//        	{
-//        		additionalY += 0.5f;
-//        	}
-//        	else if(frame >= 40 && frame < 50)
-//        	{
-//        		additionalY -= 0.5f;
-//        	}
-        	frame += 1f;
-        }
-        else
-        {
-        	frame = 0;
-        }
-//        if(frame + fireAnimationSpeed == 31.5f)
-//        {
-//        	fireAnimationSpeed = fireAnimationSpeed * (-1);
-//        	frame = 27;
-//        }
-//        else if(frame + fireAnimationSpeed == -0.5f)
-//        {
-//        	fireAnimationSpeed = fireAnimationSpeed * (-1);
-//        	frame = 6;
-//        }
-//        else
-//        {
-//        	frame += fireAnimationSpeed;
-//        }
-    }
+//    private void paintPlayersStarshipEngine(Graphics2D g2d)
+//    {
+//        g2d.drawImage(player.starship.getStarshipEngineAnimationTextures().get(starshipEngineAnimation.getCurrentFrame()),
+//        		player.starship.xPos + 9,
+//        		player.starship.yPos + 76,
+//            	this);
+//        starshipEngineAnimation.nextFrame();
+//    }
 }

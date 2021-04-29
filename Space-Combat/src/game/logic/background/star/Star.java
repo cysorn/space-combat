@@ -30,7 +30,7 @@ public class Star extends Entity{
 
 	
 	@Override
-	public BufferedImage getTexture()
+	public BufferedImage getStarshipTexture()
 	{
 		return textures.get(0);
 	}
