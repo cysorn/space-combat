@@ -18,7 +18,7 @@ public class StarBlink {
 		generateNewValues();
 	}
 	
-	void blinking()
+	void nextFrame()
 	{
 		if(increaseAlpha == true)
 		{
@@ -78,7 +78,7 @@ public class StarBlink {
 		|| star.starSize == StarSize.BIG_STAR)
 		&& destinationAlpha < 0.5f)
 		{
-			destinationAlpha += 0.5f;
+			destinationAlpha = 0.6f;
 		}
 	}
 }

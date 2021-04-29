@@ -17,10 +17,11 @@ public class Starship extends Entity{
 	private int starshipWidth = 80;
 	private int starshipHeight = 110;
 	private Animation flyingAnimation;
+	private SpawnStarship spawnStarship;
 	
 //	FIXME find a way to store textures
 	public Starship(List<BufferedImage> textures, int winWidth, int winHeight) {
-		super(textures, winWidth / 2 - 40, winHeight / 1.4f);
+		super(textures, winWidth / 2 - 40, winHeight / 2f);
 		this.winWidth = winWidth;
 		this.winHeight = winHeight;
 		moveDirections = new StarshipAction[4];
@@ -32,6 +33,7 @@ public class Starship extends Entity{
 		starshipHeight = 110;
 		moveSpeed = 20;
 		flyingAnimation = new Animation(textures, 0.5f);
+		spawnStarship = new SpawnStarship(this);
 	}
 
 	@Override
@@ -43,7 +45,7 @@ public class Starship extends Entity{
 			xPos += moveSpeed;
 		}
 		if(moveDirections[Direction.DOWN.getDirectionIndex()] == StarshipAction.FLY
-		&& yPos + starshipHeight+ moveSpeed + 20 < winHeight)
+		&& yPos + starshipHeight + moveSpeed + 20 < winHeight)
 		{
 			yPos += moveSpeed;
 		}
@@ -58,30 +60,12 @@ public class Starship extends Entity{
 			yPos -= moveSpeed;
 		}
 		flyingAnimation.nextFrame();
+		spawnStarship.nextFrame();
 	}
 	
 	public void moveTo(Direction moveDirection, StarshipAction action)
 	{
 		moveDirections[moveDirection.getDirectionIndex()] = action;
-	}
-
-	private boolean starshipIsHanging()
-	{
-		if((moveDirections[Direction.RIGHT.getDirectionIndex()] == StarshipAction.HANG
-		&& moveDirections[Direction.DOWN.getDirectionIndex()] == StarshipAction.HANG
-		&& moveDirections[Direction.LEFT.getDirectionIndex()] == StarshipAction.HANG
-		&& moveDirections[Direction.UP.getDirectionIndex()] == StarshipAction.HANG)
-		|| (moveDirections[Direction.RIGHT.getDirectionIndex()] == StarshipAction.FLY
-			&& moveDirections[Direction.LEFT.getDirectionIndex()] == StarshipAction.FLY)
-		|| (moveDirections[Direction.UP.getDirectionIndex()] == StarshipAction.FLY
-			&& moveDirections[Direction.DOWN.getDirectionIndex()] == StarshipAction.FLY))
-		{
-			return true;
-		}
-		else
-		{
-			return false;
-		}
 	}
 	
 	@Override

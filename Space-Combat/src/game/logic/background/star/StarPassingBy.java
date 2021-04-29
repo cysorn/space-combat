@@ -29,7 +29,7 @@ public class StarPassingBy {
 		}
 	}
 	
-	public void passingBy()
+	public void nextFrame()
 	{
 		if(star.yPos + starPassingBySpeed < windowHeight)
 		{

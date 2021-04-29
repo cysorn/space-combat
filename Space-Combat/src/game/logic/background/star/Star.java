@@ -7,24 +7,24 @@ import game.logic.background.StarSize;
 
 public class Star extends Entity{
 	
-	private StarBlink b;
-	private StarPassingBy spb;
+	private StarBlink starBlink;
+	private StarPassingBy starPassingBy;
 	public final StarSize starSize;
 
 	public Star(BufferedImage texture, int windowWidth, int windowHeight, int xPos, int yPos, StarSize starSize)
 	{
 		super(texture, xPos, yPos);
 		this.starSize = starSize;
-		b = new StarBlink(this);
-		spb = new StarPassingBy(this, windowWidth, windowHeight);
+		starBlink = new StarBlink(this);
+		starPassingBy = new StarPassingBy(this, windowWidth, windowHeight);
 		
 	}
 	
 	@Override
 	public void nextFrame()
 	{
-		b.blinking();
-		spb.passingBy();
+		starBlink.nextFrame();
+		starPassingBy.nextFrame();
 	}
 	
 
