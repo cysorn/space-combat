@@ -3,10 +3,10 @@ package game.logic.player;
 import java.awt.image.BufferedImage;
 import java.util.List;
 
+import game.Animation;
 import game.Direction;
 import game.StarshipAction;
 import game.logic.Entity;
-import game.ui.gui.Animation;
 
 public class Starship extends Entity{
 
@@ -17,7 +17,7 @@ public class Starship extends Entity{
 	private int starshipWidth = 80;
 	private int starshipHeight = 110;
 	private Animation flyingAnimation;
-	private SpawnStarship spawnStarship;
+	private Spawn spawnStarship;
 	
 //	FIXME find a way to store textures
 	public Starship(List<BufferedImage> textures, int winWidth, int winHeight) {
@@ -33,7 +33,7 @@ public class Starship extends Entity{
 		starshipHeight = 110;
 		moveSpeed = 20;
 		flyingAnimation = new Animation(textures, 0.5f);
-		spawnStarship = new SpawnStarship(this);
+		spawnStarship = new Spawn(this);
 	}
 
 	@Override

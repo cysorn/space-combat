@@ -11,7 +11,7 @@ import javax.swing.Timer;
 import game.logic.background.BackgroundEntities;
 import game.logic.player.Player;
 import game.ui.control.SpaceCombatKeyAdapter;
-import game.ui.gui.greeting.Introducing;
+import game.ui.gui.introducing.Introducing;
 
 @SuppressWarnings("serial")
 public class SpaceCombatPanel extends JPanel {
@@ -42,7 +42,11 @@ public class SpaceCombatPanel extends JPanel {
         Graphics2D g2d = (Graphics2D) g.create();
         sfd.smartDelay();
 	    paintStars(g2d);
-	    paintPlayersStarship(g2d);
+	    if(intro.introducingIsInProcess() == false)
+        {
+	    	paintPlayersStarship(g2d);
+	    	
+        }
 	    introducing(g2d);
         g2d.dispose();
     }
@@ -70,10 +74,10 @@ public class SpaceCombatPanel extends JPanel {
             		(int)bgEntities.starsEntities.get(starNr).xPos,
             		(int)bgEntities.starsEntities.get(starNr).yPos,
             		this);
-            if(intro.introducingIsInProcess() == false)
-            {
+//            if(intro.introducingIsInProcess() == false)
+//            {
             	bgEntities.starsEntities.get(starNr).nextFrame();
-            }
+//            }
         }
         g2d.setComposite(AlphaComposite.SrcOver.derive(1f));
     }
@@ -91,10 +95,10 @@ public class SpaceCombatPanel extends JPanel {
     			(int)player.starship.xPos,
     			(int)player.starship.yPos,
         		this);
-    	if(intro.introducingIsInProcess() == false)
-        {
+//    	if(intro.introducingIsInProcess() == false)
+//        {
     		player.starship.nextFrame();
-        }
+//        }
     	g2d.setComposite(AlphaComposite.SrcOver.derive(1f));
     }
 }

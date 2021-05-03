@@ -13,7 +13,6 @@ import game.logic.ReadAnimation;
 public abstract class StarshipTextures{
 
 	protected List<BufferedImage> starshipTextures;
-	protected List<BufferedImage> starshipEngineTextures;
 
 	public StarshipTextures() throws IOException{
 
@@ -24,5 +23,6 @@ public abstract class StarshipTextures{
 	    starshipTextures.add(ImageIO.read(new File("src/textures/starship/starship_fly_3.png")));
 	    starshipTextures.add(ImageIO.read(new File("src/textures/starship/starship_fly_4.png")));
 	    starshipTextures.add(ImageIO.read(new File("src/textures/starship/starship_fly_5.png")));
+	    starshipTextures.add(ImageIO.read(new File("src/textures/starship/starship_fly_6.png")));
 	}
 }

@@ -17,7 +17,6 @@ public class Star extends Entity{
 		this.starSize = starSize;
 		starBlink = new StarBlink(this);
 		starPassingBy = new StarPassingBy(this, windowWidth, windowHeight);
-		
 	}
 	
 	@Override

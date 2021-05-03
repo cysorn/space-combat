@@ -1,4 +1,4 @@
-package game.ui.gui.greeting;
+package game.ui.gui.introducing;
 
 import java.awt.image.BufferedImage;
 import java.io.IOException;
@@ -12,7 +12,7 @@ public class Introducing extends IntroducingTextures{
 	{
 		doIntroducing = true;
 		blackAlpha = 1f;
-		animationSpeed = 0.0001f;
+		animationSpeed = 0.004f;
 	}
 	
 	public void nextFrame()
@@ -20,7 +20,7 @@ public class Introducing extends IntroducingTextures{
 		if(blackAlpha - animationSpeed >= 0f)
 		{
 			blackAlpha -= animationSpeed;
-			animationSpeed += 0.0001f;
+//			animationSpeed += 0.0001f;
 		}
 		else
 		{

@@ -9,7 +9,7 @@ import game.logic.player.Player;
 
 public class SpaceCombatKeyAdapter extends KeyAdapter {
 	
-	Player player;
+	private Player player;
 	
 	public SpaceCombatKeyAdapter(Player player)
 	{

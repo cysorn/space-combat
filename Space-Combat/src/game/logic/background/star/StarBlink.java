@@ -4,7 +4,7 @@ import game.logic.background.StarSize;
 
 public class StarBlink {
 
-	Star star;
+	private Star star;
 	private float destinationAlpha;
 	private float runningSpeed;
 	private int framesCount;
@@ -18,7 +18,7 @@ public class StarBlink {
 		generateNewValues();
 	}
 	
-	void nextFrame()
+	public void nextFrame()
 	{
 		if(increaseAlpha == true)
 		{

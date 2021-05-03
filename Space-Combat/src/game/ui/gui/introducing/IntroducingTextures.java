@@ -1,4 +1,4 @@
-package game.ui.gui.greeting;
+package game.ui.gui.introducing;
 
 import java.awt.image.BufferedImage;
 import java.io.File;
