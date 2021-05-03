@@ -1,11 +1,11 @@
-package game.logic.background.star;
+package game.sprites.background_sprites.star;
 
 import java.awt.image.BufferedImage;
 
-import game.logic.Entity;
-import game.logic.background.StarSize;
+import game.sprites.SimpleSprite;
+import game.sprites.background_sprites.StarSize;
 
-public class Star extends Entity{
+public class Star extends SimpleSprite{
 	
 	private StarBlink starBlink;
 	private StarPassingBy starPassingBy;
@@ -29,7 +29,7 @@ public class Star extends Entity{
 
 	
 	@Override
-	public BufferedImage getStarshipTexture()
+	public BufferedImage getSpriteTexture()
 	{
 		return textures.get(0);
 	}

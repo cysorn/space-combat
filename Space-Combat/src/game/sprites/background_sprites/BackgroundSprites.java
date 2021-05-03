@@ -1,18 +1,18 @@
-package game.logic.background;
+package game.sprites.background_sprites;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-import game.logic.background.star.Star;
+import game.sprites.background_sprites.star.Star;
 
-public class BackgroundEntities extends BackgroundTextures{
+public class BackgroundSprites extends BackgroundTextures{
 	private int windowWidth;
 	private int windowHeight;
 	public List<Star> starsEntities = new ArrayList<>();
 
-	public BackgroundEntities(int windowWidth, int windowHeight) throws IOException{
+	public BackgroundSprites(int windowWidth, int windowHeight) throws IOException{
 		super();
 		this.windowWidth = windowWidth;
 		this.windowHeight = windowHeight;

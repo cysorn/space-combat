@@ -1,4 +1,4 @@
-package game.ui.gui.introducing;
+package game.sprites.introducing_sprites;
 
 import java.awt.image.BufferedImage;
 import java.io.File;

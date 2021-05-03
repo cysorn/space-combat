@@ -1,4 +1,4 @@
-package game.logic.player;
+package game.sprites.player_sprites;
 
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -8,13 +8,13 @@ import java.util.List;
 
 import javax.imageio.ImageIO;
 
-import game.logic.ReadAnimation;
+import game.sprites.ReadAnimation;
 
-public abstract class StarshipTextures{
+public abstract class PlayerTextures{
 
 	protected List<BufferedImage> starshipTextures;
 
-	public StarshipTextures() throws IOException{
+	public PlayerTextures() throws IOException{
 
 	    //add textures of the starship
 	    starshipTextures = new ArrayList<BufferedImage>();

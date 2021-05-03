@@ -1,4 +1,4 @@
-package game.logic.background.star;
+package game.sprites.background_sprites.star;
 
 public class StarPassingBy {
 	private Star star;

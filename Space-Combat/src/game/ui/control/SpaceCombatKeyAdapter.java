@@ -5,13 +5,13 @@ import java.awt.event.KeyEvent;
 
 import game.Direction;
 import game.StarshipAction;
-import game.logic.player.Player;
+import game.sprites.player_sprites.PlayerSprites;
 
 public class SpaceCombatKeyAdapter extends KeyAdapter {
 	
-	private Player player;
+	private PlayerSprites player;
 	
-	public SpaceCombatKeyAdapter(Player player)
+	public SpaceCombatKeyAdapter(PlayerSprites player)
 	{
 		this.player = player;
 	}
@@ -29,19 +29,19 @@ public class SpaceCombatKeyAdapter extends KeyAdapter {
     {
     	if(e.getKeyCode() == Key.D.getKeyCode())
         {
-        	player.starship.moveTo(Direction.RIGHT, action);
+        	player.starship.starshipMove.moveTo(Direction.RIGHT, action);
         }
     	if(e.getKeyCode() == Key.S.getKeyCode())
         {
-        	player.starship.moveTo(Direction.DOWN, action);
+        	player.starship.starshipMove.moveTo(Direction.DOWN, action);
         }
     	if(e.getKeyCode() == Key.A.getKeyCode())
         {
-        	player.starship.moveTo(Direction.LEFT, action);
+        	player.starship.starshipMove.moveTo(Direction.LEFT, action);
         }
     	if(e.getKeyCode() == Key.W.getKeyCode())
         {
-        	player.starship.moveTo(Direction.UP, action);
+        	player.starship.starshipMove.moveTo(Direction.UP, action);
         }
     }
 }

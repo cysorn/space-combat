@@ -1,4 +1,4 @@
-package game.logic.background;
+package game.sprites.background_sprites;
 
 import java.awt.image.BufferedImage;
 import java.io.File;

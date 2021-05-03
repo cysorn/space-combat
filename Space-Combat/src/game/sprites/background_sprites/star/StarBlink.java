@@ -1,6 +1,6 @@
-package game.logic.background.star;
+package game.sprites.background_sprites.star;
 
-import game.logic.background.StarSize;
+import game.sprites.background_sprites.StarSize;
 
 public class StarBlink {
 

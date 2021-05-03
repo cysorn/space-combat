@@ -1,17 +1,17 @@
-package game.logic;
+package game.sprites;
 
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class Entity implements EntityInterface{
+public abstract class SimpleSprite implements SpriteInterface{
 	
 	public float currentAlpha;
 	public float xPos;
 	public float yPos;
 	protected List<BufferedImage> textures;
 	
-	protected Entity(BufferedImage texture, float xPos, float yPos)
+	protected SimpleSprite(BufferedImage texture, float xPos, float yPos)
 	{
 		currentAlpha = 1f;
 		this.xPos = xPos;
@@ -20,7 +20,7 @@ public abstract class Entity implements EntityInterface{
 		textures.add(texture);
 	}
 	
-	protected Entity(List<BufferedImage> textures, float xPos, float yPos)
+	protected SimpleSprite(List<BufferedImage> textures, float xPos, float yPos)
 	{
 		currentAlpha = 1f;
 		this.xPos = xPos;

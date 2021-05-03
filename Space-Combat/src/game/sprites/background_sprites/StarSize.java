@@ -1,4 +1,4 @@
-package game.logic.background;
+package game.sprites.background_sprites;
 
 public enum StarSize {
 	SMALL_STAR,

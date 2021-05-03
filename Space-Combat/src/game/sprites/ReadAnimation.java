@@ -1,4 +1,4 @@
-package game.logic;
+package game.sprites;
 
 import java.awt.image.BufferedImage;
 import java.io.File;

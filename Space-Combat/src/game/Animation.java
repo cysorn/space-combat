@@ -1,28 +1,25 @@
 package game;
 
-import java.awt.image.BufferedImage;
-import java.util.List;
-
 public class Animation {
     private float frame;
     private float animationSpeed;
-    private List<BufferedImage> animation;
+    private int framesCount;
     
-    public Animation(List<BufferedImage> animation, float animationSpeed)
+    public Animation(int framesCount, float animationSpeed)
     {
-    	this.animation = animation;
     	this.animationSpeed = animationSpeed;
+    	this.framesCount = framesCount;
     	frame = 0;
     }
     
-    public BufferedImage getCurrentFrame()
+    public int getCurrentFrame()
     {
-    	return animation.get((int)frame);
+    	return (int)frame;
     }
     
     public void nextFrame()
     {
-    	if(frame + animationSpeed < animation.size())
+    	if(frame + animationSpeed < framesCount)
         {
         	frame += animationSpeed;
         }
