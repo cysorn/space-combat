@@ -13,34 +13,30 @@ import game.ui.control.SpaceCombatKeyAdapter;
 public class SpaceCombatPanel extends JPanel {
 
 	PaintSprites paintSprites;
-    private SmartFramesDelay sfd;
 
     public SpaceCombatPanel(int windowWidth, int windowHeight) throws IOException 
     {
     	paintSprites = new PaintSprites(this, windowWidth, windowHeight);
-        sfd = new SmartFramesDelay();
         
         setBackground(Color.BLACK);
         setFocusable(true);
         
         new Timer(0, actionPerformed -> repaint()).start();
         
-        addKeyListener(new SpaceCombatKeyAdapter(paintSprites.playerSprites));
+        addKeyListener(new SpaceCombatKeyAdapter(paintSprites.playerSprites.starship.starshipMove));
     }
     
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
         Graphics2D g2d = (Graphics2D) g.create();
-        sfd.smartDelay();
+        SmartFramesDelay.smartDelay();
         paintSprites.paintStars(g2d);
 	    if(paintSprites.introducingSprites.introducingContinues == false)
         {
 	    	paintSprites.paintPlayersStarship(g2d);
-	    	
         }
 	    paintSprites.introducing(g2d);
         g2d.dispose();
     }
 }
-    

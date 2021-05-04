@@ -7,7 +7,6 @@ public class IntroducingSprites extends IntroducingTextures{
 	public boolean introducingContinues;
 	public BlackScreen blackScreen;
 
-	
 	public IntroducingSprites() throws IOException
 	{
 		blackScreen = new BlackScreen(introducingTextures.get(0), this);

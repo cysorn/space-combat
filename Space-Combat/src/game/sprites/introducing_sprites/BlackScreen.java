@@ -13,7 +13,8 @@ public class BlackScreen extends SimpleSprite{
 		super(texture, 0, 0);
 		this.introducingSprites = introducingSprites;
 		currentAlpha = 1f;
-		animationSpeed = 0.004f;
+//		animationSpeed = 0.004f;
+		animationSpeed = 0.003f;
 	}
 	
 	@Override
@@ -22,7 +23,7 @@ public class BlackScreen extends SimpleSprite{
 		if(currentAlpha - animationSpeed >= 0f)
 		{
 			currentAlpha -= animationSpeed;
-//			animationSpeed += 0.0001f;
+			animationSpeed += 0.000025f;
 		}
 		else
 		{

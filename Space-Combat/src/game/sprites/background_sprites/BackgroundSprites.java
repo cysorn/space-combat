@@ -10,7 +10,7 @@ import game.sprites.background_sprites.star.Star;
 public class BackgroundSprites extends BackgroundTextures{
 	private int windowWidth;
 	private int windowHeight;
-	public List<Star> starsEntities = new ArrayList<>();
+	public List<Star> stars = new ArrayList<>();
 
 	public BackgroundSprites(int windowWidth, int windowHeight) throws IOException{
 		super();
@@ -32,7 +32,7 @@ public class BackgroundSprites extends BackgroundTextures{
 		{
 			for(int starsCountToCreate = 0; starsCountToCreate < starsCountByNr[textureNr]; ++starsCountToCreate)
 			{
-				starsEntities.add(new Star(starsTextures.get(textureNr),
+				stars.add(new Star(starsTextures.get(textureNr),
 					windowWidth,
 					windowHeight,
 					Math.abs(rand[0].nextInt() % (windowWidth)),

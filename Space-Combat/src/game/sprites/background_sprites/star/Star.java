@@ -26,8 +26,6 @@ public class Star extends SimpleSprite{
 		starPassingBy.nextFrame();
 	}
 	
-
-	
 	@Override
 	public BufferedImage getSpriteTexture()
 	{

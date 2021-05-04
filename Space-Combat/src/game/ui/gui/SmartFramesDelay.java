@@ -2,16 +2,11 @@ package game.ui.gui;
 
 public class SmartFramesDelay {
 
-	private long nextFrameAt;
-	private int minMsDelayAfterFrame;
-	private long currentTime;
+	static private long nextFrameAt = 0;
+	static private int minMsDelayAfterFrame = 18;
+	static private long currentTime;
 	
-	public SmartFramesDelay() {
-		minMsDelayAfterFrame = 18;
-		nextFrameAt = 0;
-	}
-	
-    public void smartDelay()
+	static public void smartDelay()
     {
     	currentTime = System.currentTimeMillis();
 		if(currentTime <= nextFrameAt)

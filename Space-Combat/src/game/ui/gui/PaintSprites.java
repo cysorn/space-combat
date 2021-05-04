@@ -37,14 +37,14 @@ public class PaintSprites {
     
     public void paintStars(Graphics2D g2d)
     {
-    	for(int starNr = 0; starNr < backgroundSprites.starsEntities.size(); ++starNr)
+    	for(int starNr = 0; starNr < backgroundSprites.stars.size(); ++starNr)
         {
-            g2d.setComposite(AlphaComposite.SrcOver.derive(backgroundSprites.starsEntities.get(starNr).currentAlpha));
-            g2d.drawImage(backgroundSprites.starsEntities.get(starNr).getSpriteTexture(),
-            		(int)backgroundSprites.starsEntities.get(starNr).xPos,
-            		(int)backgroundSprites.starsEntities.get(starNr).yPos,
+            g2d.setComposite(AlphaComposite.SrcOver.derive(backgroundSprites.stars.get(starNr).currentAlpha));
+            g2d.drawImage(backgroundSprites.stars.get(starNr).getSpriteTexture(),
+            		(int)backgroundSprites.stars.get(starNr).xPos,
+            		(int)backgroundSprites.stars.get(starNr).yPos,
             		spaceCombatPanel);
-            backgroundSprites.starsEntities.get(starNr).nextFrame();
+            backgroundSprites.stars.get(starNr).nextFrame();
         }
         g2d.setComposite(AlphaComposite.SrcOver.derive(1f));
     }
