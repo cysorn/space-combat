@@ -8,12 +8,12 @@ import java.util.List;
 
 import javax.imageio.ImageIO;
 
-public abstract class IntroducingTextures {
-	protected List<BufferedImage> introducingTextures;
+public class IntroducingTextures {
+	protected List<BufferedImage> blackScreenTextures;
 
 	public IntroducingTextures() throws IOException{
-		introducingTextures = new ArrayList<BufferedImage>();
+		blackScreenTextures = new ArrayList<BufferedImage>();
 
-		introducingTextures.add(ImageIO.read(new File("src/textures/introducing/black_screen.png")));
+		blackScreenTextures.add(ImageIO.read(new File("src/textures/introducing/black_screen.png")));
 	}
 }

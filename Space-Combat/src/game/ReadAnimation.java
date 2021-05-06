@@ -1,4 +1,4 @@
-package game.sprites;
+package game;
 
 import java.awt.image.BufferedImage;
 import java.io.File;

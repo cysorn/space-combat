@@ -1,37 +1,36 @@
 package game.sprites.player_sprites.starship;
 
 import java.awt.image.BufferedImage;
-import java.util.List;
+import java.io.IOException;
 
-import game.Animation;
-import game.sprites.SimpleSprite;
 import game.sprites.Sprite;
 
 public class Starship extends Sprite{
 
-	private Animation flyingAnimation;
+	private StarshipTextures starshipTextures;
+
 	private Spawn spawnStarship;
 	public StarshipMove starshipMove;
+	public StarshipExplosion starshipExplosion;
 	
-//	FIXME find a way to store textures
-	public Starship(List<BufferedImage> textures, int winWidth, int winHeight) {
-		super(textures, winWidth / 2 - 40, winHeight / 2f, 80, 110);
-		starshipMove = new StarshipMove(this, winWidth, winHeight);
-		flyingAnimation = new Animation(textures.size(), 0.5f);
+	public Starship(int winWidth, int winHeight) throws IOException {
+		super(winWidth / 2 - 40, winHeight / 2f, 80, 110);
+		starshipTextures = new StarshipTextures();
+		starshipMove = new StarshipMove(this, starshipTextures, winWidth, winHeight);
 		spawnStarship = new Spawn(this);
+		starshipExplosion = new StarshipExplosion();
 	}
-
+	
 	@Override
 	public void nextFrame() {
 	
 		starshipMove.nextFrame();
-		flyingAnimation.nextFrame();
 		spawnStarship.nextFrame();
 	}
 	
 	@Override
 	public BufferedImage getSpriteTexture() {
 		
-		return textures.get(flyingAnimation.getCurrentFrame());
+		return starshipMove.getSpriteTexture();
 	}
 }

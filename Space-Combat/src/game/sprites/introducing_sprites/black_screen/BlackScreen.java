@@ -1,20 +1,24 @@
-package game.sprites.introducing_sprites;
+package game.sprites.introducing_sprites.black_screen;
 
 import java.awt.image.BufferedImage;
+import java.io.IOException;
 
 import game.sprites.SimpleSprite;
+import game.sprites.introducing_sprites.IntroducingSprites;
 
 public class BlackScreen extends SimpleSprite{
+	
+	private BufferedImage blackScreenTexture;
 	private float animationSpeed;
 	private IntroducingSprites introducingSprites;
 	
-	public BlackScreen(BufferedImage texture, IntroducingSprites introducingSprites)
+	public BlackScreen(IntroducingSprites introducingSprites, BufferedImage blackScreenTexture) throws IOException
 	{
-		super(texture, 0, 0);
+		super(0, 0);
+		this.blackScreenTexture = blackScreenTexture;
 		this.introducingSprites = introducingSprites;
 		currentAlpha = 1f;
-//		animationSpeed = 0.004f;
-		animationSpeed = 0.003f;
+		animationSpeed = 0.004f;
 	}
 	
 	@Override
@@ -23,7 +27,6 @@ public class BlackScreen extends SimpleSprite{
 		if(currentAlpha - animationSpeed >= 0f)
 		{
 			currentAlpha -= animationSpeed;
-			animationSpeed += 0.000025f;
 		}
 		else
 		{
@@ -35,6 +38,6 @@ public class BlackScreen extends SimpleSprite{
 	@Override
 	public BufferedImage getSpriteTexture() {
 
-		return textures.get(0);
+		return blackScreenTexture;
 	}
 }

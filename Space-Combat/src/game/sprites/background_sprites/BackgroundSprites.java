@@ -7,13 +7,15 @@ import java.util.Random;
 
 import game.sprites.background_sprites.star.Star;
 
-public class BackgroundSprites extends BackgroundTextures{
+public class BackgroundSprites{
+	
+	private BackgroundTextures backgroundTextures;
 	private int windowWidth;
 	private int windowHeight;
 	public List<Star> stars = new ArrayList<>();
 
 	public BackgroundSprites(int windowWidth, int windowHeight) throws IOException{
-		super();
+		backgroundTextures = new BackgroundTextures();
 		this.windowWidth = windowWidth;
 		this.windowHeight = windowHeight;
 		createStars();
@@ -32,7 +34,7 @@ public class BackgroundSprites extends BackgroundTextures{
 		{
 			for(int starsCountToCreate = 0; starsCountToCreate < starsCountByNr[textureNr]; ++starsCountToCreate)
 			{
-				stars.add(new Star(starsTextures.get(textureNr),
+				stars.add(new Star(backgroundTextures.starsTextures.get(textureNr),
 					windowWidth,
 					windowHeight,
 					Math.abs(rand[0].nextInt() % (windowWidth)),

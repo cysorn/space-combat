@@ -3,13 +3,17 @@ package game.sprites.introducing_sprites;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 
-public class IntroducingSprites extends IntroducingTextures{
+import game.sprites.introducing_sprites.black_screen.BlackScreen;
+
+public class IntroducingSprites{
 	public boolean introducingContinues;
+	public IntroducingTextures introducingTextures;
 	public BlackScreen blackScreen;
 
 	public IntroducingSprites() throws IOException
 	{
-		blackScreen = new BlackScreen(introducingTextures.get(0), this);
+		introducingTextures = new IntroducingTextures();
+		blackScreen = new BlackScreen(this, introducingTextures.blackScreenTextures.get(0));
 		introducingContinues = true;
 	}
 	

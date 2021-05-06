@@ -28,4 +28,9 @@ public class Animation {
         	frame = 0;
         }
     }
+    
+    public void setCurrentFrameToZero()
+    {
+    	frame = 0;
+    }
 }

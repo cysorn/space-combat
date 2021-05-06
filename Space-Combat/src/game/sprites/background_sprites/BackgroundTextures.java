@@ -8,7 +8,7 @@ import java.util.List;
 
 import javax.imageio.ImageIO;
 
-public abstract class BackgroundTextures {
+public class BackgroundTextures {
 	protected List<BufferedImage> starsTextures;
 
 	public BackgroundTextures() throws IOException{

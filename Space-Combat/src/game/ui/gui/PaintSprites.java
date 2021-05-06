@@ -59,4 +59,13 @@ public class PaintSprites {
     	playerSprites.starship.nextFrame();
     	g2d.setComposite(AlphaComposite.SrcOver.derive(1f));
     }
+    
+    public void paintStarshipExplosion(Graphics2D g2d)
+    {
+    	g2d.drawImage(playerSprites.starship.starshipExplosion.getSpriteTexture(),//
+    			(int)playerSprites.starship.xPos - 93,
+    			(int)playerSprites.starship.yPos - 75,
+    			spaceCombatPanel);
+    	playerSprites.starship.starshipExplosion.nextFrame();
+    }
 }

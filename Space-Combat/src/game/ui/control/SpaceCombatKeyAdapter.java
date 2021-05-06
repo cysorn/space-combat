@@ -6,15 +6,18 @@ import java.awt.event.KeyEvent;
 import game.Direction;
 import game.StarshipAction;
 import game.sprites.player_sprites.PlayerSprites;
+import game.sprites.player_sprites.starship.StarshipExplosion;
 import game.sprites.player_sprites.starship.StarshipMove;
 
 public class SpaceCombatKeyAdapter extends KeyAdapter {
 	
 	private StarshipMove starshipMove;
+	private StarshipExplosion starshipExplosion;
 	
-	public SpaceCombatKeyAdapter(StarshipMove starshipMove)
+	public SpaceCombatKeyAdapter(StarshipMove starshipMove, StarshipExplosion starshipExplosion)
 	{
 		this.starshipMove = starshipMove;
+		this.starshipExplosion = starshipExplosion;
 	}
 	@Override
     public void keyReleased(KeyEvent e) {
@@ -44,5 +47,9 @@ public class SpaceCombatKeyAdapter extends KeyAdapter {
         {
         	starshipMove.moveTo(Direction.UP, action);
         }
+    	if(e.getKeyCode() == Key.SPACE.getKeyCode())
+    	{
+    		starshipExplosion.playAnimation = true;
+    	}
     }
 }
