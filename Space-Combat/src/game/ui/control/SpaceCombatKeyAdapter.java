@@ -43,7 +43,7 @@ public class SpaceCombatKeyAdapter extends KeyAdapter {
         {
     		starship.starshipMove.moveTo(Direction.UP, action);
         }
-    	if(e.getKeyCode() == Key.SPACE.getKeyCode()
+    	if(e.getKeyCode() == Key.E.getKeyCode()
     	&& starship.freezeStarship == false)
     	{
     		starship.starshipExplosion.startExplosion();

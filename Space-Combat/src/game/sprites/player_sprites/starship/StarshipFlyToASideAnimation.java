@@ -5,13 +5,13 @@ import java.awt.image.BufferedImage;
 import game.Direction;
 import game.StarshipAction;
 
-public class StarshipFlyingToASideAnimation {
+public class StarshipFlyToASideAnimation {
 	private StarshipTextures starshipTextures;
 	private StarshipAction[] moveDirections;
 	private int currentFrame;
 	private Direction currentDirection;
 	private int maxFrame;
-	public StarshipFlyingToASideAnimation(StarshipTextures starshipTextures, StarshipAction[] moveDirections) {
+	public StarshipFlyToASideAnimation(StarshipTextures starshipTextures, StarshipAction[] moveDirections) {
 		this.moveDirections = moveDirections;
 		this.starshipTextures = starshipTextures;
 		currentFrame = 0;

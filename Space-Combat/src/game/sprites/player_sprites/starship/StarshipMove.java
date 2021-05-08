@@ -9,7 +9,7 @@ import game.StarshipAction;
 public class StarshipMove {
 	
 	private StarshipTextures starshipTextures;
-	private StarshipFlyingToASideAnimation starshipFlyingToASideAnimation;
+	private StarshipFlyToASideAnimation starshipFlyingToASideAnimation;
 	private Animation flyingForwardAnimation;
 	private int winWidth;
 	private int winHeight;
@@ -26,7 +26,7 @@ public class StarshipMove {
 		moveDirections[1] = StarshipAction.HANG;
 		moveDirections[2] = StarshipAction.HANG;
 		moveDirections[3] = StarshipAction.HANG;
-		starshipFlyingToASideAnimation = new StarshipFlyingToASideAnimation(starshipTextures, moveDirections);
+		starshipFlyingToASideAnimation = new StarshipFlyToASideAnimation(starshipTextures, moveDirections);
 		this.winWidth = winWidth;
 		this.winHeight = winHeight;
 		moveSpeed = 20;
