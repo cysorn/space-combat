@@ -7,18 +7,32 @@ public class Spawn {
 	private int alphaChangesCount;
 	private float alphaChangeSpeed;
 	private SimpleSprite sprite;
+	private boolean playAnimation;
+	private boolean spawnIsDone;
+	private float xPosForSpawn;
+	private float yPosForSpawn;
 
-	public Spawn(SimpleSprite sprite)
+	public Spawn(SimpleSprite sprite, float xPosForSpawn, float yPosForSpawn)
 	{
 		this.sprite = sprite;
 		alphaChangeCounter = 0;
 		alphaChangesCount = 7;
 		alphaChangeSpeed = 0.05f;
 		sprite.currentAlpha = 0f;
+		playAnimation = true;
+		spawnIsDone = false;
+		this.xPosForSpawn = xPosForSpawn;
+		this.yPosForSpawn = yPosForSpawn;
 	}
 	
 	public void nextFrame()
 	{
+		if(playAnimation == false)
+		{
+			return;
+		}
+		sprite.xPos = xPosForSpawn;
+		sprite.yPos = yPosForSpawn;
 		if(alphaChangeCounter == alphaChangesCount)
 		{
 			if (sprite.currentAlpha + alphaChangeSpeed >= 0.6f
@@ -29,6 +43,9 @@ public class Spawn {
 			else
 			{
 				sprite.currentAlpha = 1;
+				alphaChangeCounter = 0;
+				spawnIsDone = true;
+				playAnimation = false;
 			}
 			return;
 		}
@@ -44,6 +61,30 @@ public class Spawn {
 			{
 				alphaChangeSpeed *= (-1);
 			}
+		}
+	}
+	
+	public void startSpawn()
+	{
+		playAnimation = true;
+	}
+	
+	public boolean animationPlays()
+	{
+		return playAnimation;
+	}
+	
+//	Returns true once than return false until spawn will be done again
+	public boolean spawnIsDone()
+	{
+		if(spawnIsDone == true)
+		{
+			spawnIsDone = false;
+			return true;
+		}
+		else
+		{
+			return false;
 		}
 	}
 }

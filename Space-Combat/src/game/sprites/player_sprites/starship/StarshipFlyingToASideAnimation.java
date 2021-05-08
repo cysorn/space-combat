@@ -113,4 +113,10 @@ public class StarshipFlyingToASideAnimation {
 			return null;
 		}
 	}
+	
+    public void resetTextureEditProcess()
+    {
+    	currentDirection = Direction.UP;
+    	currentFrame = 0;
+    }
 }

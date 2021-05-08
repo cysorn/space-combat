@@ -35,6 +35,10 @@ public class StarshipMove {
 	
 	public void nextFrame()
 	{
+		if(starship.freezeStarship == true)
+		{
+			return;
+		}
 		if(moveDirections[Direction.RIGHT.getDirectionIndex()] == StarshipAction.FLY
 		&& starship.xPos + starship.getSpriteWidth() + moveSpeed + 20 < winWidth)
 		{
@@ -76,5 +80,11 @@ public class StarshipMove {
 		{
 			return starshipTextures.starshipTextures.get((flyingForwardAnimation.getCurrentFrame()));
 		}
+	}
+	
+	public void resetTexture()
+	{
+		starshipFlyingToASideAnimation.resetTextureEditProcess();
+		flyingForwardAnimation.setCurrentFrameToZero();
 	}
 }

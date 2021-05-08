@@ -29,6 +29,11 @@ public class Animation {
         }
     }
     
+    public boolean nextFrameIsLast()
+    {
+    	return frame + animationSpeed >= framesCount;
+    }
+    
     public void setCurrentFrameToZero()
     {
     	frame = 0;

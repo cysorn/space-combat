@@ -18,7 +18,7 @@ public class BlackScreen extends SimpleSprite{
 		this.blackScreenTexture = blackScreenTexture;
 		this.introducingSprites = introducingSprites;
 		currentAlpha = 1f;
-		animationSpeed = 0.004f;
+		animationSpeed = 0.005f;
 	}
 	
 	@Override

@@ -8,28 +8,65 @@ import game.Animation;
 public class StarshipExplosion {
 	private StarshipExplosionTextures starshipExplosionTextures;
 	public Animation explosionAnimation;
-	public boolean playAnimation;
+	private boolean playAnimation;
+	private boolean starshipExploded;
+	private Starship starship;
 	
-	public StarshipExplosion() throws IOException {
+	public StarshipExplosion(Starship starship) throws IOException {
 		starshipExplosionTextures = new StarshipExplosionTextures();
-		explosionAnimation = new Animation(starshipExplosionTextures.starshipExplosionTextures.size(), 1f);
+		explosionAnimation = new Animation(starshipExplosionTextures.starshipExplosionTextures.size(), 0.5f);
 		playAnimation = false;
+		this.starship = starship;
+		starshipExploded = false;
 	}
 	
 	public void nextFrame()
 	{
-		if(playAnimation == true)
+		if(playAnimation == false)
 		{
-			explosionAnimation.nextFrame();
-			if(explosionAnimation.getCurrentFrame() == starshipExplosionTextures.starshipExplosionTextures.size() - 1)
-			{
-				playAnimation = false;
-			}
+			return;
 		}
+		else
+		{
+			starship.freezeStarship = true;
+		}
+		if(starship.starshipExplosion.explosionAnimation.getCurrentFrame() >= 25)
+        {
+	    	starship.currentAlpha = 0f;
+	    }
+		if(explosionAnimation.nextFrameIsLast() == true)
+		{
+			starshipExploded = true;
+			playAnimation = false;
+		}
+		explosionAnimation.nextFrame();
 	}
 	
 	public BufferedImage getSpriteTexture()
 	{
 		return starshipExplosionTextures.starshipExplosionTextures.get(explosionAnimation.getCurrentFrame());
+	}
+	
+	public void startExplosion()
+	{
+		playAnimation = true;
+	}
+	
+	public boolean animationPlays()
+	{
+		return playAnimation;
+	}
+	
+	public boolean starshipExploded()
+	{
+		if(starshipExploded == true)
+		{
+			starshipExploded = false;
+			return true;
+		}
+		else
+		{
+			return false;
+		}
 	}
 }
