@@ -4,28 +4,28 @@ import java.awt.AlphaComposite;
 import java.awt.Graphics2D;
 import java.io.IOException;
 
-import game.sprites.background_sprites.BackgroundSprites;
-import game.sprites.introducing_sprites.IntroducingSprites;
-import game.sprites.player_sprites.PlayerSprites;
+import game.objects.background.BackgroundLogic;
+import game.objects.introducing.IntroducingLogic;
+import game.objects.player.starship.logic.StarshipLogic;
 
 public class PaintSprites {
 	private SpaceCombatPanel spaceCombatPanel;
-    public BackgroundSprites backgroundSprites;
-    public PlayerSprites playerSprites;
-    public IntroducingSprites introducingSprites;
+    public BackgroundLogic backgroundSprites;
+    public StarshipLogic starshipLogic;
+    public IntroducingLogic introducingSprites;
     
     public PaintSprites(SpaceCombatPanel spaceCombatPanel, int windowWidth, int windowHeight) throws IOException {
     	this.spaceCombatPanel = spaceCombatPanel;
-    	backgroundSprites = new BackgroundSprites(windowWidth, windowHeight);
-        playerSprites = new PlayerSprites(windowWidth, windowHeight);
-        introducingSprites = new IntroducingSprites();
+    	backgroundSprites = new BackgroundLogic(windowWidth, windowHeight);
+    	starshipLogic = new StarshipLogic(windowWidth, windowHeight);
+        introducingSprites = new IntroducingLogic();
 	}
     
     public void introducing(Graphics2D g2d)
     {
     	if(introducingSprites.introducingContinues == true)
         {
-	    	g2d.setComposite(AlphaComposite.SrcOver.derive(introducingSprites.blackScreen.currentAlpha));
+	    	g2d.setComposite(AlphaComposite.SrcOver.derive(introducingSprites.blackScreenLogic.blackScreenSprite.currentAlpha));
 	    	g2d.drawImage(introducingSprites.getBlackScreenTexture(),
 	           		0,
 	           		0,
@@ -37,35 +37,35 @@ public class PaintSprites {
     
     public void paintStars(Graphics2D g2d)
     {
-    	for(int starNr = 0; starNr < backgroundSprites.stars.size(); ++starNr)
+    	for(int starNr = 0; starNr < backgroundSprites.starsLogics.size(); ++starNr)
         {
-            g2d.setComposite(AlphaComposite.SrcOver.derive(backgroundSprites.stars.get(starNr).currentAlpha));
-            g2d.drawImage(backgroundSprites.stars.get(starNr).getSpriteTexture(),
-            		(int)backgroundSprites.stars.get(starNr).xPos,
-            		(int)backgroundSprites.stars.get(starNr).yPos,
+            g2d.setComposite(AlphaComposite.SrcOver.derive(backgroundSprites.starsLogics.get(starNr).starSprite.currentAlpha));
+            g2d.drawImage(backgroundSprites.starsLogics.get(starNr).starSprite.getSpriteTexture(),
+            		(int)backgroundSprites.starsLogics.get(starNr).starSprite.xPos,
+            		(int)backgroundSprites.starsLogics.get(starNr).starSprite.yPos,
             		spaceCombatPanel);
-            backgroundSprites.stars.get(starNr).nextFrame();
+            backgroundSprites.starsLogics.get(starNr).nextFrame();
         }
         g2d.setComposite(AlphaComposite.SrcOver.derive(1f));
     }
     
     public void paintPlayersStarship(Graphics2D g2d)
     {
-    	g2d.setComposite(AlphaComposite.SrcOver.derive(playerSprites.starship.currentAlpha));
-    	g2d.drawImage(playerSprites.starship.getSpriteTexture(),//
-    			(int)playerSprites.starship.xPos,
-    			(int)playerSprites.starship.yPos,
+    	g2d.setComposite(AlphaComposite.SrcOver.derive(starshipLogic.starshipSprite.currentAlpha));
+    	g2d.drawImage(starshipLogic.getSpriteTexture(),//
+    			(int)starshipLogic.starshipSprite.xPos,
+    			(int)starshipLogic.starshipSprite.yPos,
     			spaceCombatPanel);
-    	playerSprites.starship.nextFrame();
+    	starshipLogic.nextFrame();
     	g2d.setComposite(AlphaComposite.SrcOver.derive(1f));
     }
     
     public void paintStarshipExplosion(Graphics2D g2d)
     {
-    	g2d.drawImage(playerSprites.starship.starshipExplosion.getSpriteTexture(),//
-    			(int)playerSprites.starship.xPos - 93,
-    			(int)playerSprites.starship.yPos - 75,
+    	g2d.drawImage(starshipLogic.starshipExplosion.getSpriteTexture(),//
+    			(int)starshipLogic.starshipSprite.xPos - 93,
+    			(int)starshipLogic.starshipSprite.yPos - 75,
     			spaceCombatPanel);
-    	playerSprites.starship.starshipExplosion.nextFrame();
+    	starshipLogic.starshipExplosion.nextFrame();
     }
 }

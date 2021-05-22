@@ -5,15 +5,15 @@ import java.awt.event.KeyEvent;
 
 import game.Direction;
 import game.StarshipAction;
-import game.sprites.player_sprites.starship.Starship;
+import game.objects.player.starship.logic.StarshipLogic;
 
 public class SpaceCombatKeyAdapter extends KeyAdapter {
 	
-	private Starship starship;
+	private StarshipLogic starshipLogic;
 	
-	public SpaceCombatKeyAdapter(Starship starship)
+	public SpaceCombatKeyAdapter(StarshipLogic starshipLogic)
 	{
-		this.starship = starship;
+		this.starshipLogic = starshipLogic;
 	}
 	@Override
     public void keyReleased(KeyEvent e) {
@@ -29,24 +29,24 @@ public class SpaceCombatKeyAdapter extends KeyAdapter {
     {
     	if(e.getKeyCode() == Key.D.getKeyCode())
         {
-    		starship.starshipMove.moveTo(Direction.RIGHT, action);
+    		starshipLogic.starshipMove.moveTo(Direction.RIGHT, action);
         }
     	if(e.getKeyCode() == Key.S.getKeyCode())
         {
-    		starship.starshipMove.moveTo(Direction.DOWN, action);
+    		starshipLogic.starshipMove.moveTo(Direction.DOWN, action);
         }
     	if(e.getKeyCode() == Key.A.getKeyCode())
         {
-    		starship.starshipMove.moveTo(Direction.LEFT, action);
+    		starshipLogic.starshipMove.moveTo(Direction.LEFT, action);
         }
     	if(e.getKeyCode() == Key.W.getKeyCode())
         {
-    		starship.starshipMove.moveTo(Direction.UP, action);
+    		starshipLogic.starshipMove.moveTo(Direction.UP, action);
         }
     	if(e.getKeyCode() == Key.E.getKeyCode()
-    	&& starship.freezeStarship == false)
+    	&& starshipLogic.freezeStarship == false)
     	{
-    		starship.starshipExplosion.startExplosion();
+    		starshipLogic.starshipExplosion.startExplosion();
     	}
     }
 }

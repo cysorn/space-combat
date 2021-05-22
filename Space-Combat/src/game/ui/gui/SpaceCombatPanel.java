@@ -23,7 +23,7 @@ public class SpaceCombatPanel extends JPanel {
         
         new Timer(0, actionPerformed -> repaint()).start();
         
-        addKeyListener(new SpaceCombatKeyAdapter(paintSprites.playerSprites.starship));
+        addKeyListener(new SpaceCombatKeyAdapter(paintSprites.starshipLogic));
     }
     
     @Override
@@ -35,7 +35,7 @@ public class SpaceCombatPanel extends JPanel {
 	    if(paintSprites.introducingSprites.introducingContinues == false)
 	    {
 	    	paintSprites.paintPlayersStarship(g2d);
-		    if(paintSprites.playerSprites.starship.starshipExplosion.animationPlays() == true)
+		    if(paintSprites.starshipLogic.starshipExplosion.animationPlays() == true)
 		    {
 		    	paintSprites.paintStarshipExplosion(g2d);
 		    }
