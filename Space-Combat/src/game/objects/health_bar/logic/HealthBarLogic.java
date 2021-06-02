@@ -1,24 +1,37 @@
 package game.objects.health_bar.logic;
 
+import java.awt.image.BufferedImage;
 import java.io.IOException;
 
-import game.objects.ObjectStats;
+import game.objects.Sprite;
 import game.objects.health_bar.HealthBarSprite;
+import game.objects.logic.ObjectStats;
+import game.objects.logic.ObjectSpawn;
 
 public class HealthBarLogic{
 
-	ObjectStats objectStats;
-	HealthBarSprite healthBarSprite;
-	HealthDecrease healthDecrease;
+	public ObjectStats objectStats;
+	private ObjectSpawn healthBarSpawn;
+	private HealthBarMove healthBarMove;
+	private HealthBarSprite healthBarSprite;
+	private HealthDecrease healthDecrease;
 	
-	protected HealthBarLogic(float xPos, float yPos, int health) throws IOException {
-		healthBarSprite = new HealthBarSprite(xPos, yPos);
+	public HealthBarLogic(Sprite object, int health) throws IOException {
+		healthBarSprite = new HealthBarSprite(object.xPos, object.yPos);
+		this.healthBarMove = new HealthBarMove(healthBarSprite, object);
 		objectStats = new ObjectStats(health);
-		healthDecrease = new HealthDecrease();
+		//4 pixels are black (2 black pixels from each side)
+		healthDecrease = new HealthDecrease(healthBarSprite.getSpriteWidth() - 4, objectStats);
 	}
 
-	void nextFrame()
+	public void nextFrame()
 	{
-		
+		healthDecrease.nextFrame();
+		healthBarMove.nextFrame();
+	}
+	
+	public BufferedImage getSpriteTexture()
+	{
+		return healthBarSprite.getSpriteTexture();
 	}
 }

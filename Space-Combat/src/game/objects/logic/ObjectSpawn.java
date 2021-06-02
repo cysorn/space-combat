@@ -1,8 +1,8 @@
-package game.objects.player.starship.logic;
+package game.objects.logic;
 
 import game.objects.SimpleSprite;
 
-public class Spawn {
+public class ObjectSpawn {
 	private int alphaChangeCounter;
 	private int alphaChangesCount;
 	private float alphaChangeSpeed;
@@ -12,7 +12,7 @@ public class Spawn {
 	private float xPosForSpawn;
 	private float yPosForSpawn;
 
-	public Spawn(SimpleSprite sprite, float xPosForSpawn, float yPosForSpawn)
+	public ObjectSpawn(SimpleSprite sprite, float xPosForSpawn, float yPosForSpawn)
 	{
 		this.sprite = sprite;
 		alphaChangeCounter = 0;

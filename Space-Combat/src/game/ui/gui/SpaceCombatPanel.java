@@ -35,6 +35,7 @@ public class SpaceCombatPanel extends JPanel {
 	    if(paintSprites.introducingSprites.introducingContinues == false)
 	    {
 	    	paintSprites.paintPlayersStarship(g2d);
+	    	paintSprites.paintHealthBar(g2d);
 		    if(paintSprites.starshipLogic.starshipExplosion.animationPlays() == true)
 		    {
 		    	paintSprites.paintStarshipExplosion(g2d);

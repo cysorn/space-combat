@@ -12,6 +12,6 @@ public class HealthBarTextures {
 	
 	public HealthBarTextures() throws IOException
 	{
-		healthBarTexture = ImageIO.read(new File("src/textures/hpbar.png"));
+		healthBarTexture = ImageIO.read(new File("src/textures/healthbar.png"));
 	}
 }
