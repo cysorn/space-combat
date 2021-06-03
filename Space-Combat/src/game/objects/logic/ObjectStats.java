@@ -8,6 +8,7 @@ public class ObjectStats {
 	public ObjectStats(int maxHealth)
 	{
 		this.maxHealth = maxHealth;
+		setHpToFull();
 	}
 	
 	public void setHpToFull()

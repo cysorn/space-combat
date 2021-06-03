@@ -67,14 +67,17 @@ public class PaintSprites {
     			(int)starshipLogic.starshipSprite.xPos - 93,
     			(int)starshipLogic.starshipSprite.yPos - 75,
     			spaceCombatPanel);
+    	starshipLogic.starshipExplosion.nextFrame();
     }
     
     public void paintHealthBar(Graphics2D g2d)
     {
+    	g2d.setComposite(AlphaComposite.SrcOver.derive(starshipLogic.starshipSprite.currentAlpha));
     	g2d.drawImage(starshipLogic.healthBarLogic.getSpriteTexture(),//
-    			(int)starshipLogic.starshipSprite.xPos,
-    			(int)starshipLogic.starshipSprite.yPos,
+    			(int)starshipLogic.healthBarLogic.healthBarSprite.xPos,
+    			(int)starshipLogic.healthBarLogic.healthBarSprite.yPos,
     			spaceCombatPanel);
     	starshipLogic.healthBarLogic.nextFrame();
+    	g2d.setComposite(AlphaComposite.SrcOver.derive(1f));
     }
 }

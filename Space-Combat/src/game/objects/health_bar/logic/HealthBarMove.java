@@ -5,17 +5,22 @@ import game.objects.health_bar.HealthBarSprite;
 
 public class HealthBarMove {
 	
-	HealthBarSprite healthBarSprite;
-	Sprite object;
+	public HealthBarSprite healthBarSprite;
+	private Sprite object;
+	public int distanceFromObjectX;
+	public int distanceFromObjectY;
 	
-	public HealthBarMove(HealthBarSprite healthBarSprite, Sprite object) {
+	public HealthBarMove(HealthBarSprite healthBarSprite, Sprite object, int distanceFromObjectX, int distanceFromObjectY) {
 		this.healthBarSprite = healthBarSprite;
 		this.object = object;
+		this.distanceFromObjectX = distanceFromObjectX;
+		this.distanceFromObjectY = distanceFromObjectY;
+		nextFrame();
 	}
 	
-	void nextFrame()
+	public void nextFrame()
 	{
-		healthBarSprite.xPos = object.xPos;
-		healthBarSprite.yPos = object.yPos + 50;
+		healthBarSprite.xPos = object.xPos + distanceFromObjectX;
+		healthBarSprite.yPos = object.yPos + distanceFromObjectY;
 	}
 }

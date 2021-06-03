@@ -8,7 +8,7 @@ public class StarshipSprite extends Sprite{
 
 	public StarshipTextures starshipTextures;
 	public StarshipSprite(int winWidth, int winHeight) throws IOException {
-		super(winWidth / 2 - 40, winHeight / 2f, 80, 110);
+		super(winWidth / 2f - 40, winHeight / 2f, 80, 110);
 		starshipTextures = new StarshipTextures();
 	}
 }

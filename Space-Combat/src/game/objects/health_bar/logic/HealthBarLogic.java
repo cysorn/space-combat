@@ -11,23 +11,25 @@ import game.objects.logic.ObjectSpawn;
 public class HealthBarLogic{
 
 	public ObjectStats objectStats;
-	private ObjectSpawn healthBarSpawn;
+	public ObjectSpawn healthBarSpawn;
 	private HealthBarMove healthBarMove;
-	private HealthBarSprite healthBarSprite;
+	public HealthBarSprite healthBarSprite;
 	private HealthDecrease healthDecrease;
 	
 	public HealthBarLogic(Sprite object, int health) throws IOException {
 		healthBarSprite = new HealthBarSprite(object.xPos, object.yPos);
-		this.healthBarMove = new HealthBarMove(healthBarSprite, object);
+		healthBarMove = new HealthBarMove(healthBarSprite, object, -10, -10);
 		objectStats = new ObjectStats(health);
 		//4 pixels are black (2 black pixels from each side)
 		healthDecrease = new HealthDecrease(healthBarSprite.getSpriteWidth() - 4, objectStats);
+		healthBarSpawn = new ObjectSpawn(healthBarSprite, healthBarSprite.xPos, healthBarSprite.yPos);
 	}
 
 	public void nextFrame()
 	{
 		healthDecrease.nextFrame();
 		healthBarMove.nextFrame();
+		healthBarSpawn.nextFrame();
 	}
 	
 	public BufferedImage getSpriteTexture()

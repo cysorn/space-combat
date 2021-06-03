@@ -4,6 +4,7 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 
 import game.Animation;
+import game.objects.logic.ObjectStats;
 import game.objects.player.starship.StarshipSprite;
 
 public class StarshipExplosion {
@@ -11,14 +12,14 @@ public class StarshipExplosion {
 	public Animation explosionAnimation;
 	private boolean playAnimation;
 	private StarshipSprite starshipSprite;
-	private boolean freezeStarship;
+	public boolean starshipIsExploded;
 	
 	public StarshipExplosion(StarshipSprite starshipSprite) throws IOException {
 		starshipExplosionTextures = new StarshipExplosionTextures();
 		explosionAnimation = new Animation(starshipExplosionTextures.starshipExplosionTextures.size(), 1f);
 		playAnimation = false;
 		this.starshipSprite = starshipSprite;
-		freezeStarship = false;
+		starshipIsExploded = false;
 	}
 	
 	public void nextFrame()
@@ -33,7 +34,7 @@ public class StarshipExplosion {
 	    }
 		if(explosionAnimation.nextFrameIsLast() == true)
 		{
-			freezeStarship = false;
+			starshipIsExploded = true;
 			playAnimation = false;
 		}
 		explosionAnimation.nextFrame();
@@ -47,16 +48,10 @@ public class StarshipExplosion {
 	public void startExplosion()
 	{
 		playAnimation = true;
-		freezeStarship = true;
 	}
 	
 	public boolean animationPlays()
 	{
 		return playAnimation;
-	}
-	
-	public boolean starshipIsFrozen()
-	{
-		return freezeStarship;
 	}
 }

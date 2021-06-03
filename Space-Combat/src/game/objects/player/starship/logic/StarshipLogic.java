@@ -18,10 +18,10 @@ public class StarshipLogic{
 	public boolean freezeStarship;
 	
 	public StarshipLogic(int winWidth, int winHeight) throws IOException {
-		starshipSprite = new StarshipSprite(winHeight, winHeight);
+		starshipSprite = new StarshipSprite(winWidth, winHeight);
 		freezeStarship = true;
 		starshipMove = new StarshipMove(starshipSprite, winWidth, winHeight);
-		spawnStarship = new ObjectSpawn(starshipSprite, winWidth / 2 - 40, winHeight / 2f);
+		spawnStarship = new ObjectSpawn(starshipSprite, starshipSprite.xPos, starshipSprite.yPos);
 		starshipExplosion = new StarshipExplosion(starshipSprite);
 		healthBarLogic = new HealthBarLogic(starshipSprite, 200);
 	}
@@ -33,22 +33,33 @@ public class StarshipLogic{
 			starshipMove.nextFrame();
 		}
 		spawnStarship.nextFrame();
-		if(starshipExplosion.animationPlays() == true)
-		{
-			freezeStarship = true;
-			starshipExplosion.nextFrame();
-			healthBarLogic.objectStats.kill();
-		}
-		else if(healthBarLogic.objectStats.objectIsDead() == true)
-		{
-			freezeStarship = true;
-			starshipMove.resetTexture();
-			spawnStarship.startSpawn();
-			healthBarLogic.objectStats.setHpToFull();
-		}
+		ifNecassaryPlayDieAnimationAndRespawn();
 		if(spawnStarship.spawnIsDone() == true)
 		{
 			freezeStarship = false;
+		}
+	}
+	
+	private void ifNecassaryPlayDieAnimationAndRespawn()
+	{
+		if(healthBarLogic.objectStats.objectIsDead() == true)
+		{
+			if(starshipExplosion.starshipIsExploded == false)
+			{
+				if(starshipExplosion.animationPlays() == false)
+				{
+					freezeStarship = true;
+					starshipExplosion.startExplosion();
+					starshipMove.resetTexture();
+				}
+			}
+			else
+			{
+				starshipExplosion.starshipIsExploded = false;
+				healthBarLogic.healthBarSpawn.startSpawn();
+				spawnStarship.startSpawn();
+				healthBarLogic.objectStats.setHpToFull();
+			}
 		}
 	}
 	

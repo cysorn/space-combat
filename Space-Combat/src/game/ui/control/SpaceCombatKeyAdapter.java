@@ -46,7 +46,7 @@ public class SpaceCombatKeyAdapter extends KeyAdapter {
     	if(e.getKeyCode() == Key.E.getKeyCode()
     	&& starshipLogic.freezeStarship == false)
     	{
-    		starshipLogic.starshipExplosion.startExplosion();
+    		starshipLogic.healthBarLogic.objectStats.kill();
     	}
     }
 }
