@@ -23,7 +23,7 @@ public class StarshipLogic{
 		starshipMove = new StarshipMove(starshipSprite, winWidth, winHeight);
 		spawnStarship = new ObjectSpawn(starshipSprite, starshipSprite.xPos, starshipSprite.yPos);
 		starshipExplosion = new StarshipExplosion(starshipSprite);
-		healthBarLogic = new HealthBarLogic(starshipSprite, 200);
+		healthBarLogic = new HealthBarLogic(starshipSprite, 100);
 	}
 	
 	public void nextFrame() {
@@ -58,7 +58,7 @@ public class StarshipLogic{
 				starshipExplosion.starshipIsExploded = false;
 				healthBarLogic.healthBarSpawn.startSpawn();
 				spawnStarship.startSpawn();
-				healthBarLogic.objectStats.setHpToFull();
+				healthBarLogic.setHpAndBarToFull();
 			}
 		}
 	}

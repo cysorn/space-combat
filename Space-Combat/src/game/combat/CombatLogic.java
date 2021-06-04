@@ -1,4 +1,4 @@
-package game.objects.combat;
+package game.combat;
 
 import java.io.IOException;
 import java.util.ArrayList;

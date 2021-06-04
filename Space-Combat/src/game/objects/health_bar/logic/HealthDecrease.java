@@ -1,52 +1,47 @@
 package game.objects.health_bar.logic;
 
-import game.objects.logic.ObjectStats;
-
 public class HealthDecrease {
-	
-	private int hpBarLong;
-	private ObjectStats objectStats;
-	private float redBarLong;
-	private float greyBarLong;
+	private int redBarLong;
+	private HealthChange healthChange;
 	private float greyFillingSpeed;
 	private int greyBarDelayBeforeFilling;
-	private int currentFramesCountBeforeFill;
+	public int currentFramesCountBeforeFill;
 	
-	public HealthDecrease(int hpBarLong, ObjectStats objectStats)
-	{
-		this.hpBarLong = hpBarLong;
-		this.objectStats = objectStats;
+	public HealthDecrease(HealthChange healthChange) {
+		this.healthChange = healthChange;
 		redBarLong = 0;
-		greyBarLong = 0;
-		greyFillingSpeed = 0.02f;
-		greyBarDelayBeforeFilling = 120;
+		greyFillingSpeed = 0.4f;
+		greyBarDelayBeforeFilling = 0;
 		currentFramesCountBeforeFill = 0;
 	}
 	
 	public void nextFrame()
 	{
+		updateRedBarLong();
+		currentFramesCountBeforeFill = 0;
 		if(currentFramesCountBeforeFill < greyBarDelayBeforeFilling)
 		{
 			++currentFramesCountBeforeFill;
 		}
-		if(greyBarLong < redBarLong)
+		if(healthChange.greyBarLong < redBarLong)
 		{
-			if(greyBarLong + greyFillingSpeed < redBarLong)
+			if(healthChange.greyBarLong + greyFillingSpeed > redBarLong)
 			{
 				currentFramesCountBeforeFill = 0;
-				greyBarLong = redBarLong;
+				healthChange.greyBarLong = redBarLong;
 			}
-			else
+			else if(currentFramesCountBeforeFill == greyBarDelayBeforeFilling)
 			{
-				greyBarLong += greyFillingSpeed;
+				healthChange.greyBarLong += greyFillingSpeed;
 			}
 		}
 	}
 	
-	public void updateRedBarLong()
+	private void updateRedBarLong()
 	{
+		redBarLong = healthChange.objectStats.maxHealth - healthChange.objectStats.currentHealth;
 		//calculate the number of pixels corresponding to the number of HP
-		redBarLong = hpBarLong / 100 * (objectStats.currentHealth / (objectStats.maxHealth / 100));
+//		redBarLong = (hpBarLong / 100f) * ((objectStats.maxHealth - objectStats.currentHealth) / (float) (objectStats.maxHealth / 100f));
 	}
 	
 	public int getRedBarLong()
@@ -54,8 +49,8 @@ public class HealthDecrease {
 		return (int) redBarLong;
 	}
 	
-	public int getGreyBarLong()
+	public boolean paintRedBar()
 	{
-		return (int) greyBarLong;
+		return redBarLong > 0;
 	}
 }

@@ -6,7 +6,8 @@ public enum Key {
 	A(65),
 	W(87),
 	SPACE(32),
-	E(69);
+	E(69),
+	F(70);
 	
 	private final int keyCode;
 	

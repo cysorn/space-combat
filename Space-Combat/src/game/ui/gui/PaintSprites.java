@@ -1,9 +1,11 @@
 package game.ui.gui;
 
 import java.awt.AlphaComposite;
+import java.awt.Color;
 import java.awt.Graphics2D;
 import java.io.IOException;
 
+import game.objects.Sprite;
 import game.objects.background.BackgroundLogic;
 import game.objects.background.star.logic.StarLogic;
 import game.objects.introducing.IntroducingLogic;
@@ -14,6 +16,8 @@ public class PaintSprites {
     public BackgroundLogic backgroundSprites;
     public StarshipLogic starshipLogic;
     public IntroducingLogic introducingSprites;
+    private Color redHealthBarColor;
+    private Color greyHealthBarColor;
     
     public PaintSprites(SpaceCombatPanel spaceCombatPanel, int windowWidth, int windowHeight) throws IOException {
     	this.spaceCombatPanel = spaceCombatPanel;
@@ -72,11 +76,32 @@ public class PaintSprites {
     
     public void paintHealthBar(Graphics2D g2d)
     {
-    	g2d.setComposite(AlphaComposite.SrcOver.derive(starshipLogic.starshipSprite.currentAlpha));
+    	Sprite healthBarSprite = starshipLogic.healthBarLogic.healthBarSprite;
+        redHealthBarColor = new Color(1f, 0f, 0f, healthBarSprite.currentAlpha);
+//        greyHealthBarColor = new Color(0.05f, 0.05f, 0.05f, healthBarSprite.currentAlpha);
+        greyHealthBarColor = new Color(0.05f, 0.05f, 0.05f, 1f);
+    	g2d.setComposite(AlphaComposite.SrcOver.derive(healthBarSprite.currentAlpha));
     	g2d.drawImage(starshipLogic.healthBarLogic.getSpriteTexture(),//
-    			(int)starshipLogic.healthBarLogic.healthBarSprite.xPos,
-    			(int)starshipLogic.healthBarLogic.healthBarSprite.yPos,
+    			(int)healthBarSprite.xPos,
+    			(int)healthBarSprite.yPos,
     			spaceCombatPanel);
+    	if(starshipLogic.healthBarLogic.healthChange.healthDecrease.paintRedBar() == true)
+    	{
+    		g2d.setColor(redHealthBarColor);
+        	g2d.fillRect((int)healthBarSprite.xPos + healthBarSprite.getSpriteWidth(),
+        			(int)healthBarSprite.yPos + 2,
+        			-starshipLogic.healthBarLogic.healthChange.healthDecrease.getRedBarLong(),
+        			healthBarSprite.getSpriteHeight() - 4);
+    	}
+    	g2d.setComposite(AlphaComposite.SrcOver.derive(1f));
+    	if(starshipLogic.healthBarLogic.healthChange.paintGreyBar() == true)
+    	{
+    		g2d.setColor(greyHealthBarColor);
+        	g2d.fillRect((int)healthBarSprite.xPos + healthBarSprite.getSpriteWidth(),
+        			(int)healthBarSprite.yPos + 2,
+        			-starshipLogic.healthBarLogic.healthChange.getGreyBarLong(),
+        			healthBarSprite.getSpriteHeight() - 4);
+    	}
     	starshipLogic.healthBarLogic.nextFrame();
     	g2d.setComposite(AlphaComposite.SrcOver.derive(1f));
     }

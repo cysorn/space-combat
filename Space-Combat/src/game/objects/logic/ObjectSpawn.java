@@ -66,6 +66,7 @@ public class ObjectSpawn {
 	
 	public void startSpawn()
 	{
+		sprite.currentAlpha = 0f;
 		playAnimation = true;
 	}
 	

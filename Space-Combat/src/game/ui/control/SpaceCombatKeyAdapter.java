@@ -48,5 +48,11 @@ public class SpaceCombatKeyAdapter extends KeyAdapter {
     	{
     		starshipLogic.healthBarLogic.objectStats.kill();
     	}
+    	if(e.getKeyCode() == Key.F.getKeyCode()
+    	&& e.getID() == KeyEvent.KEY_RELEASED
+    	&& starshipLogic.freezeStarship == false)
+    	{
+    		starshipLogic.healthBarLogic.objectStats.currentHealth -= 20;
+    	}
     }
 }
