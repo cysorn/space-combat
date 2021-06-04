@@ -13,6 +13,7 @@ public class HealthBarLogic{
 	public ObjectStats objectStats;
 //	TODO create new spawn for the health bar that makes the health bar slightly transparent
 //	TODO make that the health bar fades away if the starship receives no damage
+//	TODO maybe the health bar should slowly fade out after the starship is exploded
 	public ObjectSpawn healthBarSpawn;
 	private HealthBarMove healthBarMove;
 	public HealthBarSprite healthBarSprite;
@@ -22,7 +23,6 @@ public class HealthBarLogic{
 		healthBarSprite = new HealthBarSprite(object.xPos, object.yPos);
 		healthBarMove = new HealthBarMove(healthBarSprite, object, -10, -10);
 		objectStats = new ObjectStats(health);
-		//4 pixels are black (2 black pixels from each side)
 		healthChange = new HealthChange(healthBarSprite.getSpriteWidth(), objectStats);
 		healthBarSpawn = new ObjectSpawn(healthBarSprite, healthBarSprite.xPos, healthBarSprite.yPos);
 	}

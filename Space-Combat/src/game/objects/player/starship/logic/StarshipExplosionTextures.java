@@ -6,6 +6,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.imageio.ImageIO;
+
 import game.ReadAnimation;
 
 public class StarshipExplosionTextures {
@@ -13,6 +15,14 @@ public class StarshipExplosionTextures {
 	public StarshipExplosionTextures() throws IOException {
 		
 		starshipExplosionTextures = new ArrayList<>();
-		ReadAnimation.readAnimation(starshipExplosionTextures, new File("src/textures/starship/explosion/explosion.png"), 1920, 1440, 1920 / 8, 1440 / 6);
+		for(int fileNr = 1; fileNr < 49; ++fileNr)
+		{
+			String fileNrString = Integer.toString(fileNr);
+			if(fileNrString.length() < 2)
+			{
+				fileNrString = "0" + fileNrString;
+			}
+			starshipExplosionTextures.add(ImageIO.read(new File("src/textures/starship/explosion/image_part_0" + fileNrString + ".png")));
+		}
 	}
 }
