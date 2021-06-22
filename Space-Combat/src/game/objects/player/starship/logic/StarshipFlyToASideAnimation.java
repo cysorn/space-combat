@@ -39,7 +39,7 @@ public class StarshipFlyToASideAnimation {
 				{
 					--currentFrame;
 				}
-				else if(currentFrame == 0)
+				if(currentFrame == 0)
 				{
 					currentDirection = Direction.LEFT;
 					++currentFrame;
@@ -52,6 +52,7 @@ public class StarshipFlyToASideAnimation {
 			else if(currentFrame > maxFrame)
 			{
 				--currentFrame;
+				currentFrame = 0;
 			}
 			else
 			{
@@ -67,7 +68,7 @@ public class StarshipFlyToASideAnimation {
 				{
 					--currentFrame;
 				}
-				else if(currentFrame == 0)
+				if(currentFrame == 0)
 				{
 					currentDirection = Direction.RIGHT;
 					++currentFrame;

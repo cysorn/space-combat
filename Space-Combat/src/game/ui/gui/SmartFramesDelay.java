@@ -3,7 +3,7 @@ package game.ui.gui;
 public class SmartFramesDelay {
 
 	static private long nextFrameAt = 0;
-	static private int minMsDelayAfterFrame = 18;
+	static private int minMsDelayAfterFrame = 20;
 	static private long currentTime;
 	
 	static public void smartDelay()

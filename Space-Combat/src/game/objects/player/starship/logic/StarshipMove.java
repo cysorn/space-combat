@@ -36,24 +36,32 @@ public class StarshipMove {
 	public void nextFrame()
 	{
 		if(moveDirections[Direction.RIGHT.getDirectionIndex()] == StarshipAction.FLY
-		&& starshipSprite.xPos + starshipSprite.getSpriteWidth() + moveSpeed + 20 < winWidth)
+		^ moveDirections[Direction.LEFT.getDirectionIndex()] == StarshipAction.FLY)
 		{
-			starshipSprite.xPos += moveSpeed;
-		}
-		if(moveDirections[Direction.DOWN.getDirectionIndex()] == StarshipAction.FLY
-		&& starshipSprite.yPos + starshipSprite.getSpriteHeight() + moveSpeed + 20 < winHeight)
-		{
-			starshipSprite.yPos += moveSpeed;
-		}
-		if(moveDirections[Direction.LEFT.getDirectionIndex()] == StarshipAction.FLY
-		&& starshipSprite.xPos - moveSpeed > 0)
-		{
-			starshipSprite.xPos -= moveSpeed;
+			if(moveDirections[Direction.RIGHT.getDirectionIndex()] == StarshipAction.FLY
+			&& starshipSprite.xPos + starshipSprite.getSpriteWidth() + moveSpeed + 20 < winWidth)
+			{
+				starshipSprite.xPos += moveSpeed;
+			}
+			if(moveDirections[Direction.LEFT.getDirectionIndex()] == StarshipAction.FLY
+			&& starshipSprite.xPos - moveSpeed > 0)
+			{
+				starshipSprite.xPos -= moveSpeed;
+			}
 		}
 		if(moveDirections[Direction.UP.getDirectionIndex()] == StarshipAction.FLY
-		&& starshipSprite.yPos - moveSpeed > 0)
+		^ moveDirections[Direction.DOWN.getDirectionIndex()] == StarshipAction.FLY)
 		{
-			starshipSprite.yPos -= moveSpeed;
+			if(moveDirections[Direction.DOWN.getDirectionIndex()] == StarshipAction.FLY
+			&& starshipSprite.yPos + starshipSprite.getSpriteHeight() + moveSpeed + 20 < winHeight)
+			{
+				starshipSprite.yPos += moveSpeed;
+			}
+			if(moveDirections[Direction.UP.getDirectionIndex()] == StarshipAction.FLY
+			&& starshipSprite.yPos - moveSpeed > 0)
+			{
+				starshipSprite.yPos -= moveSpeed;
+			}
 		}
 		starshipFlyingToASideAnimation.nextFrame();
 		flyingForwardAnimation.nextFrame();

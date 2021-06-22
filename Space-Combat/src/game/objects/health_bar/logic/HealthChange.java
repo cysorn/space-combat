@@ -18,7 +18,6 @@ public class HealthChange {
 		healthDecrease = new HealthDecrease(this);
 		healthIncrease = new HealthIncrease(this);
 		greyBarLong = 0;
-
 	}
 	
 	public void nextFrame()

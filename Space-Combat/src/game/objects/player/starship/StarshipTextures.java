@@ -34,7 +34,7 @@ public class StarshipTextures{
 	    starshipToTheLeftTextures.add(ImageIO.read(new File("src/textures/starship/move_to_the_left/starship_fly_to_the_left_6.png")));
 	    starshipToTheLeftTextures.add(ImageIO.read(new File("src/textures/starship/move_to_the_left/starship_fly_to_the_left_7.png")));
 	    starshipToTheLeftTextures.add(ImageIO.read(new File("src/textures/starship/move_to_the_left/starship_fly_to_the_left_8.png")));
-	    starshipToTheLeftTextures.add(ImageIO.read(new File("src/textures/starship/move_to_the_left/starship_fly_to_the_left_9.png")));
+//	    starshipToTheLeftTextures.add(ImageIO.read(new File("src/textures/starship/move_to_the_left/starship_fly_to_the_left_9.png")));
 	    
 	    starshipToTheRightTextures = new ArrayList<BufferedImage>();
 	    starshipToTheRightTextures.add(ImageIO.read(new File("src/textures/starship/move_to_the_right/starship_fly_to_the_right_1.png")));
@@ -45,6 +45,6 @@ public class StarshipTextures{
 	    starshipToTheRightTextures.add(ImageIO.read(new File("src/textures/starship/move_to_the_right/starship_fly_to_the_right_6.png")));
 	    starshipToTheRightTextures.add(ImageIO.read(new File("src/textures/starship/move_to_the_right/starship_fly_to_the_right_7.png")));
 	    starshipToTheRightTextures.add(ImageIO.read(new File("src/textures/starship/move_to_the_right/starship_fly_to_the_right_8.png")));
-	    starshipToTheRightTextures.add(ImageIO.read(new File("src/textures/starship/move_to_the_right/starship_fly_to_the_right_9.png")));
+//	    starshipToTheRightTextures.add(ImageIO.read(new File("src/textures/starship/move_to_the_right/starship_fly_to_the_right_9.png")));
 	}
 }

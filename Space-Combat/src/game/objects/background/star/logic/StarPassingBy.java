@@ -15,7 +15,8 @@ public class StarPassingBy {
 		this.windowWidth = windowWidth;
 		this.windowHeight = windowHeight;
 		
-		starPassingBySpeed = 1f;
+		twoAndAHalfDimensionalBackground();
+//		starPassingBySpeed = 1f;
 
 	}
 	

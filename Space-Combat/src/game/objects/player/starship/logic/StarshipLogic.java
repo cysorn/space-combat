@@ -3,6 +3,7 @@ package game.objects.player.starship.logic;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 
+import game.objects.StarshipExplosion;
 import game.objects.health_bar.logic.HealthBarLogic;
 import game.objects.logic.ObjectSpawn;
 import game.objects.player.starship.StarshipSprite;
@@ -22,8 +23,9 @@ public class StarshipLogic{
 		freezeStarship = true;
 		starshipMove = new StarshipMove(starshipSprite, winWidth, winHeight);
 		spawnStarship = new ObjectSpawn(starshipSprite, starshipSprite.xPos, starshipSprite.yPos);
-		starshipExplosion = new StarshipExplosion(starshipSprite);
-		healthBarLogic = new HealthBarLogic(starshipSprite, 100);
+		healthBarLogic = new HealthBarLogic(starshipSprite, 100, true);
+		starshipExplosion = new StarshipExplosion(starshipSprite, healthBarLogic.healthBarSprite);
+		
 	}
 	
 	public void nextFrame() {

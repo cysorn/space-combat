@@ -1,25 +1,29 @@
-package game.objects.player.starship.logic;
+package game.objects;
 
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 
 import game.Animation;
+import game.objects.health_bar.HealthBarSprite;
 import game.objects.logic.ObjectStats;
+import game.objects.player.starship.StarshipExplosionTextures;
 import game.objects.player.starship.StarshipSprite;
 
 public class StarshipExplosion {
 	private StarshipExplosionTextures starshipExplosionTextures;
 	public Animation explosionAnimation;
 	private boolean playAnimation;
-	private StarshipSprite starshipSprite;
+	private Sprite sprite;
 	public boolean starshipIsExploded;
+	private HealthBarSprite healthBarSprite;
 	
-	public StarshipExplosion(StarshipSprite starshipSprite) throws IOException {
+	public StarshipExplosion(Sprite sprite, HealthBarSprite healthBarSprite) throws IOException {
 		starshipExplosionTextures = new StarshipExplosionTextures();
 		explosionAnimation = new Animation(starshipExplosionTextures.starshipExplosionTextures.size(), 1f);
 		playAnimation = false;
-		this.starshipSprite = starshipSprite;
+		this.sprite = sprite;
 		starshipIsExploded = false;
+		this.healthBarSprite = healthBarSprite;
 	}
 	
 	public void nextFrame()
@@ -30,7 +34,8 @@ public class StarshipExplosion {
 		}
 		if(explosionAnimation.getCurrentFrame() >= 25)
         {
-	    	starshipSprite.currentAlpha = 0f;
+	    	sprite.currentAlpha = 0f;
+	    	healthBarSprite.currentAlpha = 0f;
 	    }
 		if(explosionAnimation.nextFrameIsLast() == true)
 		{

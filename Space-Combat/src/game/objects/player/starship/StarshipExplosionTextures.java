@@ -1,4 +1,4 @@
-package game.objects.player.starship.logic;
+package game.objects.player.starship;
 
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -7,8 +7,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.imageio.ImageIO;
-
-import game.ReadAnimation;
 
 public class StarshipExplosionTextures {
 	public List<BufferedImage> starshipExplosionTextures;
