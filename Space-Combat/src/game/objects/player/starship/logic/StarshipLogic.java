@@ -2,9 +2,14 @@ package game.objects.player.starship.logic;
 
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
+import game.StarshipAction;
 import game.objects.StarshipExplosion;
+import game.objects.enemies.EnemyStarshipSprite;
 import game.objects.health_bar.logic.HealthBarLogic;
+import game.objects.laser.LaserLogic;
 import game.objects.logic.ObjectSpawn;
 import game.objects.player.starship.StarshipSprite;
 
@@ -17,6 +22,8 @@ public class StarshipLogic{
 	public StarshipExplosion starshipExplosion;
 	public HealthBarLogic healthBarLogic;
 	public boolean freezeStarship;
+	public StarshipShoot starshipShoot;
+
 	
 	public StarshipLogic(int winWidth, int winHeight) throws IOException {
 		starshipSprite = new StarshipSprite(winWidth, winHeight);
@@ -25,6 +32,7 @@ public class StarshipLogic{
 		spawnStarship = new ObjectSpawn(starshipSprite, starshipSprite.xPos, starshipSprite.yPos);
 		healthBarLogic = new HealthBarLogic(starshipSprite, 100, true);
 		starshipExplosion = new StarshipExplosion(starshipSprite, healthBarLogic.healthBarSprite);
+		starshipShoot = new StarshipShoot(starshipSprite);
 		
 	}
 	
@@ -40,6 +48,7 @@ public class StarshipLogic{
 		{
 			freezeStarship = false;
 		}
+		starshipShoot.nextFrame();
 	}
 	
 	private void ifNecassaryPlayDieAnimationAndRespawn()

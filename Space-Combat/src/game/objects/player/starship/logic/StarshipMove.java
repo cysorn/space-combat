@@ -22,10 +22,10 @@ public class StarshipMove {
 	{
 		this.starshipSprite = starshipSprite;
 		moveDirections = new StarshipAction[4];
-		moveDirections[0] = StarshipAction.HANG;
-		moveDirections[1] = StarshipAction.HANG;
-		moveDirections[2] = StarshipAction.HANG;
-		moveDirections[3] = StarshipAction.HANG;
+		moveDirections[0] = StarshipAction.STOP;
+		moveDirections[1] = StarshipAction.STOP;
+		moveDirections[2] = StarshipAction.STOP;
+		moveDirections[3] = StarshipAction.STOP;
 		starshipFlyingToASideAnimation = new StarshipFlyToASideAnimation(starshipSprite.starshipTextures, moveDirections);
 		this.winWidth = winWidth;
 		this.winHeight = winHeight;
@@ -35,29 +35,29 @@ public class StarshipMove {
 	
 	public void nextFrame()
 	{
-		if(moveDirections[Direction.RIGHT.getDirectionIndex()] == StarshipAction.FLY
-		^ moveDirections[Direction.LEFT.getDirectionIndex()] == StarshipAction.FLY)
+		if(moveDirections[Direction.RIGHT.getDirectionIndex()] == StarshipAction.START
+		^ moveDirections[Direction.LEFT.getDirectionIndex()] == StarshipAction.START)
 		{
-			if(moveDirections[Direction.RIGHT.getDirectionIndex()] == StarshipAction.FLY
+			if(moveDirections[Direction.RIGHT.getDirectionIndex()] == StarshipAction.START
 			&& starshipSprite.xPos + starshipSprite.getSpriteWidth() + moveSpeed + 20 < winWidth)
 			{
 				starshipSprite.xPos += moveSpeed;
 			}
-			if(moveDirections[Direction.LEFT.getDirectionIndex()] == StarshipAction.FLY
+			if(moveDirections[Direction.LEFT.getDirectionIndex()] == StarshipAction.START
 			&& starshipSprite.xPos - moveSpeed > 0)
 			{
 				starshipSprite.xPos -= moveSpeed;
 			}
 		}
-		if(moveDirections[Direction.UP.getDirectionIndex()] == StarshipAction.FLY
-		^ moveDirections[Direction.DOWN.getDirectionIndex()] == StarshipAction.FLY)
+		if(moveDirections[Direction.UP.getDirectionIndex()] == StarshipAction.START
+		^ moveDirections[Direction.DOWN.getDirectionIndex()] == StarshipAction.START)
 		{
-			if(moveDirections[Direction.DOWN.getDirectionIndex()] == StarshipAction.FLY
+			if(moveDirections[Direction.DOWN.getDirectionIndex()] == StarshipAction.START
 			&& starshipSprite.yPos + starshipSprite.getSpriteHeight() + moveSpeed + 20 < winHeight)
 			{
 				starshipSprite.yPos += moveSpeed;
 			}
-			if(moveDirections[Direction.UP.getDirectionIndex()] == StarshipAction.FLY
+			if(moveDirections[Direction.UP.getDirectionIndex()] == StarshipAction.START
 			&& starshipSprite.yPos - moveSpeed > 0)
 			{
 				starshipSprite.yPos -= moveSpeed;

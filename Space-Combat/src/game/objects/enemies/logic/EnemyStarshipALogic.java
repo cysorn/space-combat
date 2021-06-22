@@ -7,12 +7,9 @@ import game.objects.enemies.EnemyStarshipSprite;
 
 public class EnemyStarshipALogic extends EnemyStarshipLogic{
 	
-	int temp;
-	
 	public EnemyStarshipALogic(int initialXPos, int initialYPos, BufferedImage enemyStarshipTexture) throws IOException {
 		super(new EnemyStarshipSprite(initialXPos, initialYPos, 72, 80, enemyStarshipTexture));
 //		healthBarLogic.setHpAndBarToFull();
-		temp = 0;
 	}
 	
 	@Override
@@ -22,11 +19,11 @@ public class EnemyStarshipALogic extends EnemyStarshipLogic{
 		{
 			enemyStarshipMove.nextFrame();
 		}
-		++temp;
-		if(temp == 200)
-		{
-			healthBarLogic.objectStats.kill();
-		}
+//		++temp;
+//		if(temp == 200)
+//		{
+//			healthBarLogic.objectStats.kill();
+//		}
 		if(healthBarLogic.objectStats.objectIsDead() == true)
 		{
 			if(starshipExplosion.starshipIsExploded == false)

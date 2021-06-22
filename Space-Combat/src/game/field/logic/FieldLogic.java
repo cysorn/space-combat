@@ -8,6 +8,7 @@ import game.field.logic.enemies.appearance.EnemyStarshipAppearanceManager;
 import game.objects.enemies.EnemyStarshipSprite;
 import game.objects.enemies.EnemyStarshipTextures;
 import game.objects.enemies.logic.EnemyStarshipLogic;
+import game.objects.laser.LaserLogic;
 import game.objects.player.starship.logic.StarshipLogic;
 
 //	TODO delete unused logics and sprites
@@ -18,7 +19,7 @@ public class FieldLogic {
 	public List<EnemyStarshipLogic> enemyStarshipLogics;
 	public EnemyStarshipTextures enemyStarshipTextures;
 	private EnemyStarshipAppearanceManager enemyStarshipAppearanceManager;
-	private List<EnemyStarshipSprite> enemyStarshipSprites;
+	public List<EnemyStarshipSprite> enemyStarshipSprites;
 	
 	public FieldLogic(int windowWidth, int windowHeight) throws IOException
 	{
@@ -29,7 +30,6 @@ public class FieldLogic {
 		enemyStarshipTextures = new EnemyStarshipTextures();
 		enemyStarshipSprites = new ArrayList<>();
 		updateEnemyStarhsipSpritesAndDeleteSuperfluousEnemyStarships();
-//		enemyStarshipLogics.add(new EnemyStarshipLogic(enemyStarshipAppearance.getInitialXPos(), enemyStarshipAppearance.getInitialYPos()));
 		enemyStarshipAppearanceManager = new EnemyStarshipAppearanceManager(windowWidth, windowHeight,//
 				enemyStarshipSprites, enemyStarshipLogics, enemyStarshipTextures);
 	}

@@ -17,12 +17,12 @@ public class SpaceCombatKeyAdapter extends KeyAdapter {
 	}
 	@Override
     public void keyReleased(KeyEvent e) {
-		checkKeyInputs(e, StarshipAction.HANG);
+		checkKeyInputs(e, StarshipAction.STOP);
     }
     
     @Override
     public void keyPressed(KeyEvent e) {
-    	checkKeyInputs(e, StarshipAction.FLY);
+    	checkKeyInputs(e, StarshipAction.START);
     }
     
     private void checkKeyInputs(KeyEvent e, StarshipAction action)
@@ -53,6 +53,10 @@ public class SpaceCombatKeyAdapter extends KeyAdapter {
     	&& starshipLogic.freezeStarship == false)
     	{
     		starshipLogic.healthBarLogic.objectStats.currentHealth -= 20;
+    	}
+    	if(e.getKeyCode() == Key.SPACE.getKeyCode())
+    	{
+    		starshipLogic.starshipShoot.shoot = action;
     	}
     }
 }

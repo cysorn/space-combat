@@ -12,6 +12,7 @@ import game.objects.background.star.logic.StarLogic;
 import game.objects.enemies.logic.EnemyStarshipLogic;
 import game.objects.health_bar.logic.HealthBarLogic;
 import game.objects.introducing.IntroducingLogic;
+import game.objects.laser.LaserLogic;
 
 public class PaintSprites {
 	private SpaceCombatPanel spaceCombatPanel;
@@ -188,5 +189,22 @@ public class PaintSprites {
     	}
     	g2d.setComposite(AlphaComposite.SrcOver.derive(1f));
     	fieldLogic.nextFrame();
+    }
+    
+    public void paintLaser(Graphics2D g2d)
+    {
+    	for(int laserLogicNr = 0; laserLogicNr < fieldLogic.starshipLogic.starshipShoot.laserLogics.size(); ++laserLogicNr)
+    	{
+    		g2d.drawImage(fieldLogic.starshipLogic.starshipShoot.laserLogics.get(laserLogicNr).getLaserTexture(),//
+        			(int)fieldLogic.starshipLogic.starshipShoot.laserLogics.get(laserLogicNr).laserSprite.xPos,
+        			(int)fieldLogic.starshipLogic.starshipShoot.laserLogics.get(laserLogicNr).laserSprite.yPos,
+        			spaceCombatPanel);
+    		if(fieldLogic.starshipLogic.starshipShoot.laserLogics.get(laserLogicNr).projectileFly.hitIsTrue() == true)
+    		{
+    			fieldLogic.starshipLogic.starshipShoot.laserLogics.remove(laserLogicNr);
+    			continue;
+    		}
+    		fieldLogic.starshipLogic.starshipShoot.laserLogics.get(laserLogicNr).nextFrame(fieldLogic.enemyStarshipLogics);
+    	}
     }
 }
