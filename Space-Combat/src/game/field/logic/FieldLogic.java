@@ -49,7 +49,8 @@ public class FieldLogic {
 		enemyStarshipSprites.clear();
 		for(int enemyStarshipNr = 0; enemyStarshipNr < enemyStarshipLogics.size(); ++enemyStarshipNr)
 		{
-			if(enemyStarshipLogics.get(enemyStarshipNr).getEnemyStarshipSprite().yPos > windowHeight)
+			if(enemyStarshipLogics.get(enemyStarshipNr).getEnemyStarshipSprite().yPos > windowHeight
+			|| enemyStarshipLogics.get(enemyStarshipNr).starshipExplosion.starshipIsExploded == true)
 			{
 				enemyStarshipLogics.remove(enemyStarshipNr);
 				--enemyStarshipNr;
