@@ -3,7 +3,7 @@ package game.objects.logic;
 public class ObjectStats {
 	
 	public int maxHealth;
-	public int currentHealth;
+	private int currentHealth;
 	
 	public ObjectStats(int maxHealth)
 	{
@@ -24,5 +24,22 @@ public class ObjectStats {
 	public void kill()
 	{
 		currentHealth = 0;
+	}
+	
+	public void decreaseHealthBy(int val)
+	{
+		if(currentHealth - val > 0)
+		{
+			currentHealth -= val;
+		}
+		else
+		{
+			currentHealth = 0;
+		}
+	}
+	
+	public int getCurrentHealth()
+	{
+		return currentHealth;
 	}
 }

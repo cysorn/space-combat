@@ -39,7 +39,7 @@ public class HealthDecrease {
 	
 	private void updateRedBarLong()
 	{
-		redBarLong = healthChange.objectStats.maxHealth - healthChange.objectStats.currentHealth;
+		redBarLong = healthChange.objectStats.maxHealth - healthChange.objectStats.getCurrentHealth();
 		//calculate the number of pixels corresponding to the number of HP
 //		redBarLong = (hpBarLong / 100f) * ((objectStats.maxHealth - objectStats.currentHealth) / (float) (objectStats.maxHealth / 100f));
 	}

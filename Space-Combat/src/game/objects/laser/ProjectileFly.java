@@ -45,7 +45,7 @@ public class ProjectileFly {
 			&& laserSprite.yPos >= enemy.getEnemyStarshipSprite().yPos
 			&& laserSprite.xPos >= enemy.getEnemyStarshipSprite().xPos && laserSprite.xPos <= enemy.getEnemyStarshipSprite().xPos + enemy.getSpriteWidth())
 			{
-				enemy.healthBarLogic.objectStats.currentHealth -= 20;
+				enemy.healthBarLogic.objectStats.decreaseHealthBy(20);
 				freezeLaser = true;
 				hit = true;
 			}

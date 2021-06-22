@@ -43,17 +43,17 @@ public class SpaceCombatKeyAdapter extends KeyAdapter {
         {
     		starshipLogic.starshipMove.moveTo(Direction.UP, action);
         }
-    	if(e.getKeyCode() == Key.E.getKeyCode()
-    	&& starshipLogic.freezeStarship == false)
-    	{
-    		starshipLogic.healthBarLogic.objectStats.kill();
-    	}
-    	if(e.getKeyCode() == Key.F.getKeyCode()
-    	&& e.getID() == KeyEvent.KEY_RELEASED
-    	&& starshipLogic.freezeStarship == false)
-    	{
-    		starshipLogic.healthBarLogic.objectStats.currentHealth -= 20;
-    	}
+//    	if(e.getKeyCode() == Key.E.getKeyCode()
+//    	&& starshipLogic.freezeStarship == false)
+//    	{
+//    		starshipLogic.healthBarLogic.objectStats.kill();
+//    	}
+//    	if(e.getKeyCode() == Key.F.getKeyCode()
+//    	&& e.getID() == KeyEvent.KEY_RELEASED
+//    	&& starshipLogic.freezeStarship == false)
+//    	{
+//    		starshipLogic.healthBarLogic.objectStats.decreaseHealthBy(20);
+//    	}
     	if(e.getKeyCode() == Key.SPACE.getKeyCode())
     	{
     		starshipLogic.starshipShoot.shoot = action;
