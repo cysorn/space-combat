@@ -1,11 +1,11 @@
-package game.objects;
+package game.objects.logic;
 
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 
 import game.Animation;
+import game.objects.Sprite;
 import game.objects.health_bar.HealthBarSprite;
-import game.objects.logic.ObjectStats;
 import game.objects.player.starship.StarshipExplosionTextures;
 import game.objects.player.starship.StarshipSprite;
 

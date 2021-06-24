@@ -99,19 +99,7 @@ public class PaintSprites {
     	HealthBarLogic enemyHealthBarLogic;
     	Color redHealthBarColor;
     	Color greyHealthBarColor;
-    	
-    	
-//    	enemyHealthBarLogic = fieldLogic.enemyStarshipLogics.get(0).healthBarLogic;
-//		healthBarSprite = enemyHealthBarLogic.healthBarSprite;
-//    	g2d.setComposite(AlphaComposite.SrcOver.derive(healthBarSprite.currentAlpha));
-////    	System.out.println(healthBarSprite.currentAlpha);
-//    	g2d.drawImage(enemyHealthBarLogic.getSpriteTexture(),//
-//    			(int)healthBarSprite.xPos,
-//    			(int)healthBarSprite.yPos,
-//    			spaceCombatPanel);
-//    	enemyHealthBarLogic.nextFrame();
-    	
-    	
+
     	for(EnemyStarshipLogic enemyStarshipLogic: fieldLogic.enemyStarshipLogics)
     	{
     		enemyHealthBarLogic = enemyStarshipLogic.healthBarLogic;
@@ -163,7 +151,7 @@ public class PaintSprites {
         			-fieldLogic.starshipLogic.healthBarLogic.healthChange.healthDecrease.getRedBarLong(),
         			healthBarSprite.getSpriteHeight() - 4);
     	}
-    	g2d.setComposite(AlphaComposite.SrcOver.derive(healthBarSprite.currentAlpha));
+    	g2d.setComposite(AlphaComposite.SrcOver.derive(1f));
     	if(fieldLogic.starshipLogic.healthBarLogic.healthChange.paintGreyBar() == true)
     	{
     		g2d.setColor(greyHealthBarColor);
@@ -185,7 +173,7 @@ public class PaintSprites {
         			(int)enemyStarshipLogic.getEnemyStarshipSprite().xPos,
         			(int)enemyStarshipLogic.getEnemyStarshipSprite().yPos,
         			spaceCombatPanel);
-        	enemyStarshipLogic.nextFrame();
+        	enemyStarshipLogic.nextFrame(fieldLogic.starshipLogic);
     	}
     	g2d.setComposite(AlphaComposite.SrcOver.derive(1f));
     	fieldLogic.nextFrame();

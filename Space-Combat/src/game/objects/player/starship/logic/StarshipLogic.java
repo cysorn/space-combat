@@ -6,11 +6,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import game.StarshipAction;
-import game.objects.StarshipExplosion;
 import game.objects.enemies.EnemyStarshipSprite;
 import game.objects.health_bar.logic.HealthBarLogic;
 import game.objects.laser.LaserLogic;
 import game.objects.logic.ObjectSpawn;
+import game.objects.logic.StarshipExplosion;
 import game.objects.player.starship.StarshipSprite;
 
 //TODO create new classes for Starship, stars, etc. and create logic classes

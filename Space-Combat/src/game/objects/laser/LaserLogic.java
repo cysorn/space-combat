@@ -4,7 +4,6 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.List;
 
-import game.objects.enemies.EnemyStarshipSprite;
 import game.objects.enemies.logic.EnemyStarshipLogic;
 
 public class LaserLogic {

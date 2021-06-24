@@ -4,6 +4,7 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 
 import game.objects.enemies.EnemyStarshipSprite;
+import game.objects.player.starship.logic.StarshipLogic;
 
 public class EnemyStarshipALogic extends EnemyStarshipLogic{
 	
@@ -13,7 +14,7 @@ public class EnemyStarshipALogic extends EnemyStarshipLogic{
 	}
 	
 	@Override
-	public void nextFrame() {
+	public void nextFrame(StarshipLogic starshipLogic) {
 		
 		if(freezeStarship == false)
 		{
@@ -24,6 +25,7 @@ public class EnemyStarshipALogic extends EnemyStarshipLogic{
 //		{
 //			healthBarLogic.objectStats.kill();
 //		}
+		ram(starshipLogic, 30);
 		if(healthBarLogic.objectStats.objectIsDead() == true)
 		{
 			if(starshipExplosion.starshipIsExploded == false)
