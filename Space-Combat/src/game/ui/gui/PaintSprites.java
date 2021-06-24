@@ -9,7 +9,7 @@ import game.field.logic.FieldLogic;
 import game.objects.Sprite;
 import game.objects.background.BackgroundLogic;
 import game.objects.background.star.logic.StarLogic;
-import game.objects.enemies.logic.EnemyStarshipLogic;
+import game.objects.enemies.logic.EnemySpaceshipLogic;
 import game.objects.health_bar.logic.HealthBarLogic;
 import game.objects.introducing.IntroducingLogic;
 import game.objects.laser.LaserLogic;
@@ -57,38 +57,38 @@ public class PaintSprites {
     
     public void paintPlayersStarship(Graphics2D g2d)
     {
-    	g2d.setComposite(AlphaComposite.SrcOver.derive(fieldLogic.starshipLogic.starshipSprite.currentAlpha));
-    	g2d.drawImage(fieldLogic.starshipLogic.getSpriteTexture(),//
-    			(int)fieldLogic.starshipLogic.starshipSprite.xPos,
-    			(int)fieldLogic.starshipLogic.starshipSprite.yPos,
+    	g2d.setComposite(AlphaComposite.SrcOver.derive(fieldLogic.spaceshipLogic.spaceshipSprite.currentAlpha));
+    	g2d.drawImage(fieldLogic.spaceshipLogic.getSpriteTexture(),//
+    			(int)fieldLogic.spaceshipLogic.spaceshipSprite.xPos,
+    			(int)fieldLogic.spaceshipLogic.spaceshipSprite.yPos,
     			spaceCombatPanel);
-    	fieldLogic.starshipLogic.nextFrame();
+    	fieldLogic.spaceshipLogic.nextFrame();
     	g2d.setComposite(AlphaComposite.SrcOver.derive(1f));
     }
     
     public void paintStarshipExplosion(Graphics2D g2d)
     {
-	    if(fieldLogic.starshipLogic.starshipExplosion.animationPlays() == true)
+	    if(fieldLogic.spaceshipLogic.spaceshipExplosion.animationPlays() == true)
 	    {
-	    	g2d.drawImage(fieldLogic.starshipLogic.starshipExplosion.getSpriteTexture(),//
-	    			(int)fieldLogic.starshipLogic.starshipSprite.xPos - 93,
-	    			(int)fieldLogic.starshipLogic.starshipSprite.yPos - 75,
+	    	g2d.drawImage(fieldLogic.spaceshipLogic.spaceshipExplosion.getSpriteTexture(),//
+	    			(int)fieldLogic.spaceshipLogic.spaceshipSprite.xPos - 93,
+	    			(int)fieldLogic.spaceshipLogic.spaceshipSprite.yPos - 75,
 	    			spaceCombatPanel);
-	    	fieldLogic.starshipLogic.starshipExplosion.nextFrame();
+	    	fieldLogic.spaceshipLogic.spaceshipExplosion.nextFrame();
 	    }
     }
     
     public void paintEnemyStarshipExplosions(Graphics2D g2d)
     {
-    	for(EnemyStarshipLogic enemyStarshipLogic: fieldLogic.enemyStarshipLogics)
+    	for(EnemySpaceshipLogic enemyStarshipLogic: fieldLogic.enemySpaceshipLogics)
     	{
-    		if(enemyStarshipLogic.starshipExplosion.animationPlays() == true)
+    		if(enemyStarshipLogic.spaceshipExplosion.animationPlays() == true)
     		{
-    			g2d.drawImage(enemyStarshipLogic.starshipExplosion.getSpriteTexture(),//
-            			(int)enemyStarshipLogic.getEnemyStarshipSprite().xPos - 95,
-            			(int)enemyStarshipLogic.getEnemyStarshipSprite().yPos - 85,
+    			g2d.drawImage(enemyStarshipLogic.spaceshipExplosion.getSpriteTexture(),//
+            			(int)enemyStarshipLogic.getEnemySpaceshipSprite().xPos - 95,
+            			(int)enemyStarshipLogic.getEnemySpaceshipSprite().yPos - 85,
             			spaceCombatPanel);
-    			enemyStarshipLogic.starshipExplosion.nextFrame();
+    			enemyStarshipLogic.spaceshipExplosion.nextFrame();
     		}
     	}
     }
@@ -100,7 +100,7 @@ public class PaintSprites {
     	Color redHealthBarColor;
     	Color greyHealthBarColor;
 
-    	for(EnemyStarshipLogic enemyStarshipLogic: fieldLogic.enemyStarshipLogics)
+    	for(EnemySpaceshipLogic enemyStarshipLogic: fieldLogic.enemySpaceshipLogics)
     	{
     		enemyHealthBarLogic = enemyStarshipLogic.healthBarLogic;
     		healthBarSprite = enemyHealthBarLogic.healthBarSprite;
@@ -135,45 +135,45 @@ public class PaintSprites {
     
     public void paintPlayersHealthBar(Graphics2D g2d)
     {
-    	Sprite healthBarSprite = fieldLogic.starshipLogic.healthBarLogic.healthBarSprite;
+    	Sprite healthBarSprite = fieldLogic.spaceshipLogic.healthBarLogic.healthBarSprite;
     	Color redHealthBarColor = new Color(1f, 0f, 0f, healthBarSprite.currentAlpha);
     	Color greyHealthBarColor = new Color(0.05f, 0.05f, 0.05f, 1f);
     	g2d.setComposite(AlphaComposite.SrcOver.derive(healthBarSprite.currentAlpha));
-    	g2d.drawImage(fieldLogic.starshipLogic.healthBarLogic.getSpriteTexture(),//
+    	g2d.drawImage(fieldLogic.spaceshipLogic.healthBarLogic.getSpriteTexture(),//
     			(int)healthBarSprite.xPos,
     			(int)healthBarSprite.yPos,
     			spaceCombatPanel);
-    	if(fieldLogic.starshipLogic.healthBarLogic.healthChange.healthDecrease.paintRedBar() == true)
+    	if(fieldLogic.spaceshipLogic.healthBarLogic.healthChange.healthDecrease.paintRedBar() == true)
     	{
     		g2d.setColor(redHealthBarColor);
         	g2d.fillRect((int)healthBarSprite.xPos + healthBarSprite.getSpriteWidth(),
         			(int)healthBarSprite.yPos + 2,
-        			-fieldLogic.starshipLogic.healthBarLogic.healthChange.healthDecrease.getRedBarLong(),
+        			-fieldLogic.spaceshipLogic.healthBarLogic.healthChange.healthDecrease.getRedBarLong(),
         			healthBarSprite.getSpriteHeight() - 4);
     	}
     	g2d.setComposite(AlphaComposite.SrcOver.derive(1f));
-    	if(fieldLogic.starshipLogic.healthBarLogic.healthChange.paintGreyBar() == true)
+    	if(fieldLogic.spaceshipLogic.healthBarLogic.healthChange.paintGreyBar() == true)
     	{
     		g2d.setColor(greyHealthBarColor);
         	g2d.fillRect((int)healthBarSprite.xPos + healthBarSprite.getSpriteWidth(),
         			(int)healthBarSprite.yPos + 2,
-        			-fieldLogic.starshipLogic.healthBarLogic.healthChange.getGreyBarLong(),
+        			-fieldLogic.spaceshipLogic.healthBarLogic.healthChange.getGreyBarLong(),
         			healthBarSprite.getSpriteHeight() - 4);
     	}
-    	fieldLogic.starshipLogic.healthBarLogic.nextFrame();
+    	fieldLogic.spaceshipLogic.healthBarLogic.nextFrame();
     	g2d.setComposite(AlphaComposite.SrcOver.derive(1f));
     }
     
     public void paintEnemyStarships(Graphics2D g2d)
     {
-    	for(EnemyStarshipLogic enemyStarshipLogic: fieldLogic.enemyStarshipLogics)
+    	for(EnemySpaceshipLogic enemySpaceshipLogic: fieldLogic.enemySpaceshipLogics)
     	{
-    		g2d.setComposite(AlphaComposite.SrcOver.derive(enemyStarshipLogic.getEnemyStarshipSprite().currentAlpha));
-        	g2d.drawImage(enemyStarshipLogic.getEnemyStarshipSprite().getEnemyStarshipTexture(),//
-        			(int)enemyStarshipLogic.getEnemyStarshipSprite().xPos,
-        			(int)enemyStarshipLogic.getEnemyStarshipSprite().yPos,
+    		g2d.setComposite(AlphaComposite.SrcOver.derive(enemySpaceshipLogic.getEnemySpaceshipSprite().currentAlpha));
+        	g2d.drawImage(enemySpaceshipLogic.getEnemySpaceshipSprite().getEnemySpaceshipTexture(),//
+        			(int)enemySpaceshipLogic.getEnemySpaceshipSprite().xPos,
+        			(int)enemySpaceshipLogic.getEnemySpaceshipSprite().yPos,
         			spaceCombatPanel);
-        	enemyStarshipLogic.nextFrame(fieldLogic.starshipLogic);
+        	enemySpaceshipLogic.nextFrame(fieldLogic.spaceshipLogic);
     	}
     	g2d.setComposite(AlphaComposite.SrcOver.derive(1f));
     	fieldLogic.nextFrame();
@@ -181,18 +181,18 @@ public class PaintSprites {
     
     public void paintLaser(Graphics2D g2d)
     {
-    	for(int laserLogicNr = 0; laserLogicNr < fieldLogic.starshipLogic.starshipShoot.laserLogics.size(); ++laserLogicNr)
+    	for(int laserLogicNr = 0; laserLogicNr < fieldLogic.spaceshipLogic.spaceshipShoot.laserLogics.size(); ++laserLogicNr)
     	{
-    		g2d.drawImage(fieldLogic.starshipLogic.starshipShoot.laserLogics.get(laserLogicNr).getLaserTexture(),//
-        			(int)fieldLogic.starshipLogic.starshipShoot.laserLogics.get(laserLogicNr).laserSprite.xPos,
-        			(int)fieldLogic.starshipLogic.starshipShoot.laserLogics.get(laserLogicNr).laserSprite.yPos,
+    		g2d.drawImage(fieldLogic.spaceshipLogic.spaceshipShoot.laserLogics.get(laserLogicNr).getLaserTexture(),//
+        			(int)fieldLogic.spaceshipLogic.spaceshipShoot.laserLogics.get(laserLogicNr).laserSprite.xPos,
+        			(int)fieldLogic.spaceshipLogic.spaceshipShoot.laserLogics.get(laserLogicNr).laserSprite.yPos,
         			spaceCombatPanel);
-    		if(fieldLogic.starshipLogic.starshipShoot.laserLogics.get(laserLogicNr).projectileFly.hitIsTrue() == true)
+    		if(fieldLogic.spaceshipLogic.spaceshipShoot.laserLogics.get(laserLogicNr).projectileFly.hitIsTrue() == true)
     		{
-    			fieldLogic.starshipLogic.starshipShoot.laserLogics.remove(laserLogicNr);
+    			fieldLogic.spaceshipLogic.spaceshipShoot.laserLogics.remove(laserLogicNr);
     			continue;
     		}
-    		fieldLogic.starshipLogic.starshipShoot.laserLogics.get(laserLogicNr).nextFrame(fieldLogic.enemyStarshipLogics);
+    		fieldLogic.spaceshipLogic.spaceshipShoot.laserLogics.get(laserLogicNr).nextFrame(fieldLogic.enemySpaceshipLogics);
     	}
     }
 }

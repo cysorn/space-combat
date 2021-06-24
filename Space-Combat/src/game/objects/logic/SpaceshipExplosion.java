@@ -6,23 +6,23 @@ import java.io.IOException;
 import game.Animation;
 import game.objects.Sprite;
 import game.objects.health_bar.HealthBarSprite;
-import game.objects.player.starship.StarshipExplosionTextures;
-import game.objects.player.starship.StarshipSprite;
+import game.objects.player.spaceship.SpaceshipSprite;
+import game.objects.player.spaceship.SpaceshipExplosionTextures;
 
-public class StarshipExplosion {
-	private StarshipExplosionTextures starshipExplosionTextures;
+public class SpaceshipExplosion {
+	private SpaceshipExplosionTextures starshipExplosionTextures;
 	public Animation explosionAnimation;
 	private boolean playAnimation;
 	private Sprite sprite;
-	public boolean starshipIsExploded;
+	public boolean spaceshipIsExploded;
 	private HealthBarSprite healthBarSprite;
 	
-	public StarshipExplosion(Sprite sprite, HealthBarSprite healthBarSprite) throws IOException {
-		starshipExplosionTextures = new StarshipExplosionTextures();
-		explosionAnimation = new Animation(starshipExplosionTextures.starshipExplosionTextures.size(), 1f);
+	public SpaceshipExplosion(Sprite sprite, HealthBarSprite healthBarSprite) throws IOException {
+		starshipExplosionTextures = new SpaceshipExplosionTextures();
+		explosionAnimation = new Animation(starshipExplosionTextures.spaceshipExplosionTextures.size(), 1f);
 		playAnimation = false;
 		this.sprite = sprite;
-		starshipIsExploded = false;
+		spaceshipIsExploded = false;
 		this.healthBarSprite = healthBarSprite;
 	}
 	
@@ -39,7 +39,7 @@ public class StarshipExplosion {
 	    }
 		if(explosionAnimation.nextFrameIsLast() == true)
 		{
-			starshipIsExploded = true;
+			spaceshipIsExploded = true;
 			playAnimation = false;
 		}
 		explosionAnimation.nextFrame();
@@ -47,7 +47,7 @@ public class StarshipExplosion {
 	
 	public BufferedImage getSpriteTexture()
 	{
-		return starshipExplosionTextures.starshipExplosionTextures.get(explosionAnimation.getCurrentFrame());
+		return starshipExplosionTextures.spaceshipExplosionTextures.get(explosionAnimation.getCurrentFrame());
 	}
 	
 	public void startExplosion()

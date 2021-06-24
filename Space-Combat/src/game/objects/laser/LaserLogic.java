@@ -4,7 +4,7 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.List;
 
-import game.objects.enemies.logic.EnemyStarshipLogic;
+import game.objects.enemies.logic.EnemySpaceshipLogic;
 
 public class LaserLogic {
 	
@@ -17,7 +17,7 @@ public class LaserLogic {
 		projectileFly = new ProjectileFly(laserSprite);
 	}
 	
-	public void nextFrame(List<EnemyStarshipLogic> enemies)
+	public void nextFrame(List<EnemySpaceshipLogic> enemies)
 	{
 		projectileFly.nextFrame(enemies, null);
 	}

@@ -4,59 +4,59 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import game.field.logic.enemies.appearance.EnemyStarshipAppearanceManager;
-import game.objects.enemies.EnemyStarshipSprite;
-import game.objects.enemies.EnemyStarshipTextures;
-import game.objects.enemies.logic.EnemyStarshipLogic;
+import game.field.logic.enemies.appearance.EnemySpaceshipAppearanceManager;
+import game.objects.enemies.EnemySpaceshipSprite;
+import game.objects.enemies.EnemySpaceshipTextures;
+import game.objects.enemies.logic.EnemySpaceshipLogic;
 import game.objects.laser.LaserLogic;
-import game.objects.player.starship.logic.StarshipLogic;
+import game.objects.player.spaceship.logic.SpaceshipLogic;
 
 //	TODO delete unused logics and sprites
 public class FieldLogic {
 	public int windowWidht;
 	public int windowHeight;
-	public StarshipLogic starshipLogic;
-	public List<EnemyStarshipLogic> enemyStarshipLogics;
-	public EnemyStarshipTextures enemyStarshipTextures;
-	private EnemyStarshipAppearanceManager enemyStarshipAppearanceManager;
-	public List<EnemyStarshipSprite> enemyStarshipSprites;
+	public SpaceshipLogic spaceshipLogic;
+	public List<EnemySpaceshipLogic> enemySpaceshipLogics;
+	public EnemySpaceshipTextures enemySpaceshipTextures;
+	private EnemySpaceshipAppearanceManager enemySpaceshipAppearanceManager;
+	public List<EnemySpaceshipSprite> enemySpaceshipSprites;
 	
 	public FieldLogic(int windowWidth, int windowHeight) throws IOException
 	{
 		this.windowWidht = windowWidth;
 		this.windowHeight = windowHeight;
-		starshipLogic = new StarshipLogic(windowWidth, windowHeight);
-		enemyStarshipLogics = new ArrayList<EnemyStarshipLogic>();
-		enemyStarshipTextures = new EnemyStarshipTextures();
-		enemyStarshipSprites = new ArrayList<>();
-		updateEnemyStarhsipSpritesAndDeleteSuperfluousEnemyStarships();
-		enemyStarshipAppearanceManager = new EnemyStarshipAppearanceManager(windowWidth, windowHeight,//
-				enemyStarshipSprites, enemyStarshipLogics, enemyStarshipTextures);
+		spaceshipLogic = new SpaceshipLogic(windowWidth, windowHeight);
+		enemySpaceshipLogics = new ArrayList<EnemySpaceshipLogic>();
+		enemySpaceshipTextures = new EnemySpaceshipTextures();
+		enemySpaceshipSprites = new ArrayList<>();
+		updateEnemySpaceshipSpritesAndDeleteSuperfluousEnemySpaceships();
+		enemySpaceshipAppearanceManager = new EnemySpaceshipAppearanceManager(windowWidth, windowHeight,//
+				enemySpaceshipSprites, enemySpaceshipLogics, enemySpaceshipTextures);
 	}
 	
 	public void nextFrame()
 	{
-		updateEnemyStarhsipSpritesAndDeleteSuperfluousEnemyStarships();
+		updateEnemySpaceshipSpritesAndDeleteSuperfluousEnemySpaceships();
 		try {
-			enemyStarshipAppearanceManager.nextFrame();
+			enemySpaceshipAppearanceManager.nextFrame();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
 	
-	private void updateEnemyStarhsipSpritesAndDeleteSuperfluousEnemyStarships()
+	private void updateEnemySpaceshipSpritesAndDeleteSuperfluousEnemySpaceships()
 	{
-		enemyStarshipSprites.clear();
-		for(int enemyStarshipNr = 0; enemyStarshipNr < enemyStarshipLogics.size(); ++enemyStarshipNr)
+		enemySpaceshipSprites.clear();
+		for(int enemySpaceshipNr = 0; enemySpaceshipNr < enemySpaceshipLogics.size(); ++enemySpaceshipNr)
 		{
-			if(enemyStarshipLogics.get(enemyStarshipNr).getEnemyStarshipSprite().yPos > windowHeight
-			|| enemyStarshipLogics.get(enemyStarshipNr).starshipExplosion.starshipIsExploded == true)
+			if(enemySpaceshipLogics.get(enemySpaceshipNr).getEnemySpaceshipSprite().yPos > windowHeight
+			|| enemySpaceshipLogics.get(enemySpaceshipNr).spaceshipExplosion.spaceshipIsExploded == true)
 			{
-				enemyStarshipLogics.remove(enemyStarshipNr);
-				--enemyStarshipNr;
+				enemySpaceshipLogics.remove(enemySpaceshipNr);
+				--enemySpaceshipNr;
 				continue;
 			}
-			enemyStarshipSprites.add(enemyStarshipLogics.get(enemyStarshipNr).getEnemyStarshipSprite());
+			enemySpaceshipSprites.add(enemySpaceshipLogics.get(enemySpaceshipNr).getEnemySpaceshipSprite());
 		}
 	}
 }

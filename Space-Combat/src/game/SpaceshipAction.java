@@ -1,6 +1,6 @@
 package game;
 
-public enum StarshipAction {
+public enum SpaceshipAction {
 	STOP,
 	START;
 

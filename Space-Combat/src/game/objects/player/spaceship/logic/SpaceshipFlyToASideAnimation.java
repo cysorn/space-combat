@@ -1,37 +1,37 @@
-package game.objects.player.starship.logic;
+package game.objects.player.spaceship.logic;
 
 import java.awt.image.BufferedImage;
 
 import game.Direction;
-import game.StarshipAction;
-import game.objects.player.starship.StarshipTextures;
+import game.SpaceshipAction;
+import game.objects.player.spaceship.SpaceshipTextures;
 
-public class StarshipFlyToASideAnimation {
-	private StarshipTextures starshipTextures;
-	private StarshipAction[] moveDirections;
+public class SpaceshipFlyToASideAnimation {
+	private SpaceshipTextures spaceshipTextures;
+	private SpaceshipAction[] moveDirections;
 	private int currentFrame;
 	private Direction currentDirection;
 	private int maxFrame;
-	public StarshipFlyToASideAnimation(StarshipTextures starshipTextures, StarshipAction[] moveDirections) {
+	public SpaceshipFlyToASideAnimation(SpaceshipTextures spaceshipTextures, SpaceshipAction[] moveDirections) {
 		this.moveDirections = moveDirections;
-		this.starshipTextures = starshipTextures;
+		this.spaceshipTextures = spaceshipTextures;
 		currentFrame = 0;
 		currentDirection = Direction.UP;
 	}
 	
 	public void nextFrame()
 	{
-		if(moveDirections[Direction.UP.getDirectionIndex()] == StarshipAction.START
-		|| moveDirections[Direction.DOWN.getDirectionIndex()] == StarshipAction.START)
+		if(moveDirections[Direction.UP.getDirectionIndex()] == SpaceshipAction.START
+		|| moveDirections[Direction.DOWN.getDirectionIndex()] == SpaceshipAction.START)
 		{
 			maxFrame = 4;
 		}
 		else
 		{
-			maxFrame = starshipTextures.starshipToTheLeftTextures.size() - 1;
+			maxFrame = spaceshipTextures.spaceshipToTheLeftTextures.size() - 1;
 		}
-		if(moveDirections[Direction.LEFT.getDirectionIndex()] == StarshipAction.START
-		&& moveDirections[Direction.RIGHT.getDirectionIndex()] == StarshipAction.STOP)
+		if(moveDirections[Direction.LEFT.getDirectionIndex()] == SpaceshipAction.START
+		&& moveDirections[Direction.RIGHT.getDirectionIndex()] == SpaceshipAction.STOP)
 		{
 			if(currentDirection != Direction.LEFT)
 			{
@@ -59,8 +59,8 @@ public class StarshipFlyToASideAnimation {
 				currentFrame -= 2;
 			}
 		}
-		else if(moveDirections[Direction.RIGHT.getDirectionIndex()] == StarshipAction.START
-		&& moveDirections[Direction.LEFT.getDirectionIndex()] == StarshipAction.STOP)
+		else if(moveDirections[Direction.RIGHT.getDirectionIndex()] == SpaceshipAction.START
+		&& moveDirections[Direction.LEFT.getDirectionIndex()] == SpaceshipAction.STOP)
 		{
 			if(currentDirection != Direction.RIGHT)
 			{
@@ -104,11 +104,11 @@ public class StarshipFlyToASideAnimation {
 	{
 		if(currentDirection == Direction.LEFT)
 		{
-			return starshipTextures.starshipToTheLeftTextures.get(currentFrame);
+			return spaceshipTextures.spaceshipToTheLeftTextures.get(currentFrame);
 		}
 		else if(currentDirection == Direction.RIGHT)
 		{
-			return starshipTextures.starshipToTheRightTextures.get(currentFrame);
+			return spaceshipTextures.spaceshipToTheRightTextures.get(currentFrame);
 		}
 		else
 		{

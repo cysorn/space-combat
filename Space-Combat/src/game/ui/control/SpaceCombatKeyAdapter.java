@@ -4,44 +4,44 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
 import game.Direction;
-import game.StarshipAction;
-import game.objects.player.starship.logic.StarshipLogic;
+import game.SpaceshipAction;
+import game.objects.player.spaceship.logic.SpaceshipLogic;
 
 public class SpaceCombatKeyAdapter extends KeyAdapter {
 	
-	private StarshipLogic starshipLogic;
+	private SpaceshipLogic starshipLogic;
 	
-	public SpaceCombatKeyAdapter(StarshipLogic starshipLogic)
+	public SpaceCombatKeyAdapter(SpaceshipLogic starshipLogic)
 	{
 		this.starshipLogic = starshipLogic;
 	}
 	@Override
     public void keyReleased(KeyEvent e) {
-		checkKeyInputs(e, StarshipAction.STOP);
+		checkKeyInputs(e, SpaceshipAction.STOP);
     }
     
     @Override
     public void keyPressed(KeyEvent e) {
-    	checkKeyInputs(e, StarshipAction.START);
+    	checkKeyInputs(e, SpaceshipAction.START);
     }
     
-    private void checkKeyInputs(KeyEvent e, StarshipAction action)
+    private void checkKeyInputs(KeyEvent e, SpaceshipAction action)
     {
     	if(e.getKeyCode() == Key.D.getKeyCode())
         {
-    		starshipLogic.starshipMove.moveTo(Direction.RIGHT, action);
+    		starshipLogic.spaceshipMove.moveTo(Direction.RIGHT, action);
         }
     	if(e.getKeyCode() == Key.S.getKeyCode())
         {
-    		starshipLogic.starshipMove.moveTo(Direction.DOWN, action);
+    		starshipLogic.spaceshipMove.moveTo(Direction.DOWN, action);
         }
     	if(e.getKeyCode() == Key.A.getKeyCode())
         {
-    		starshipLogic.starshipMove.moveTo(Direction.LEFT, action);
+    		starshipLogic.spaceshipMove.moveTo(Direction.LEFT, action);
         }
     	if(e.getKeyCode() == Key.W.getKeyCode())
         {
-    		starshipLogic.starshipMove.moveTo(Direction.UP, action);
+    		starshipLogic.spaceshipMove.moveTo(Direction.UP, action);
         }
 //    	if(e.getKeyCode() == Key.E.getKeyCode()
 //    	&& starshipLogic.freezeStarship == false)
@@ -56,7 +56,7 @@ public class SpaceCombatKeyAdapter extends KeyAdapter {
 //    	}
     	if(e.getKeyCode() == Key.SPACE.getKeyCode())
     	{
-    		starshipLogic.starshipShoot.shoot = action;
+    		starshipLogic.spaceshipShoot.shoot = action;
     	}
     }
 }

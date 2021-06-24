@@ -4,8 +4,8 @@ import java.awt.image.BufferedImage;
 import java.util.List;
 
 import game.objects.Sprite;
-import game.objects.enemies.EnemyStarshipSprite;
-import game.objects.enemies.logic.EnemyStarshipLogic;
+import game.objects.enemies.EnemySpaceshipSprite;
+import game.objects.enemies.logic.EnemySpaceshipLogic;
 
 public class ProjectileFly {
 	
@@ -24,7 +24,7 @@ public class ProjectileFly {
 		hit = false;
 	}
 	
-	public void nextFrame(List<EnemyStarshipLogic> enemies, Sprite target)
+	public void nextFrame(List<EnemySpaceshipLogic> enemies, Sprite target)
 	{
 		checkCollisions(enemies);
 		if(target != null)
@@ -37,13 +37,13 @@ public class ProjectileFly {
 		}
 	}
 	
-	private void checkCollisions(List<EnemyStarshipLogic> enemies)
+	private void checkCollisions(List<EnemySpaceshipLogic> enemies)
 	{
-		for(EnemyStarshipLogic enemy: enemies)
+		for(EnemySpaceshipLogic enemy: enemies)
 		{
-			if(laserSprite.yPos <= enemy.getEnemyStarshipSprite().yPos + enemy.getSpriteHeight()
-			&& laserSprite.yPos >= enemy.getEnemyStarshipSprite().yPos
-			&& laserSprite.xPos >= enemy.getEnemyStarshipSprite().xPos && laserSprite.xPos <= enemy.getEnemyStarshipSprite().xPos + enemy.getSpriteWidth())
+			if(laserSprite.yPos <= enemy.getEnemySpaceshipSprite().yPos + enemy.getSpriteHeight()
+			&& laserSprite.yPos >= enemy.getEnemySpaceshipSprite().yPos
+			&& laserSprite.xPos >= enemy.getEnemySpaceshipSprite().xPos && laserSprite.xPos <= enemy.getEnemySpaceshipSprite().xPos + enemy.getSpriteWidth())
 			{
 				enemy.healthBarLogic.objectStats.decreaseHealthBy(20);
 				freezeLaser = true;

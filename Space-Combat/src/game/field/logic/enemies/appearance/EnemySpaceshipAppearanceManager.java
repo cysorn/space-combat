@@ -4,21 +4,21 @@ import java.io.IOException;
 import java.util.List;
 
 import game.field.logic.enemies.alien_waves.AlienWavesManager;
-import game.objects.enemies.EnemyStarshipSprite;
-import game.objects.enemies.EnemyStarshipTextures;
-import game.objects.enemies.logic.EnemyStarshipLogic;
+import game.objects.enemies.EnemySpaceshipSprite;
+import game.objects.enemies.EnemySpaceshipTextures;
+import game.objects.enemies.logic.EnemySpaceshipLogic;
 
-public class EnemyStarshipAppearanceManager {
+public class EnemySpaceshipAppearanceManager {
 	
-	private EnemyStarshipAppearance enemyStarshipAppearance;
+	private EnemySpaceshipAppearance enemyStarshipAppearance;
 	private AlienWavesManager alienWavesManager;
 //	private List<EnemyStarshipSprite> enemyStarshipSprites;
 //	private List<EnemyStarshipLogic> enemyStarshipLogics;
 //	private EnemyStarshipTextures enemyStarshipTextures;
 	private Character tempEnemyStarshipCodeToSpawn;
 
-	public EnemyStarshipAppearanceManager(int winWidth, int winHeight, List<EnemyStarshipSprite> enemyStarshipSprites, List<EnemyStarshipLogic> enemyStarshipLogics, EnemyStarshipTextures enemyStarshipTextures) {
-		enemyStarshipAppearance = new EnemyStarshipAppearance(winWidth, winHeight, enemyStarshipSprites, enemyStarshipLogics, enemyStarshipTextures);
+	public EnemySpaceshipAppearanceManager(int winWidth, int winHeight, List<EnemySpaceshipSprite> enemyStarshipSprites, List<EnemySpaceshipLogic> enemyStarshipLogics, EnemySpaceshipTextures enemyStarshipTextures) {
+		enemyStarshipAppearance = new EnemySpaceshipAppearance(winWidth, winHeight, enemyStarshipSprites, enemyStarshipLogics, enemyStarshipTextures);
 //		this.enemyStarshipSprites = enemyStarshipSprites;
 //		this.enemyStarshipLogics = enemyStarshipLogics;
 //		this.enemyStarshipTextures = enemyStarshipTextures;

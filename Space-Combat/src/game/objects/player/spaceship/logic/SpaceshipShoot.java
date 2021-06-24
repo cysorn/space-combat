@@ -1,28 +1,28 @@
-package game.objects.player.starship.logic;
+package game.objects.player.spaceship.logic;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import game.StarshipAction;
+import game.SpaceshipAction;
 import game.objects.laser.LaserLogic;
-import game.objects.player.starship.StarshipSprite;
+import game.objects.player.spaceship.SpaceshipSprite;
 
-public class StarshipShoot {
+public class SpaceshipShoot {
 	
 	public List<LaserLogic> laserLogics;
 	private float shootingSpeed;
 	private float shootingSpeedCounter;
-	private StarshipSprite starshipSprite;
-	public StarshipAction shoot;
+	private SpaceshipSprite starshipSprite;
+	public SpaceshipAction shoot;
 	
-	public StarshipShoot(StarshipSprite starshipSprite)
+	public SpaceshipShoot(SpaceshipSprite starshipSprite)
 	{
 		this.shootingSpeed = 20f;
 		this.shootingSpeedCounter = shootingSpeed;
 		laserLogics = new ArrayList<LaserLogic>();
 		this.starshipSprite = starshipSprite;
-		shoot = StarshipAction.STOP;
+		shoot = SpaceshipAction.STOP;
 	}
 	
 	public void nextFrame()
@@ -32,7 +32,7 @@ public class StarshipShoot {
 		{
 			++shootingSpeedCounter;
 		}
-		else if(shoot == StarshipAction.START)
+		else if(shoot == SpaceshipAction.START)
 		{
 			try {
 				laserLogics.add(new LaserLogic(starshipSprite.xPos + 11, starshipSprite.yPos + 33));

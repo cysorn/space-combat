@@ -23,7 +23,7 @@ public class SpaceCombatPanel extends JPanel {
         
         new Timer(0, actionPerformed -> repaint()).start();
         
-        addKeyListener(new SpaceCombatKeyAdapter(paintSprites.fieldLogic.starshipLogic));
+        addKeyListener(new SpaceCombatKeyAdapter(paintSprites.fieldLogic.spaceshipLogic));
     }
     
     @Override
