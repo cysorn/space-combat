@@ -8,7 +8,7 @@ import java.util.Random;
 import game.objects.enemies.EnemySpaceshipSprite;
 import game.objects.enemies.EnemySpaceshipTextures;
 import game.objects.enemies.logic.EnemySpaceshipLogic;
-import game.objects.enemies.logic.SpaceshipIndexes;
+import game.objects.enemies.logic.EnemySpaceshipCodes;
 
 public class EnemySpaceshipAppearance {
 	private int winWidth;
@@ -64,7 +64,7 @@ public class EnemySpaceshipAppearance {
 			}
 			if(thereAreNoCollisionsOnThisCordinates == true)
 			{
-				enemySpaceshipLogics.add(SpaceshipIndexes.createAndGetSpaceshipByCode(enemySpaceshipCode, initialXPos,//
+				enemySpaceshipLogics.add(EnemySpaceshipCodes.createAndGetSpaceshipByCode(enemySpaceshipCode, initialXPos,//
 						initialYPos, enemySpaceshipTexture));
 				return;
 			}

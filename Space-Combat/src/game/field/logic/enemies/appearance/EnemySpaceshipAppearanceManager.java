@@ -3,7 +3,7 @@ package game.field.logic.enemies.appearance;
 import java.io.IOException;
 import java.util.List;
 
-import game.field.logic.enemies.alien_waves.AlienWavesManager;
+import game.field.logic.enemies.stages.StagesManager;
 import game.objects.enemies.EnemySpaceshipSprite;
 import game.objects.enemies.EnemySpaceshipTextures;
 import game.objects.enemies.logic.EnemySpaceshipLogic;
@@ -11,7 +11,7 @@ import game.objects.enemies.logic.EnemySpaceshipLogic;
 public class EnemySpaceshipAppearanceManager {
 	
 	private EnemySpaceshipAppearance enemyStarshipAppearance;
-	private AlienWavesManager alienWavesManager;
+	private StagesManager alienWavesManager;
 //	private List<EnemyStarshipSprite> enemyStarshipSprites;
 //	private List<EnemyStarshipLogic> enemyStarshipLogics;
 //	private EnemyStarshipTextures enemyStarshipTextures;
@@ -23,7 +23,7 @@ public class EnemySpaceshipAppearanceManager {
 //		this.enemyStarshipLogics = enemyStarshipLogics;
 //		this.enemyStarshipTextures = enemyStarshipTextures;
 		tempEnemyStarshipCodeToSpawn = null;
-		alienWavesManager = new AlienWavesManager();
+		alienWavesManager = new StagesManager();
 		
 	}
 	

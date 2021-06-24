@@ -12,7 +12,6 @@ import game.objects.background.star.logic.StarLogic;
 import game.objects.enemies.logic.EnemySpaceshipLogic;
 import game.objects.health_bar.logic.HealthBarLogic;
 import game.objects.introducing.IntroducingLogic;
-import game.objects.laser.LaserLogic;
 
 public class PaintSprites {
 	private SpaceCombatPanel spaceCombatPanel;
@@ -183,15 +182,18 @@ public class PaintSprites {
     {
     	for(int laserLogicNr = 0; laserLogicNr < fieldLogic.spaceshipLogic.spaceshipShoot.laserLogics.size(); ++laserLogicNr)
     	{
+    		if(fieldLogic.spaceshipLogic.spaceshipShoot.laserLogics.get(laserLogicNr).projectileFly.hitIsTrue() == true
+    		|| fieldLogic.spaceshipLogic.spaceshipShoot.laserLogics.get(laserLogicNr).laserSprite.yPos 
+    			+ fieldLogic.spaceshipLogic.spaceshipShoot.laserLogics.get(laserLogicNr).laserSprite.getSpriteHeight() < 0 )
+    		{
+    			fieldLogic.spaceshipLogic.spaceshipShoot.laserLogics.remove(laserLogicNr);
+    			--laserLogicNr;
+    			continue;
+    		}
     		g2d.drawImage(fieldLogic.spaceshipLogic.spaceshipShoot.laserLogics.get(laserLogicNr).getLaserTexture(),//
         			(int)fieldLogic.spaceshipLogic.spaceshipShoot.laserLogics.get(laserLogicNr).laserSprite.xPos,
         			(int)fieldLogic.spaceshipLogic.spaceshipShoot.laserLogics.get(laserLogicNr).laserSprite.yPos,
         			spaceCombatPanel);
-    		if(fieldLogic.spaceshipLogic.spaceshipShoot.laserLogics.get(laserLogicNr).projectileFly.hitIsTrue() == true)
-    		{
-    			fieldLogic.spaceshipLogic.spaceshipShoot.laserLogics.remove(laserLogicNr);
-    			continue;
-    		}
     		fieldLogic.spaceshipLogic.spaceshipShoot.laserLogics.get(laserLogicNr).nextFrame(fieldLogic.enemySpaceshipLogics);
     	}
     }

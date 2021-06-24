@@ -4,7 +4,6 @@ import java.awt.image.BufferedImage;
 import java.util.List;
 
 import game.objects.Sprite;
-import game.objects.enemies.EnemySpaceshipSprite;
 import game.objects.enemies.logic.EnemySpaceshipLogic;
 
 public class ProjectileFly {

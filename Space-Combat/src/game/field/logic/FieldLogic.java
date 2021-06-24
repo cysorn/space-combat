@@ -8,7 +8,6 @@ import game.field.logic.enemies.appearance.EnemySpaceshipAppearanceManager;
 import game.objects.enemies.EnemySpaceshipSprite;
 import game.objects.enemies.EnemySpaceshipTextures;
 import game.objects.enemies.logic.EnemySpaceshipLogic;
-import game.objects.laser.LaserLogic;
 import game.objects.player.spaceship.logic.SpaceshipLogic;
 
 //	TODO delete unused logics and sprites
