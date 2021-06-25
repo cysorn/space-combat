@@ -2,9 +2,9 @@ package game.field.logic.enemies.stages;
 
 import java.util.ArrayList;
 
-public class StageB extends Stage{
+public class LevelB extends Level{
 	@SuppressWarnings("serial")
-	public StageB()
+	public LevelB()
 	{
 		super(1, 300);
 		enemySpaceshipTypes = new ArrayList<>(){{

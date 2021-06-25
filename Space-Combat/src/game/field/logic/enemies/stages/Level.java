@@ -2,7 +2,7 @@ package game.field.logic.enemies.stages;
 
 import java.util.List;
 
-public abstract class Stage {
+public abstract class Level {
 	private int delayBetweenSpawn;
 	private int delayBeforeThisStage;
 	private int spaceshipTypeNrToSpawn;
@@ -10,7 +10,7 @@ public abstract class Stage {
 	private int delayBetweenSpawnCounter;
 	private int delayBeforeThisStageCounter;
 	
-	protected Stage(int delayBetweenSpawn, int delayBeforeThisStage)
+	protected Level(int delayBetweenSpawn, int delayBeforeThisStage)
 	{
 		this.delayBetweenSpawn = delayBetweenSpawn;
 		this.delayBeforeThisStage = delayBeforeThisStage;
@@ -42,7 +42,7 @@ public abstract class Stage {
 		return null;
 	}
 	
-	public boolean waveIsGone()
+	public boolean levelIsDone()
 	{
 		if(spaceshipTypeNrToSpawn == enemySpaceshipTypes.size())
 		{

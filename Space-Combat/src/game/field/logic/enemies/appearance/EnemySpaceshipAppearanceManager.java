@@ -3,36 +3,36 @@ package game.field.logic.enemies.appearance;
 import java.io.IOException;
 import java.util.List;
 
-import game.field.logic.enemies.stages.StagesManager;
+import game.field.logic.enemies.stages.LevelManager;
 import game.objects.enemies.EnemySpaceshipSprite;
 import game.objects.enemies.EnemySpaceshipTextures;
 import game.objects.enemies.logic.EnemySpaceshipLogic;
 
 public class EnemySpaceshipAppearanceManager {
 	
-	private EnemySpaceshipAppearance enemyStarshipAppearance;
-	private StagesManager alienWavesManager;
+	private EnemySpaceshipAppearance enemySpaceshipAppearance;
+	private LevelManager levelManager;
 //	private List<EnemyStarshipSprite> enemyStarshipSprites;
 //	private List<EnemyStarshipLogic> enemyStarshipLogics;
 //	private EnemyStarshipTextures enemyStarshipTextures;
-	private Character tempEnemyStarshipCodeToSpawn;
+	private Character tempEnemySpaceshipCodeToSpawn;
 
-	public EnemySpaceshipAppearanceManager(int winWidth, int winHeight, List<EnemySpaceshipSprite> enemyStarshipSprites, List<EnemySpaceshipLogic> enemyStarshipLogics, EnemySpaceshipTextures enemyStarshipTextures) {
-		enemyStarshipAppearance = new EnemySpaceshipAppearance(winWidth, winHeight, enemyStarshipSprites, enemyStarshipLogics, enemyStarshipTextures);
+	public EnemySpaceshipAppearanceManager(int winWidth, int winHeight, List<EnemySpaceshipSprite> enemySpaceshipSprites, List<EnemySpaceshipLogic> enemySpaceshipLogics, EnemySpaceshipTextures enemySpaceshipTextures) {
+		enemySpaceshipAppearance = new EnemySpaceshipAppearance(winWidth, winHeight, enemySpaceshipSprites, enemySpaceshipLogics, enemySpaceshipTextures);
 //		this.enemyStarshipSprites = enemyStarshipSprites;
 //		this.enemyStarshipLogics = enemyStarshipLogics;
 //		this.enemyStarshipTextures = enemyStarshipTextures;
-		tempEnemyStarshipCodeToSpawn = null;
-		alienWavesManager = new StagesManager();
+		tempEnemySpaceshipCodeToSpawn = null;
+		levelManager = new LevelManager();
 		
 	}
 	
 	public void nextFrame() throws IOException
 	{
-		tempEnemyStarshipCodeToSpawn = alienWavesManager.getStarshipTypeOrContinueTimer();
-		if(tempEnemyStarshipCodeToSpawn != null)
+		tempEnemySpaceshipCodeToSpawn = levelManager.getSpaceshipCodeOrContinueTimer();
+		if(tempEnemySpaceshipCodeToSpawn != null)
 		{
-			enemyStarshipAppearance.findCordinatgesAndAddEnemyStarship(tempEnemyStarshipCodeToSpawn);
+			enemySpaceshipAppearance.findCordinatgesAndAddEnemyStarship(tempEnemySpaceshipCodeToSpawn);
 		}
 	}
 }
