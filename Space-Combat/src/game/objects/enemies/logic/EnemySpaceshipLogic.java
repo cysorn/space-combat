@@ -21,7 +21,7 @@ public abstract class EnemySpaceshipLogic implements EnemySpaceshipLogicInterfac
 		this.enemySpaceshipSprite = enemyStarshipSprite;
 		healthBarLogic = new HealthBarLogic(enemyStarshipSprite, 100, false);
 		freezeStarship = false;
-		spaceshipExplosion = new SpaceshipExplosion(enemyStarshipSprite, healthBarLogic.healthBarSprite);
+		spaceshipExplosion = new SpaceshipExplosion(enemyStarshipSprite, healthBarLogic.healthBarSprite, 1.15f);
 		ramHappened = false;
 	}
 	
@@ -36,6 +36,18 @@ public abstract class EnemySpaceshipLogic implements EnemySpaceshipLogicInterfac
 			healthBarLogic.objectStats.kill();
 			ramHappened = true;
 			starshipLogic.healthBarLogic.objectStats.decreaseHealthBy(ramDamage);
+		}
+	}
+	
+	public boolean enemySpaceshipShotDown()
+	{
+		if(spaceshipExplosion.explosionAnimation.getCurrentFrame() >= 1 || spaceshipExplosion.spaceshipIsExploded)
+		{
+			return true;
+		}
+		else
+		{
+			return false;
 		}
 	}
 }

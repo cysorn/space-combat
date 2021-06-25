@@ -40,7 +40,8 @@ public class ProjectileFly {
 	{
 		for(EnemySpaceshipLogic enemy: enemies)
 		{
-			if(laserSprite.yPos <= enemy.getEnemySpaceshipSprite().yPos + enemy.getSpriteHeight()
+			if(enemy.enemySpaceshipShotDown() == false
+			&& laserSprite.yPos <= enemy.getEnemySpaceshipSprite().yPos + enemy.getSpriteHeight()
 			&& laserSprite.yPos >= enemy.getEnemySpaceshipSprite().yPos
 			&& laserSprite.xPos >= enemy.getEnemySpaceshipSprite().xPos && laserSprite.xPos <= enemy.getEnemySpaceshipSprite().xPos + enemy.getSpriteWidth())
 			{

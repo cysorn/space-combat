@@ -20,7 +20,7 @@ public class SpaceshipExplosionTextures {
 			{
 				fileNrString = "0" + fileNrString;
 			}
-			spaceshipExplosionTextures.add(ImageIO.read(new File("src/textures/spaceship/explosion/image_part_0" + fileNrString + ".png")));
+			spaceshipExplosionTextures.add(ImageIO.read(new File("src/textures/explosion/image_part_0" + fileNrString + ".png")));
 		}
 	}
 }

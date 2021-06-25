@@ -7,7 +7,6 @@ import game.Animation;
 import game.objects.SpaceshipExplosionTextures;
 import game.objects.Sprite;
 import game.objects.health_bar.HealthBarSprite;
-import game.objects.player.spaceship.SpaceshipSprite;
 
 public class SpaceshipExplosion {
 	private SpaceshipExplosionTextures starshipExplosionTextures;
@@ -17,9 +16,9 @@ public class SpaceshipExplosion {
 	public boolean spaceshipIsExploded;
 	private HealthBarSprite healthBarSprite;
 	
-	public SpaceshipExplosion(Sprite sprite, HealthBarSprite healthBarSprite) throws IOException {
+	public SpaceshipExplosion(Sprite sprite, HealthBarSprite healthBarSprite, float animationSpeed) throws IOException {
 		starshipExplosionTextures = new SpaceshipExplosionTextures();
-		explosionAnimation = new Animation(starshipExplosionTextures.spaceshipExplosionTextures.size(), 1f);
+		explosionAnimation = new Animation(starshipExplosionTextures.spaceshipExplosionTextures.size(), animationSpeed);
 		playAnimation = false;
 		this.sprite = sprite;
 		spaceshipIsExploded = false;

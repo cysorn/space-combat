@@ -8,7 +8,7 @@ import game.objects.logic.ObjectSpawn;
 import game.objects.logic.SpaceshipExplosion;
 import game.objects.player.spaceship.SpaceshipSprite;
 
-//TODO create new classes for Starship, stars, etc. and create logic classes
+//TODO create new classes for Spaceship, stars, etc. and create logic classes
 public class SpaceshipLogic{
 
 	public SpaceshipSprite spaceshipSprite;
@@ -18,7 +18,6 @@ public class SpaceshipLogic{
 	public HealthBarLogic healthBarLogic;
 	public boolean freezeSpaceship;
 	public SpaceshipShoot spaceshipShoot;
-
 	
 	public SpaceshipLogic(int winWidth, int winHeight) throws IOException {
 		spaceshipSprite = new SpaceshipSprite(winWidth, winHeight);
@@ -26,7 +25,7 @@ public class SpaceshipLogic{
 		spaceshipMove = new SpaceshipMove(spaceshipSprite, winWidth, winHeight);
 		spawnSpaceship = new ObjectSpawn(spaceshipSprite, spaceshipSprite.xPos, spaceshipSprite.yPos);
 		healthBarLogic = new HealthBarLogic(spaceshipSprite, 100, true);
-		spaceshipExplosion = new SpaceshipExplosion(spaceshipSprite, healthBarLogic.healthBarSprite);
+		spaceshipExplosion = new SpaceshipExplosion(spaceshipSprite, healthBarLogic.healthBarSprite, 1f);
 		spaceshipShoot = new SpaceshipShoot(spaceshipSprite);
 		
 	}
