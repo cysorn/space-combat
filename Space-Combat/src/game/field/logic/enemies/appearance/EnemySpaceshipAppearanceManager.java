@@ -3,7 +3,7 @@ package game.field.logic.enemies.appearance;
 import java.io.IOException;
 import java.util.List;
 
-import game.field.logic.enemies.stages.LevelManager;
+import game.field.logic.levels.LevelManager;
 import game.objects.enemies.EnemySpaceshipSprite;
 import game.objects.enemies.EnemySpaceshipTextures;
 import game.objects.enemies.logic.EnemySpaceshipLogic;

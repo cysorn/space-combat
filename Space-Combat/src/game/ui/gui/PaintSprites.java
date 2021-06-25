@@ -6,12 +6,12 @@ import java.awt.Graphics2D;
 import java.io.IOException;
 
 import game.field.logic.FieldLogic;
+import game.introducing.IntroducingLogic;
 import game.objects.Sprite;
 import game.objects.background.BackgroundLogic;
 import game.objects.background.star.logic.StarLogic;
 import game.objects.enemies.logic.EnemySpaceshipLogic;
 import game.objects.health_bar.logic.HealthBarLogic;
-import game.objects.introducing.IntroducingLogic;
 
 public class PaintSprites {
 	private SpaceCombatPanel spaceCombatPanel;
@@ -107,13 +107,13 @@ public class PaintSprites {
         	greyHealthBarColor = new Color(0.05f, 0.05f, 0.05f, 1f);
 	    	g2d.setComposite(AlphaComposite.SrcOver.derive(healthBarSprite.currentAlpha));
 	    	g2d.drawImage(enemyHealthBarLogic.getSpriteTexture(),//
-	    			(int)healthBarSprite.xPos - 6,
+	    			(int)healthBarSprite.xPos - 1,
 	    			(int)healthBarSprite.yPos,
 	    			spaceCombatPanel);
 	    	if(enemyHealthBarLogic.healthChange.healthDecrease.paintRedBar() == true)
 	    	{
 	    		g2d.setColor(redHealthBarColor);
-	        	g2d.fillRect((int)healthBarSprite.xPos + healthBarSprite.getSpriteWidth() - 6,
+	        	g2d.fillRect((int)healthBarSprite.xPos + healthBarSprite.getSpriteWidth() - 1,
 	        			(int)healthBarSprite.yPos + 2,
 	        			-enemyHealthBarLogic.healthChange.healthDecrease.getRedBarLong(),
 	        			healthBarSprite.getSpriteHeight() - 4);
@@ -122,7 +122,7 @@ public class PaintSprites {
 	    	if(enemyHealthBarLogic.healthChange.paintGreyBar() == true)
 	    	{
 	    		g2d.setColor(greyHealthBarColor);
-	        	g2d.fillRect((int)healthBarSprite.xPos + healthBarSprite.getSpriteWidth() - 6,
+	        	g2d.fillRect((int)healthBarSprite.xPos + healthBarSprite.getSpriteWidth() - 1,
 	        			(int)healthBarSprite.yPos + 2,
 	        			-enemyHealthBarLogic.healthChange.getGreyBarLong(),
 	        			healthBarSprite.getSpriteHeight() - 4);

@@ -4,7 +4,7 @@ import game.objects.enemies.EnemySpaceshipSprite;
 
 public class EnemySpaceshipMove {
 	private EnemySpaceshipSprite enemySpaceshipSprite;
-	private float moveSpeed;
+	public float moveSpeed;
 	
 	public EnemySpaceshipMove(EnemySpaceshipSprite enemySpaceshipSprite)
 	{

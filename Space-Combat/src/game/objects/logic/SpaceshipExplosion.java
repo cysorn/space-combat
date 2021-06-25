@@ -4,10 +4,10 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 
 import game.Animation;
+import game.objects.SpaceshipExplosionTextures;
 import game.objects.Sprite;
 import game.objects.health_bar.HealthBarSprite;
 import game.objects.player.spaceship.SpaceshipSprite;
-import game.objects.player.spaceship.SpaceshipExplosionTextures;
 
 public class SpaceshipExplosion {
 	private SpaceshipExplosionTextures starshipExplosionTextures;

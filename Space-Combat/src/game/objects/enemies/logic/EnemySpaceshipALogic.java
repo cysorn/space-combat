@@ -9,7 +9,7 @@ import game.objects.player.spaceship.logic.SpaceshipLogic;
 public class EnemySpaceshipALogic extends EnemySpaceshipLogic{
 	
 	public EnemySpaceshipALogic(int initialXPos, int initialYPos, BufferedImage enemySpaceshipTexture) throws IOException {
-		super(new EnemySpaceshipSprite(initialXPos, initialYPos, 72, 80, enemySpaceshipTexture));
+		super(new EnemySpaceshipSprite(initialXPos, initialYPos, 80, 80, enemySpaceshipTexture));
 //		healthBarLogic.setHpAndBarToFull();
 	}
 	
