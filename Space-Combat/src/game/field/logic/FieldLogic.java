@@ -1,5 +1,6 @@
 package game.field.logic;
 
+import java.awt.Graphics2D;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -9,6 +10,7 @@ import game.objects.enemies.EnemySpaceshipSprite;
 import game.objects.enemies.EnemySpaceshipTextures;
 import game.objects.enemies.logic.EnemySpaceshipLogic;
 import game.objects.player.spaceship.logic.SpaceshipLogic;
+import game.ui.gui.SpaceCombatPanel;
 
 //	TODO delete unused logics and sprites
 public class FieldLogic {
@@ -24,6 +26,7 @@ public class FieldLogic {
 	{
 		this.windowWidht = windowWidth;
 		this.windowHeight = windowHeight;
+//		LoadingLogic.objectsToLoadCount += 1;
 		spaceshipLogic = new SpaceshipLogic(windowWidth, windowHeight);
 		enemySpaceshipLogics = new ArrayList<EnemySpaceshipLogic>();
 		enemySpaceshipTextures = new EnemySpaceshipTextures();
@@ -33,11 +36,12 @@ public class FieldLogic {
 				enemySpaceshipSprites, enemySpaceshipLogics, enemySpaceshipTextures);
 	}
 	
-	public void nextFrame()
+	public void nextFrame(Graphics2D g2d, SpaceCombatPanel spaceCombatPanel)
 	{
 		updateEnemySpaceshipSpritesAndDeleteSuperfluousEnemySpaceships();
 		try {
-			enemySpaceshipAppearanceManager.nextFrame();
+//			paintLoadingBar(g2d, spaceCombatPanel);
+			enemySpaceshipAppearanceManager.nextFrame(g2d, spaceCombatPanel);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -57,5 +61,10 @@ public class FieldLogic {
 			}
 			enemySpaceshipSprites.add(enemySpaceshipLogics.get(enemySpaceshipNr).getEnemySpaceshipSprite());
 		}
+	}
+	
+	public boolean thereIsNoNextLevel()
+	{
+		return enemySpaceshipAppearanceManager.thereIsNoNextLevel();
 	}
 }

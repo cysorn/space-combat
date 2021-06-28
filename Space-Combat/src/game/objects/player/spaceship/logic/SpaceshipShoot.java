@@ -18,7 +18,7 @@ public class SpaceshipShoot {
 	
 	public SpaceshipShoot(SpaceshipSprite starshipSprite)
 	{
-		this.shootingSpeed = 20f;
+		this.shootingSpeed = 10f;
 		this.shootingSpeedCounter = shootingSpeed;
 		laserLogics = new ArrayList<LaserLogic>();
 		this.starshipSprite = starshipSprite;

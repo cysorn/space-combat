@@ -2,6 +2,7 @@ package game.objects.enemies.logic;
 
 import java.io.IOException;
 
+import game.loading.logic.LoadingLogic;
 import game.objects.enemies.EnemySpaceshipSprite;
 import game.objects.health_bar.logic.HealthBarLogic;
 import game.objects.logic.SpaceshipExplosion;

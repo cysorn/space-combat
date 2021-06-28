@@ -3,7 +3,6 @@ package game.introducing;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 
-import game.introducing.black_screen.BlackScreenTexture;
 import game.introducing.black_screen.logic.BlackScreenLogic;
 
 public class IntroducingLogic{

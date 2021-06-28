@@ -7,6 +7,7 @@ import java.io.IOException;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
+import game.loading.logic.LoadingLogic;
 import game.ui.control.SpaceCombatKeyAdapter;
 
 @SuppressWarnings("serial")
@@ -30,22 +31,24 @@ public class SpaceCombatPanel extends JPanel {
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
         Graphics2D g2d = (Graphics2D) g.create();
+        paintSprites.waitAndSetCounterToZeroIfLoadingWasFinished();
         SmartFramesDelay.smartDelay();
-        paintSprites.paintStars(g2d);
+        paintSprites.paintStars(g2d, LoadingLogic.loadingIsFinished);
+    	paintSprites.paintLaser(g2d);
+    	paintSprites.paintEnemyStarships(g2d, LoadingLogic.loadingIsFinished);
+    	paintSprites.paintPlayersStarship(g2d, paintSprites.introducingSprites.introducingContinues == false);
 	    if(paintSprites.introducingSprites.introducingContinues == false)
 	    {
-	    	paintSprites.paintLaser(g2d);
-	    	paintSprites.paintEnemyStarships(g2d);
-	    	paintSprites.paintPlayersStarship(g2d);
-	    	paintSprites.paintEnemiesHealthBars(g2d);
-	    	paintSprites.paintPlayersHealthBar(g2d);
-	    	paintSprites.paintEnemyStarshipExplosions(g2d);
-		    paintSprites.paintStarshipExplosion(g2d);
+	    	paintSprites.paintEnemyHealthBars(g2d);
+	    	paintSprites.paintPlayerHealthBars(g2d);
+	    	paintSprites.paintEnemySpaceshipExplosions(g2d);
+		    paintSprites.paintSpaceshipExplosion(g2d);
     	}
 	    else
 	    {
-	    	paintSprites.introducing(g2d);
+	    	paintSprites.introducing(g2d, LoadingLogic.loadingIsFinished);
 	    }
+	    paintSprites.paintLoadingBar(g2d);
         g2d.dispose();
     }
 }

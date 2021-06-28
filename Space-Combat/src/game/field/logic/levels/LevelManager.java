@@ -3,32 +3,41 @@ package game.field.logic.levels;
 import java.util.ArrayList;
 import java.util.List;
 
+import game.objects.enemies.logic.EnemySpaceshipLogic;
+
 public class LevelManager {
 	public List<Level> level;
 	private int currentLevelNr;
+	private List<EnemySpaceshipLogic> enemySpaceshipLogics;
 	
-	public LevelManager()
+	public LevelManager(List<EnemySpaceshipLogic> enemySpaceshipLogics)
 	{
 		level = new ArrayList<>();
 		level.add(new LevelA());
 		level.add(new LevelB());
-		currentLevelNr = 0;
+		currentLevelNr = -1;
+		this.enemySpaceshipLogics = enemySpaceshipLogics;
 	}
 	
-	public Character getSpaceshipCodeOrContinueTimer()
+	public void updateLevelNr()
 	{
-		if(currentLevelNr > level.size() - 1)
+		++currentLevelNr;
+	}
+	
+	public Level getCurrentLevelInformation()
+	{
+		if(level.size() > currentLevelNr)
+		{
+			return level.get(currentLevelNr);
+		}
+		else
 		{
 			return null;
 		}
-		if(level.get(currentLevelNr).levelIsDone() == true)
-		{
-			++currentLevelNr;
-		}
-		if(currentLevelNr < level.size())
-		{
-			return level.get(currentLevelNr).getStarshipTypeOrContinueTimer();
-		}
-		return null;
+	}
+	
+	public boolean levelIsDone()
+	{
+		return enemySpaceshipLogics.size() == 0;
 	}
 }

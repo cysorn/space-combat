@@ -7,6 +7,7 @@ import java.io.IOException;
 
 import game.field.logic.FieldLogic;
 import game.introducing.IntroducingLogic;
+import game.loading.logic.LoadingLogic;
 import game.objects.Sprite;
 import game.objects.background.BackgroundLogic;
 import game.objects.background.star.logic.StarLogic;
@@ -14,19 +15,21 @@ import game.objects.enemies.logic.EnemySpaceshipLogic;
 import game.objects.health_bar.logic.HealthBarLogic;
 
 public class PaintSprites {
+	private LoadingLogic loadingLogic;
 	private SpaceCombatPanel spaceCombatPanel;
     public BackgroundLogic backgroundSprites;
     public FieldLogic fieldLogic;
     public IntroducingLogic introducingSprites;
     
     public PaintSprites(SpaceCombatPanel spaceCombatPanel, int windowWidth, int windowHeight) throws IOException {
+    	loadingLogic = new LoadingLogic(windowWidth, windowHeight);
     	this.spaceCombatPanel = spaceCombatPanel;
     	backgroundSprites = new BackgroundLogic(windowWidth, windowHeight);
     	fieldLogic = new FieldLogic(windowWidth, windowHeight);
         introducingSprites = new IntroducingLogic();
 	}
     
-    public void introducing(Graphics2D g2d)
+    public void introducing(Graphics2D g2d, boolean continueIntroducing)
     {
     	if(introducingSprites.introducingContinues == true)
         {
@@ -35,12 +38,15 @@ public class PaintSprites {
 	           		0,
 	           		0,
 	           		spaceCombatPanel);
-	    	introducingSprites.nextFrame();
+	    	if(continueIntroducing == true)
+	    	{
+		    	introducingSprites.nextFrame();
+	    	}
 	    	g2d.setComposite(AlphaComposite.SrcOver.derive(1f));
         }
     }
     
-    public void paintStars(Graphics2D g2d)
+    public void paintStars(Graphics2D g2d, boolean continueIntroducing)
     {
     	for(StarLogic starLogic: backgroundSprites.starsLogics)
     	{
@@ -49,23 +55,29 @@ public class PaintSprites {
             		(int)starLogic.starSprite.xPos,
             		(int)starLogic.starSprite.yPos,
             		spaceCombatPanel);
-            starLogic.nextFrame();
+            if(continueIntroducing == true)
+            {
+            	starLogic.nextFrame();
+            }
     	}
         g2d.setComposite(AlphaComposite.SrcOver.derive(1f));
     }
     
-    public void paintPlayersStarship(Graphics2D g2d)
+    public void paintPlayersStarship(Graphics2D g2d, boolean continueIntroducing)
     {
     	g2d.setComposite(AlphaComposite.SrcOver.derive(fieldLogic.spaceshipLogic.spaceshipSprite.currentAlpha));
     	g2d.drawImage(fieldLogic.spaceshipLogic.getSpriteTexture(),//
     			(int)fieldLogic.spaceshipLogic.spaceshipSprite.xPos,
     			(int)fieldLogic.spaceshipLogic.spaceshipSprite.yPos,
     			spaceCombatPanel);
-    	fieldLogic.spaceshipLogic.nextFrame();
+    	if(continueIntroducing == true)
+    	{
+    		fieldLogic.spaceshipLogic.nextFrame();
+    	}
     	g2d.setComposite(AlphaComposite.SrcOver.derive(1f));
     }
     
-    public void paintStarshipExplosion(Graphics2D g2d)
+    public void paintSpaceshipExplosion(Graphics2D g2d)
     {
 	    if(fieldLogic.spaceshipLogic.spaceshipExplosion.animationPlays() == true)
 	    {
@@ -77,7 +89,7 @@ public class PaintSprites {
 	    }
     }
     
-    public void paintEnemyStarshipExplosions(Graphics2D g2d)
+    public void paintEnemySpaceshipExplosions(Graphics2D g2d)
     {
     	for(EnemySpaceshipLogic enemyStarshipLogic: fieldLogic.enemySpaceshipLogics)
     	{
@@ -92,7 +104,7 @@ public class PaintSprites {
     	}
     }
     
-    public void paintEnemiesHealthBars(Graphics2D g2d)
+    public void paintEnemyHealthBars(Graphics2D g2d)
     {
     	Sprite healthBarSprite;
     	HealthBarLogic enemyHealthBarLogic;
@@ -132,7 +144,7 @@ public class PaintSprites {
     	g2d.setComposite(AlphaComposite.SrcOver.derive(1f));
     }
     
-    public void paintPlayersHealthBar(Graphics2D g2d)
+    public void paintPlayerHealthBars(Graphics2D g2d)
     {
     	Sprite healthBarSprite = fieldLogic.spaceshipLogic.healthBarLogic.healthBarSprite;
     	Color redHealthBarColor = new Color(1f, 0f, 0f, healthBarSprite.currentAlpha);
@@ -163,7 +175,7 @@ public class PaintSprites {
     	g2d.setComposite(AlphaComposite.SrcOver.derive(1f));
     }
     
-    public void paintEnemyStarships(Graphics2D g2d)
+    public void paintEnemyStarships(Graphics2D g2d, boolean continueIntroducing)
     {
     	for(EnemySpaceshipLogic enemySpaceshipLogic: fieldLogic.enemySpaceshipLogics)
     	{
@@ -172,10 +184,14 @@ public class PaintSprites {
         			(int)enemySpaceshipLogic.getEnemySpaceshipSprite().xPos,
         			(int)enemySpaceshipLogic.getEnemySpaceshipSprite().yPos,
         			spaceCombatPanel);
-        	enemySpaceshipLogic.nextFrame(fieldLogic.spaceshipLogic);
+        	if(continueIntroducing == true)
+        	{
+        		enemySpaceshipLogic.nextFrame(fieldLogic.spaceshipLogic);
+        	}
     	}
     	g2d.setComposite(AlphaComposite.SrcOver.derive(1f));
-    	fieldLogic.nextFrame();
+
+    		fieldLogic.nextFrame(g2d, spaceCombatPanel);
     }
     
     public void paintLaser(Graphics2D g2d)
@@ -196,5 +212,38 @@ public class PaintSprites {
         			spaceCombatPanel);
     		fieldLogic.spaceshipLogic.spaceshipShoot.laserLogics.get(laserLogicNr).nextFrame(fieldLogic.enemySpaceshipLogics);
     	}
+    }
+    
+    public void paintLoadingBar(Graphics2D g2d)
+    {
+    	if(LoadingLogic.loadedObjectsCounter > 0)
+    	{
+        	g2d.setComposite(AlphaComposite.SrcOver.derive(loadingLogic.loadingSprite.currentAlpha));
+        	g2d.drawImage(loadingLogic.getLoadingTexture(),//
+//        	g2d.drawImage(LoadingLogic.loadingSprite.loadingTextures.loadingTextures.get(counter % 46),
+        			(int)loadingLogic.loadingSprite.xPos,
+        			(int)loadingLogic.loadingSprite.yPos,
+        			spaceCombatPanel);
+        	g2d.setComposite(AlphaComposite.SrcOver.derive(1f));
+    	}
+    }
+    
+    void waitAndSetCounterToZeroIfLoadingWasFinished()
+    {
+        if(LoadingLogic.loadedObjectsCounter == LoadingLogic.objectsToLoadCount)
+        {
+        	LoadingLogic.loadedObjectsCounter = 0;
+        	if(fieldLogic.thereIsNoNextLevel() == false)
+			{
+	    		try 
+	    		{
+	    			Thread.sleep(100);
+	    		}
+	    		catch(InterruptedException ex)
+	    		{
+	    		    Thread.currentThread().interrupt();
+	    		}
+        	}
+        }
     }
 }

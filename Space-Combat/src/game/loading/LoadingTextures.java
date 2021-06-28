@@ -9,15 +9,20 @@ import java.util.List;
 import javax.imageio.ImageIO;
 
 public class LoadingTextures {
-	List<BufferedImage> loadingTextures;
+	public List<BufferedImage> loadingTextures;
 	
-	public LoadingTextures() throws IOException
+	public LoadingTextures()
 	{
 		loadingTextures = new ArrayList<>();
 		
-		for(int fileNr = 1; fileNr < 48; ++fileNr)
+		for(int fileNr = 1; fileNr < 47; ++fileNr)
 		{
-			loadingTextures.add(ImageIO.read(new File("src/textures/loading/" + Integer.toString(fileNr) + ".png")));
+			try {
+				loadingTextures.add(ImageIO.read(new File("src/textures/loading/" + Integer.toString(fileNr) + ".png")));
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 	}
 }
