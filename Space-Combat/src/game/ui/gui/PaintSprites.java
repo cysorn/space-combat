@@ -52,7 +52,7 @@ public class PaintSprites {
         }
     }
     
-    public void paintStars(Graphics2D g2d, boolean continueIntroducing)
+    public void paintStars(Graphics2D g2d, boolean startNextFrame)
     {
     	for(StarLogic starLogic: backgroundSprites.starsLogics)
     	{
@@ -61,7 +61,7 @@ public class PaintSprites {
             		(int)starLogic.starSprite.xPos,
             		(int)starLogic.starSprite.yPos,
             		spaceCombatPanel);
-            if(continueIntroducing == true)
+            if(startNextFrame == true)
             {
             	starLogic.nextFrame();
             }
@@ -69,14 +69,14 @@ public class PaintSprites {
         g2d.setComposite(AlphaComposite.SrcOver.derive(1f));
     }
     
-    public void paintPlayersStarship(Graphics2D g2d, boolean continueIntroducing)
+    public void paintPlayersStarship(Graphics2D g2d, boolean startNextFrame)
     {
     	g2d.setComposite(AlphaComposite.SrcOver.derive(fieldLogic.spaceshipLogic.spaceshipSprite.currentAlpha));
     	g2d.drawImage(fieldLogic.spaceshipLogic.getSpriteTexture(),//
     			(int)fieldLogic.spaceshipLogic.spaceshipSprite.xPos,
     			(int)fieldLogic.spaceshipLogic.spaceshipSprite.yPos,
     			spaceCombatPanel);
-    	if(continueIntroducing == true)
+    	if(startNextFrame == true)
     	{
     		fieldLogic.spaceshipLogic.nextFrame();
     	}
@@ -181,7 +181,7 @@ public class PaintSprites {
     	g2d.setComposite(AlphaComposite.SrcOver.derive(1f));
     }
     
-    public void paintEnemyStarships(Graphics2D g2d, boolean continueIntroducing)
+    public void paintEnemyStarships(Graphics2D g2d, boolean startNextFrame)
     {
     	for(EnemySpaceshipLogic enemySpaceshipLogic: fieldLogic.enemySpaceshipLogics)
     	{
@@ -190,7 +190,7 @@ public class PaintSprites {
         			(int)enemySpaceshipLogic.getEnemySpaceshipSprite().xPos,
         			(int)enemySpaceshipLogic.getEnemySpaceshipSprite().yPos,
         			spaceCombatPanel);
-        	if(continueIntroducing == true)
+        	if(startNextFrame == true)
         	{
         		enemySpaceshipLogic.nextFrame(fieldLogic.spaceshipLogic);
         	}
@@ -199,7 +199,7 @@ public class PaintSprites {
     	fieldLogic.nextFrame(g2d, spaceCombatPanel);
     }
     
-    public void paintLaser(Graphics2D g2d)
+    public void paintLaser(Graphics2D g2d, boolean startNextFrame)
     {
     	for(int laserLogicNr = 0; laserLogicNr < fieldLogic.spaceshipLogic.spaceshipShoot.laserLogics.size(); ++laserLogicNr)
     	{
@@ -215,11 +215,14 @@ public class PaintSprites {
         			(int)fieldLogic.spaceshipLogic.spaceshipShoot.laserLogics.get(laserLogicNr).laserSprite.xPos,
         			(int)fieldLogic.spaceshipLogic.spaceshipShoot.laserLogics.get(laserLogicNr).laserSprite.yPos,
         			spaceCombatPanel);
-    		fieldLogic.spaceshipLogic.spaceshipShoot.laserLogics.get(laserLogicNr).nextFrame(fieldLogic.enemySpaceshipLogics);
+    		if(startNextFrame == true)
+    		{
+    			fieldLogic.spaceshipLogic.spaceshipShoot.laserLogics.get(laserLogicNr).nextFrame(fieldLogic.enemySpaceshipLogics);
+    		}
     	}
     }
     
-    public void paintEnemyLaser(Graphics2D g2d)
+    public void paintEnemyLaser(Graphics2D g2d, boolean startNextFrame)
     {
 	    for(int laserLogicNr = 0; laserLogicNr < fieldLogic.enemyLaserLogics.size(); ++laserLogicNr)
 	   	{
@@ -236,7 +239,10 @@ public class PaintSprites {
 	       			(int)fieldLogic.enemyLaserLogics.get(laserLogicNr).enemyLaserSprite.xPos,
 	       			(int)fieldLogic.enemyLaserLogics.get(laserLogicNr).enemyLaserSprite.yPos,
 	       			spaceCombatPanel);
-	    	fieldLogic.enemyLaserLogics.get(laserLogicNr).nextFrame();
+	    	if(startNextFrame == true)
+	    	{
+	    		fieldLogic.enemyLaserLogics.get(laserLogicNr).nextFrame();
+	    	}
 	    }
     }
     

@@ -7,7 +7,7 @@ public class LevelB extends Level{
 	public LevelB()
 	{
 		levelObjectInformation = new ArrayList<>(){{
-//			add(new LevelObjectInformation('A', 100));
+			add(new LevelObjectInformation('A', 100));
 //			add(new LevelObjectInformation('A', 100));
 //			add(new LevelObjectInformation('A', 100));
 //			add(new LevelObjectInformation('A', 100));
