@@ -8,6 +8,7 @@ import java.util.Random;
 import game.field.logic.levels.LevelObjectInformation;
 import game.objects.enemies.EnemySpaceshipSprite;
 import game.objects.enemies.EnemySpaceshipTextures;
+import game.objects.enemies.enemy_laser.EnemyLaserLogic;
 import game.objects.enemies.logic.EnemySpaceshipLogic;
 import game.objects.enemies.logic.EnemySpaceshipCodes;
 
@@ -21,17 +22,19 @@ public class EnemySpaceshipAppearance {
 	private List<EnemySpaceshipLogic> enemySpaceshipLogics;
 	private EnemySpaceshipTextures enemySpaceshipTextures;
 	private int initialYPosOfNextEnemySpaceship;
+	private List<EnemyLaserLogic> enemyLaserLogics;
 	
 	public EnemySpaceshipAppearance(int winWidth, int winHeight, List<EnemySpaceshipSprite> enemySpaceshipSprites,//
-			List<EnemySpaceshipLogic> enemyStarshipLogics, EnemySpaceshipTextures enemySpaceshipTextures) {
+			List<EnemySpaceshipLogic> enemySpaceshipLogics, EnemySpaceshipTextures enemySpaceshipTextures, List<EnemyLaserLogic> enemyLaserLogics) {
 		xRnd = new Random(); 
 		this.winWidth = winWidth;
 		this.winHeight = winHeight;
 		initialYPos = -200;
 		this.enemySpaceshipSprites = enemySpaceshipSprites;
-		this.enemySpaceshipLogics = enemyStarshipLogics;
+		this.enemySpaceshipLogics = enemySpaceshipLogics;
 		this.enemySpaceshipTextures = enemySpaceshipTextures;
 		resetInitialYPosOfNextEnemySpaceship();
+		this.enemyLaserLogics = enemyLaserLogics;
 	}
 	
 	private void generateNewInitialXPos(BufferedImage enemySpaceshipTexture)
@@ -75,7 +78,7 @@ public class EnemySpaceshipAppearance {
 			if(thereAreNoCollisionsOnThisCordinates == true)
 			{
 				enemySpaceshipLogics.add(EnemySpaceshipCodes.createAndGetSpaceshipByCode(levelObjectInformation.enemySpaceshipCode, initialXPos,//
-						initialYPosOfNextEnemySpaceship, enemySpaceshipTexture));
+						initialYPosOfNextEnemySpaceship, enemySpaceshipTexture, enemyLaserLogics));
 				return;
 			}
 		}

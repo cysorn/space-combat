@@ -1,4 +1,4 @@
-package game.objects.player.spaceship;
+package game.objects.spaceship;
 
 import java.io.IOException;
 

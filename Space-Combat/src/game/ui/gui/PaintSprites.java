@@ -4,6 +4,7 @@ import java.awt.AlphaComposite;
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.io.IOException;
+import java.util.List;
 
 import game.field.logic.FieldLogic;
 import game.introducing.IntroducingLogic;
@@ -11,6 +12,7 @@ import game.loading.logic.LoadingLogic;
 import game.objects.Sprite;
 import game.objects.background.BackgroundLogic;
 import game.objects.background.star.logic.StarLogic;
+import game.objects.enemies.enemy_laser.EnemyLaserLogic;
 import game.objects.enemies.logic.EnemySpaceshipLogic;
 import game.objects.health_bar.logic.HealthBarLogic;
 
@@ -20,6 +22,8 @@ public class PaintSprites {
     public BackgroundLogic backgroundSprites;
     public FieldLogic fieldLogic;
     public IntroducingLogic introducingSprites;
+    private int windowWidth;
+    private int windowHeight;
     
     public PaintSprites(SpaceCombatPanel spaceCombatPanel, int windowWidth, int windowHeight) throws IOException {
     	loadingLogic = new LoadingLogic(windowWidth, windowHeight);
@@ -27,6 +31,8 @@ public class PaintSprites {
     	backgroundSprites = new BackgroundLogic(windowWidth, windowHeight);
     	fieldLogic = new FieldLogic(windowWidth, windowHeight);
         introducingSprites = new IntroducingLogic();
+        this.windowWidth = windowWidth;
+        this.windowHeight = windowHeight;
 	}
     
     public void introducing(Graphics2D g2d, boolean continueIntroducing)
@@ -190,8 +196,7 @@ public class PaintSprites {
         	}
     	}
     	g2d.setComposite(AlphaComposite.SrcOver.derive(1f));
-
-    		fieldLogic.nextFrame(g2d, spaceCombatPanel);
+    	fieldLogic.nextFrame(g2d, spaceCombatPanel);
     }
     
     public void paintLaser(Graphics2D g2d)
@@ -212,6 +217,27 @@ public class PaintSprites {
         			spaceCombatPanel);
     		fieldLogic.spaceshipLogic.spaceshipShoot.laserLogics.get(laserLogicNr).nextFrame(fieldLogic.enemySpaceshipLogics);
     	}
+    }
+    
+    public void paintEnemyLaser(Graphics2D g2d)
+    {
+	    for(int laserLogicNr = 0; laserLogicNr < fieldLogic.enemyLaserLogics.size(); ++laserLogicNr)
+	   	{
+	    	if(fieldLogic.enemyLaserLogics.get(laserLogicNr).enemyProjectileFly.hitIsTrue() == true
+	   		|| fieldLogic.enemyLaserLogics.get(laserLogicNr).enemyLaserSprite.yPos > windowHeight
+	   		|| fieldLogic.enemyLaserLogics.get(laserLogicNr).enemyLaserSprite.xPos > windowWidth
+	   		|| fieldLogic.enemyLaserLogics.get(laserLogicNr).enemyLaserSprite.xPos + fieldLogic.enemyLaserLogics.get(laserLogicNr).enemyLaserSprite.getSpriteWidth() < 0)
+	   		{
+	    		fieldLogic.enemyLaserLogics.remove(laserLogicNr);
+	   			--laserLogicNr;
+	    		continue;
+	    	}
+	    	g2d.drawImage(fieldLogic.enemyLaserLogics.get(laserLogicNr).getLaserTexture(),//
+	       			(int)fieldLogic.enemyLaserLogics.get(laserLogicNr).enemyLaserSprite.xPos,
+	       			(int)fieldLogic.enemyLaserLogics.get(laserLogicNr).enemyLaserSprite.yPos,
+	       			spaceCombatPanel);
+	    	fieldLogic.enemyLaserLogics.get(laserLogicNr).nextFrame();
+	    }
     }
     
     public void paintLoadingBar(Graphics2D g2d)

@@ -1,12 +1,12 @@
-package game.objects.player.spaceship.logic;
+package game.objects.spaceship.logic;
 
 import java.awt.image.BufferedImage;
 
 import game.Animation;
 import game.Direction;
 import game.SpaceshipAction;
-import game.objects.player.spaceship.SpaceshipTextures;
-import game.objects.player.spaceship.SpaceshipSprite;
+import game.objects.spaceship.SpaceshipSprite;
+import game.objects.spaceship.SpaceshipTextures;
 
 public class SpaceshipMove {
 	

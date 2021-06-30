@@ -34,6 +34,7 @@ public class SpaceCombatPanel extends JPanel {
         paintSprites.waitAndSetCounterToZeroIfLoadingWasFinished();
         SmartFramesDelay.smartDelay();
         paintSprites.paintStars(g2d, LoadingLogic.loadingIsFinished);
+        paintSprites.paintEnemyLaser(g2d);
     	paintSprites.paintLaser(g2d);
     	paintSprites.paintEnemyStarships(g2d, LoadingLogic.loadingIsFinished);
     	paintSprites.paintPlayersStarship(g2d, paintSprites.introducingSprites.introducingContinues == false);

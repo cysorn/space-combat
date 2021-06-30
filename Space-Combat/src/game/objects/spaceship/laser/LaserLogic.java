@@ -1,4 +1,4 @@
-package game.objects.laser;
+package game.objects.spaceship.laser;
 
 import java.awt.image.BufferedImage;
 import java.io.IOException;
@@ -19,7 +19,7 @@ public class LaserLogic {
 	
 	public void nextFrame(List<EnemySpaceshipLogic> enemies)
 	{
-		projectileFly.nextFrame(enemies, null);
+		projectileFly.nextFrame(enemies);
 	}
 	
 	public BufferedImage getLaserTexture()

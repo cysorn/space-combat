@@ -1,10 +1,10 @@
-package game.objects.player.spaceship.logic;
+package game.objects.spaceship.logic;
 
 import java.awt.image.BufferedImage;
 
 import game.Direction;
 import game.SpaceshipAction;
-import game.objects.player.spaceship.SpaceshipTextures;
+import game.objects.spaceship.SpaceshipTextures;
 
 public class SpaceshipFlyToASideAnimation {
 	private SpaceshipTextures spaceshipTextures;

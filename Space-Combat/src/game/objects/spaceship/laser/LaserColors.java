@@ -1,4 +1,4 @@
-package game.objects.laser;
+package game.objects.spaceship.laser;
 
 public enum LaserColors {
 	GREEN,

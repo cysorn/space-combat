@@ -5,15 +5,15 @@ import java.awt.event.KeyEvent;
 
 import game.Direction;
 import game.SpaceshipAction;
-import game.objects.player.spaceship.logic.SpaceshipLogic;
+import game.objects.spaceship.logic.SpaceshipLogic;
 
 public class SpaceCombatKeyAdapter extends KeyAdapter {
 	
-	private SpaceshipLogic starshipLogic;
+	private SpaceshipLogic spaceshipLogic;
 	
-	public SpaceCombatKeyAdapter(SpaceshipLogic starshipLogic)
+	public SpaceCombatKeyAdapter(SpaceshipLogic spaceshipLogic)
 	{
-		this.starshipLogic = starshipLogic;
+		this.spaceshipLogic = spaceshipLogic;
 	}
 	@Override
     public void keyReleased(KeyEvent e) {
@@ -29,19 +29,19 @@ public class SpaceCombatKeyAdapter extends KeyAdapter {
     {
     	if(e.getKeyCode() == Key.D.getKeyCode())
         {
-    		starshipLogic.spaceshipMove.moveTo(Direction.RIGHT, action);
+    		spaceshipLogic.spaceshipMove.moveTo(Direction.RIGHT, action);
         }
     	if(e.getKeyCode() == Key.S.getKeyCode())
         {
-    		starshipLogic.spaceshipMove.moveTo(Direction.DOWN, action);
+    		spaceshipLogic.spaceshipMove.moveTo(Direction.DOWN, action);
         }
     	if(e.getKeyCode() == Key.A.getKeyCode())
         {
-    		starshipLogic.spaceshipMove.moveTo(Direction.LEFT, action);
+    		spaceshipLogic.spaceshipMove.moveTo(Direction.LEFT, action);
         }
     	if(e.getKeyCode() == Key.W.getKeyCode())
         {
-    		starshipLogic.spaceshipMove.moveTo(Direction.UP, action);
+    		spaceshipLogic.spaceshipMove.moveTo(Direction.UP, action);
         }
 //    	if(e.getKeyCode() == Key.E.getKeyCode()
 //    	&& starshipLogic.freezeStarship == false)
@@ -54,9 +54,9 @@ public class SpaceCombatKeyAdapter extends KeyAdapter {
 //    	{
 //    		starshipLogic.healthBarLogic.objectStats.decreaseHealthBy(20);
 //    	}
-    	if(e.getKeyCode() == Key.SPACE.getKeyCode())
+    	if(e.getKeyCode() == Key.SPACE.getKeyCode() && spaceshipLogic.spaceshipExplosion.animationPlays() == false)
     	{
-    		starshipLogic.spaceshipShoot.shoot = action;
+    		spaceshipLogic.spaceshipShoot.shoot = action;
     	}
     }
 }

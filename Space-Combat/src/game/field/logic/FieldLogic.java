@@ -8,8 +8,9 @@ import java.util.List;
 import game.field.logic.enemies.appearance.EnemySpaceshipAppearanceManager;
 import game.objects.enemies.EnemySpaceshipSprite;
 import game.objects.enemies.EnemySpaceshipTextures;
+import game.objects.enemies.enemy_laser.EnemyLaserLogic;
 import game.objects.enemies.logic.EnemySpaceshipLogic;
-import game.objects.player.spaceship.logic.SpaceshipLogic;
+import game.objects.spaceship.logic.SpaceshipLogic;
 import game.ui.gui.SpaceCombatPanel;
 
 //	TODO delete unused logics and sprites
@@ -21,6 +22,7 @@ public class FieldLogic {
 	public EnemySpaceshipTextures enemySpaceshipTextures;
 	private EnemySpaceshipAppearanceManager enemySpaceshipAppearanceManager;
 	public List<EnemySpaceshipSprite> enemySpaceshipSprites;
+	public List<EnemyLaserLogic> enemyLaserLogics;
 	
 	public FieldLogic(int windowWidth, int windowHeight) throws IOException
 	{
@@ -32,8 +34,9 @@ public class FieldLogic {
 		enemySpaceshipTextures = new EnemySpaceshipTextures();
 		enemySpaceshipSprites = new ArrayList<>();
 		updateEnemySpaceshipSpritesAndDeleteSuperfluousEnemySpaceships();
+		enemyLaserLogics = new ArrayList<EnemyLaserLogic>();
 		enemySpaceshipAppearanceManager = new EnemySpaceshipAppearanceManager(windowWidth, windowHeight,//
-				enemySpaceshipSprites, enemySpaceshipLogics, enemySpaceshipTextures);
+				enemySpaceshipSprites, enemySpaceshipLogics, enemySpaceshipTextures, enemyLaserLogics);
 	}
 	
 	public void nextFrame(Graphics2D g2d, SpaceCombatPanel spaceCombatPanel)

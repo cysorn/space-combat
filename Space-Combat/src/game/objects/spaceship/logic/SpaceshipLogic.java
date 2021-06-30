@@ -1,4 +1,4 @@
-package game.objects.player.spaceship.logic;
+package game.objects.spaceship.logic;
 
 import java.awt.image.BufferedImage;
 import java.io.IOException;
@@ -6,13 +6,13 @@ import java.io.IOException;
 import game.objects.health_bar.logic.HealthBarLogic;
 import game.objects.logic.ObjectSpawn;
 import game.objects.logic.SpaceshipExplosion;
-import game.objects.player.spaceship.SpaceshipSprite;
+import game.objects.spaceship.SpaceshipSprite;
 
 //TODO create new classes for Spaceship, stars, etc. and create logic classes
 public class SpaceshipLogic{
 
 	public SpaceshipSprite spaceshipSprite;
-	private ObjectSpawn spawnSpaceship;
+	public ObjectSpawn spawnSpaceship;
 	public SpaceshipMove spaceshipMove;
 	public SpaceshipExplosion spaceshipExplosion;
 	public HealthBarLogic healthBarLogic;
@@ -26,7 +26,7 @@ public class SpaceshipLogic{
 		spawnSpaceship = new ObjectSpawn(spaceshipSprite, spaceshipSprite.xPos, spaceshipSprite.yPos);
 		healthBarLogic = new HealthBarLogic(spaceshipSprite, 100, true);
 		spaceshipExplosion = new SpaceshipExplosion(spaceshipSprite, healthBarLogic.healthBarSprite, 1f);
-		spaceshipShoot = new SpaceshipShoot(spaceshipSprite);
+		spaceshipShoot = new SpaceshipShoot(this);
 		
 	}
 	
@@ -74,5 +74,17 @@ public class SpaceshipLogic{
 	public BufferedImage getSpriteTexture() {
 		
 		return spaceshipMove.getSpriteTexture();
+	}
+	
+	public boolean spaceshipShotDown()
+	{
+		if(spaceshipExplosion.explosionAnimation.getCurrentFrame() >= 1 || spaceshipExplosion.spaceshipIsExploded)
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
 	}
 }

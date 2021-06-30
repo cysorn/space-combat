@@ -2,17 +2,16 @@ package game.objects.enemies.logic;
 
 import java.io.IOException;
 
-import game.loading.logic.LoadingLogic;
 import game.objects.enemies.EnemySpaceshipSprite;
 import game.objects.health_bar.logic.HealthBarLogic;
 import game.objects.logic.SpaceshipExplosion;
-import game.objects.player.spaceship.logic.SpaceshipLogic;
+import game.objects.spaceship.logic.SpaceshipLogic;
 
 public abstract class EnemySpaceshipLogic implements EnemySpaceshipLogicInterface{
 	protected EnemySpaceshipSprite enemySpaceshipSprite;
 	protected EnemySpaceshipMove enemySpaceshipMove;
 	public HealthBarLogic healthBarLogic;
-	public boolean freezeStarship;
+	public boolean freezeSpaceship;
 	public SpaceshipExplosion spaceshipExplosion;
 	private boolean ramHappened;
 	
@@ -21,22 +20,24 @@ public abstract class EnemySpaceshipLogic implements EnemySpaceshipLogicInterfac
 		enemySpaceshipMove = new EnemySpaceshipMove(enemyStarshipSprite);
 		this.enemySpaceshipSprite = enemyStarshipSprite;
 		healthBarLogic = new HealthBarLogic(enemyStarshipSprite, 100, false);
-		freezeStarship = false;
+		freezeSpaceship = false;
 		spaceshipExplosion = new SpaceshipExplosion(enemyStarshipSprite, healthBarLogic.healthBarSprite, 1.15f);
 		ramHappened = false;
 	}
 	
-	protected void ram(SpaceshipLogic starshipLogic, int ramDamage)
+	protected void ram(SpaceshipLogic spaceshipLogic, int ramDamage)
 	{
 		if(ramHappened == false 
-		&& starshipLogic.spaceshipSprite.yPos + starshipLogic.spaceshipSprite.getSpriteHeight() / 2 <= enemySpaceshipSprite.yPos + enemySpaceshipSprite.getSpriteHeight()
-		&& starshipLogic.spaceshipSprite.yPos >= enemySpaceshipSprite.yPos
-		&& starshipLogic.spaceshipSprite.xPos + starshipLogic.spaceshipSprite.getSpriteWidth() / 2 >= enemySpaceshipSprite.xPos
-		&& starshipLogic.spaceshipSprite.xPos <= enemySpaceshipSprite.xPos + enemySpaceshipSprite.getSpriteWidth())
+		&& spaceshipLogic.spawnSpaceship.animationPlays() == false
+		&& spaceshipLogic.spaceshipExplosion.animationPlays() == false
+		&& spaceshipLogic.spaceshipSprite.yPos + spaceshipLogic.spaceshipSprite.getSpriteHeight() / 2 <= enemySpaceshipSprite.yPos + enemySpaceshipSprite.getSpriteHeight()
+		&& spaceshipLogic.spaceshipSprite.yPos >= enemySpaceshipSprite.yPos
+		&& spaceshipLogic.spaceshipSprite.xPos + spaceshipLogic.spaceshipSprite.getSpriteWidth() / 2 >= enemySpaceshipSprite.xPos
+		&& spaceshipLogic.spaceshipSprite.xPos <= enemySpaceshipSprite.xPos + enemySpaceshipSprite.getSpriteWidth())
 		{
 			healthBarLogic.objectStats.kill();
 			ramHappened = true;
-			starshipLogic.healthBarLogic.objectStats.decreaseHealthBy(ramDamage);
+			spaceshipLogic.healthBarLogic.objectStats.decreaseHealthBy(ramDamage);
 		}
 	}
 	

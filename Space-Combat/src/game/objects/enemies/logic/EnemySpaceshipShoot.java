@@ -1,42 +1,36 @@
-package game.objects.player.spaceship.logic;
+package game.objects.enemies.logic;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
-import game.SpaceshipAction;
-import game.objects.laser.LaserLogic;
-import game.objects.player.spaceship.SpaceshipSprite;
+import game.objects.Sprite;
+import game.objects.enemies.enemy_laser.EnemyLaserLogic;
+import game.objects.spaceship.logic.SpaceshipLogic;
 
-public class SpaceshipShoot {
+public class EnemySpaceshipShoot {
 	
-	public List<LaserLogic> laserLogics;
+	public List<EnemyLaserLogic> enemyLaserLogics;
 	private float shootingSpeed;
 	private float shootingSpeedCounter;
-	private SpaceshipSprite starshipSprite;
-	public SpaceshipAction shoot;
 	
-	public SpaceshipShoot(SpaceshipSprite starshipSprite)
+	public EnemySpaceshipShoot(List<EnemyLaserLogic> enemyLaserLogics)
 	{
-		this.shootingSpeed = 10f;
+		this.shootingSpeed = 50f;
 		this.shootingSpeedCounter = shootingSpeed;
-		laserLogics = new ArrayList<LaserLogic>();
-		this.starshipSprite = starshipSprite;
-		shoot = SpaceshipAction.STOP;
+		this.enemyLaserLogics = enemyLaserLogics;
 	}
 	
-	public void nextFrame()
+	public void nextFrame(Sprite enemySpaceshipSprite, SpaceshipLogic spaceshipLogic)
 	{
 //		checkCollisions(enemies);
 		if(shootingSpeedCounter < shootingSpeed)
 		{
 			++shootingSpeedCounter;
 		}
-		else if(shoot == SpaceshipAction.START)
+		else if(enemySpaceshipSprite.yPos > 0 && enemySpaceshipSprite.yPos < spaceshipLogic.spaceshipSprite.yPos && spaceshipLogic.spawnSpaceship.animationPlays() == false)
 		{
 			try {
-				laserLogics.add(new LaserLogic(starshipSprite.xPos + 11, starshipSprite.yPos + 33));
-				laserLogics.add(new LaserLogic(starshipSprite.xPos + starshipSprite.getSpriteWidth() - 25, starshipSprite.yPos + 33));
+				enemyLaserLogics.add(new EnemyLaserLogic(enemySpaceshipSprite.xPos + 25, enemySpaceshipSprite.yPos + 50, spaceshipLogic));
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

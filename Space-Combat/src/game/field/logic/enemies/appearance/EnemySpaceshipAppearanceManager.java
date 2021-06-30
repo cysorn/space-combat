@@ -8,6 +8,7 @@ import game.field.logic.levels.LevelManager;
 import game.loading.logic.LoadingLogic;
 import game.objects.enemies.EnemySpaceshipSprite;
 import game.objects.enemies.EnemySpaceshipTextures;
+import game.objects.enemies.enemy_laser.EnemyLaserLogic;
 import game.objects.enemies.logic.EnemySpaceshipLogic;
 import game.ui.gui.SpaceCombatPanel;
 
@@ -22,8 +23,8 @@ public class EnemySpaceshipAppearanceManager {
 //	private EnemyStarshipTextures enemyStarshipTextures;
 //	private Character tempEnemySpaceshipCodeToSpawn;
 
-	public EnemySpaceshipAppearanceManager(int winWidth, int winHeight, List<EnemySpaceshipSprite> enemySpaceshipSprites, List<EnemySpaceshipLogic> enemySpaceshipLogics, EnemySpaceshipTextures enemySpaceshipTextures) {
-		enemySpaceshipAppearance = new EnemySpaceshipAppearance(winWidth, winHeight, enemySpaceshipSprites, enemySpaceshipLogics, enemySpaceshipTextures);
+	public EnemySpaceshipAppearanceManager(int winWidth, int winHeight, List<EnemySpaceshipSprite> enemySpaceshipSprites, List<EnemySpaceshipLogic> enemySpaceshipLogics, EnemySpaceshipTextures enemySpaceshipTextures, List<EnemyLaserLogic> enemyLaserLogics) {
+		enemySpaceshipAppearance = new EnemySpaceshipAppearance(winWidth, winHeight, enemySpaceshipSprites, enemySpaceshipLogics, enemySpaceshipTextures, enemyLaserLogics);
 //		this.enemyStarshipSprites = enemyStarshipSprites;
 //		this.enemyStarshipLogics = enemyStarshipLogics;
 //		this.enemyStarshipTextures = enemyStarshipTextures;

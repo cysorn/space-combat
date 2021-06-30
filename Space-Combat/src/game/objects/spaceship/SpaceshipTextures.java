@@ -1,4 +1,4 @@
-package game.objects.player.spaceship;
+package game.objects.spaceship;
 
 import java.awt.image.BufferedImage;
 import java.io.File;

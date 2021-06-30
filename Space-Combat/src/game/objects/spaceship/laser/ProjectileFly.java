@@ -1,9 +1,8 @@
-package game.objects.laser;
+package game.objects.spaceship.laser;
 
 import java.awt.image.BufferedImage;
 import java.util.List;
 
-import game.objects.Sprite;
 import game.objects.enemies.logic.EnemySpaceshipLogic;
 
 public class ProjectileFly {
@@ -23,14 +22,10 @@ public class ProjectileFly {
 		hit = false;
 	}
 	
-	public void nextFrame(List<EnemySpaceshipLogic> enemies, Sprite target)
+	public void nextFrame(List<EnemySpaceshipLogic> enemies)
 	{
 		checkCollisions(enemies);
-		if(target != null)
-		{
-			
-		}
-		else if(freezeLaser == false)
+		if(freezeLaser == false)
 		{
 			laserSprite.yPos -= laserFlySpeed;
 		}
