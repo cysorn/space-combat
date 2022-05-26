@@ -32,16 +32,23 @@ public class SpaceshipShoot {
 		{
 			++shootingSpeedCounter;
 		}
-		else if(shoot == SpaceshipAction.START && spaceshipLogic.spaceshipExplosion.animationPlays() == false)
+		else if(shoot == SpaceshipAction.START)
 		{
-			try {
-				laserLogics.add(new LaserLogic(spaceshipLogic.spaceshipSprite.xPos + 11, spaceshipLogic.spaceshipSprite.yPos + 33));
-				laserLogics.add(new LaserLogic(spaceshipLogic.spaceshipSprite.xPos + spaceshipLogic.spaceshipSprite.getSpriteWidth() - 25, spaceshipLogic.spaceshipSprite.yPos + 33));
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+			if(spaceshipLogic.spaceshipExplosion.animationPlays() == false)
+			{
+				try {
+					laserLogics.add(new LaserLogic(spaceshipLogic.spaceshipSprite.xPos + 11, spaceshipLogic.spaceshipSprite.yPos + 33));
+					laserLogics.add(new LaserLogic(spaceshipLogic.spaceshipSprite.xPos + spaceshipLogic.spaceshipSprite.getSpriteWidth() - 25, spaceshipLogic.spaceshipSprite.yPos + 33));
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				shootingSpeedCounter = 0f;
 			}
-			shootingSpeedCounter = 0f;
+			else
+			{
+				shoot = SpaceshipAction.STOP;
+			}
 		}
 	}
 	

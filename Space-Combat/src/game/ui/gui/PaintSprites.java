@@ -69,7 +69,7 @@ public class PaintSprites {
         g2d.setComposite(AlphaComposite.SrcOver.derive(1f));
     }
     
-    public void paintPlayersStarship(Graphics2D g2d, boolean startNextFrame)
+    public void paintPlayerSpaceship(Graphics2D g2d, boolean startNextFrame)
     {
     	g2d.setComposite(AlphaComposite.SrcOver.derive(fieldLogic.spaceshipLogic.spaceshipSprite.currentAlpha));
     	g2d.drawImage(fieldLogic.spaceshipLogic.getSpriteTexture(),//
@@ -150,7 +150,7 @@ public class PaintSprites {
     	g2d.setComposite(AlphaComposite.SrcOver.derive(1f));
     }
     
-    public void paintPlayerHealthBars(Graphics2D g2d)
+    public void paintPlayerHealthBar(Graphics2D g2d)
     {
     	Sprite healthBarSprite = fieldLogic.spaceshipLogic.healthBarLogic.healthBarSprite;
     	Color redHealthBarColor = new Color(1f, 0f, 0f, healthBarSprite.currentAlpha);
@@ -181,7 +181,7 @@ public class PaintSprites {
     	g2d.setComposite(AlphaComposite.SrcOver.derive(1f));
     }
     
-    public void paintEnemyStarships(Graphics2D g2d, boolean startNextFrame)
+    public void paintEnemySpaceship(Graphics2D g2d, boolean startNextFrame)
     {
     	for(EnemySpaceshipLogic enemySpaceshipLogic: fieldLogic.enemySpaceshipLogics)
     	{
@@ -260,7 +260,7 @@ public class PaintSprites {
     	}
     }
     
-    void waitAndSetCounterToZeroIfLoadingWasFinished()
+    public void waitAndSetCounterToZeroIfLoadingWasFinished()
     {
         if(LoadingLogic.loadedObjectsCounter == LoadingLogic.objectsToLoadCount)
         {
@@ -268,7 +268,7 @@ public class PaintSprites {
         	if(fieldLogic.thereIsNoNextLevel() == false)
 			{
 	    		try 
-	    		{
+	    		{ 
 	    			Thread.sleep(100);
 	    		}
 	    		catch(InterruptedException ex)

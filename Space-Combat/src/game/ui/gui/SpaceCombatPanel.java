@@ -28,7 +28,8 @@ public class SpaceCombatPanel extends JPanel {
     }
     
     @Override
-    protected void paintComponent(Graphics g) {
+    protected void paintComponent(Graphics g)
+    {
         super.paintComponent(g);
         Graphics2D g2d = (Graphics2D) g.create();
         paintSprites.waitAndSetCounterToZeroIfLoadingWasFinished();
@@ -36,12 +37,13 @@ public class SpaceCombatPanel extends JPanel {
         paintSprites.paintStars(g2d, LoadingLogic.loadingIsFinished);
         paintSprites.paintEnemyLaser(g2d, LoadingLogic.loadingIsFinished);
     	paintSprites.paintLaser(g2d, LoadingLogic.loadingIsFinished);
-    	paintSprites.paintEnemyStarships(g2d, LoadingLogic.loadingIsFinished);
-    	paintSprites.paintPlayersStarship(g2d, paintSprites.introducingSprites.introducingContinues == false && LoadingLogic.loadingIsFinished == true);
+    	paintSprites.paintEnemySpaceship(g2d, LoadingLogic.loadingIsFinished);
+    	paintSprites.paintPlayerSpaceship(g2d, paintSprites.introducingSprites.introducingContinues == false
+    			&& LoadingLogic.loadingIsFinished == true);
 	    if(paintSprites.introducingSprites.introducingContinues == false)
 	    {
 	    	paintSprites.paintEnemyHealthBars(g2d);
-	    	paintSprites.paintPlayerHealthBars(g2d);
+	    	paintSprites.paintPlayerHealthBar(g2d);
 	    	paintSprites.paintEnemySpaceshipExplosions(g2d);
 		    paintSprites.paintSpaceshipExplosion(g2d);
     	}
@@ -50,6 +52,6 @@ public class SpaceCombatPanel extends JPanel {
 	    	paintSprites.introducing(g2d, LoadingLogic.loadingIsFinished);
 	    }
 	    paintSprites.paintLoadingBar(g2d);
-        g2d.dispose();
+	    g2d.dispose();
     }
 }
