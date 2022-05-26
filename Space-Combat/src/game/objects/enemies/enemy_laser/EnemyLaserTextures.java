@@ -11,7 +11,7 @@ public class EnemyLaserTextures{
 	
 	public EnemyLaserTextures() throws IOException
 	{
-		enemyLaserTexture = ImageIO.read(new File("src/textures/enemies/laser/laser.png"));
+		enemyLaserTexture = ImageIO.read(getClass().getResource("/textures/enemies/laser/laser.png"));
 	}
 	
 	public BufferedImage getLaserTexture()
