@@ -14,11 +14,11 @@ public class CoinTextures {
 	public CoinTextures() throws IOException
 	{
 		coins = new ArrayList<>();
-		coins.add(ImageIO.read(new File("src/textures/score/coing/1.png")));
-		coins.add(ImageIO.read(new File("src/textures/score/coing/2.png")));
-		coins.add(ImageIO.read(new File("src/textures/score/coing/3.png")));
-		coins.add(ImageIO.read(new File("src/textures/score/coing/4.png")));
-		coins.add(ImageIO.read(new File("src/textures/score/coing/5.png")));
-		coins.add(ImageIO.read(new File("src/textures/score/coing/6.png")));
+		coins.add(ImageIO.read(getClass().getResource("/textures/score/coing/1.png")));
+		coins.add(ImageIO.read(getClass().getResource("/textures/score/coing/2.png")));
+		coins.add(ImageIO.read(getClass().getResource("/textures/score/coing/3.png")));
+		coins.add(ImageIO.read(getClass().getResource("/textures/score/coing/4.png")));
+		coins.add(ImageIO.read(getClass().getResource("/textures/score/coing/5.png")));
+		coins.add(ImageIO.read(getClass().getResource("/textures/score/coing/6.png")));
 	}
 }

@@ -13,6 +13,6 @@ public class BoardTexture {
 	
 	public BoardTexture() throws IOException
 	{
-		boardTexture = ImageIO.read(new File("src/textures/score/board.png"));
+		boardTexture = ImageIO.read(getClass().getResource("/textures/score/board.png"));
 	}
 }

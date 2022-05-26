@@ -14,7 +14,7 @@ public class EnemySpaceshipTextures {
 	
 	public EnemySpaceshipTextures() throws IOException {
 		enemySpaceshipTextures = new ArrayList<BufferedImage>();
-		enemySpaceshipTextures.add(ImageIO.read(new File("src/textures/enemies/ship 1.png")));
+		enemySpaceshipTextures.add(ImageIO.read(getClass().getResource("/textures/enemies/ship 1.png")));
 	}
 	
 	public BufferedImage getEnemySpaceshipTextureByCode(char code)

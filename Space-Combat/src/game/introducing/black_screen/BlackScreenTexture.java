@@ -11,6 +11,6 @@ public class BlackScreenTexture {
 
 	public BlackScreenTexture() throws IOException{
 		
-		blackScreenTexture = ImageIO.read(new File("src/textures/introducing/black_screen.png"));
+		blackScreenTexture = ImageIO.read(getClass().getResource("/textures/introducing/black_screen.png"));
 	}
 }

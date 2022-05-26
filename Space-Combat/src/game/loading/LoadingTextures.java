@@ -18,7 +18,7 @@ public class LoadingTextures {
 		for(int fileNr = 1; fileNr < 47; ++fileNr)
 		{
 			try {
-				loadingTextures.add(ImageIO.read(new File("src/textures/loading/" + Integer.toString(fileNr) + ".png")));
+				loadingTextures.add(ImageIO.read(getClass().getResource("/textures/loading/" + Integer.toString(fileNr) + ".png")));
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

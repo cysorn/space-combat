@@ -9,6 +9,6 @@ public class LaserRedTextures extends LaserTextures{
 	
 	public LaserRedTextures() throws IOException
 	{
-		laserTexture = ImageIO.read(new File("src/textures/spaceship/laser/laser.png"));
+		laserTexture = ImageIO.read(getClass().getResource("/textures/spaceship/laser/laser.png"));
 	}
 }
