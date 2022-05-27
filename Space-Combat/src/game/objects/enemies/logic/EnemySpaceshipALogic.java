@@ -10,10 +10,12 @@ import game.objects.spaceship.logic.SpaceshipLogic;
 
 public class EnemySpaceshipALogic extends EnemySpaceshipLogic{
 	private EnemySpaceshipShoot enemySpaceshipShoot;
+	private float projectileFlySpeed;
 	
 	public EnemySpaceshipALogic(int initialXPos, int initialYPos, BufferedImage enemySpaceshipTexture, List<EnemyLaserLogic> enemyLaserLogics) throws IOException {
-		super(new EnemySpaceshipSprite(initialXPos, initialYPos, 80, 80, enemySpaceshipTexture));
-		enemySpaceshipShoot = new EnemySpaceshipShoot(enemyLaserLogics);
+		super(new EnemySpaceshipSprite(initialXPos, initialYPos, 80, 80, enemySpaceshipTexture), 3.5f);
+		projectileFlySpeed = 10f;
+		enemySpaceshipShoot = new EnemySpaceshipShoot(enemyLaserLogics, projectileFlySpeed);
 //		healthBarLogic.setHpAndBarToFull();
 	}
 	
@@ -30,7 +32,7 @@ public class EnemySpaceshipALogic extends EnemySpaceshipLogic{
 //		{
 //			healthBarLogic.objectStats.kill();
 //		}
-		ram(spaceshipLogic, 30);
+		ram(spaceshipLogic, 20);
 		if(healthBarLogic.objectStats.objectIsDead() == true)
 		{
 			if(spaceshipExplosion.spaceshipIsExploded == false)

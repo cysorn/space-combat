@@ -8,7 +8,7 @@ import game.objects.Sprite;
 public class EnemySpaceshipSprite extends Sprite{
 
 	private BufferedImage enemySpaceshipTexture;
-	public EnemySpaceshipSprite(float xPos, float yPos, int spriteWidth, int spriteHeight, BufferedImage enemySpaceshipTexture) throws IOException {
+	public EnemySpaceshipSprite(float xPos, float yPos, int spriteWidth, int spriteHeight, BufferedImage enemySpaceshipTexture) {
 //		72, 80
 		super(xPos, yPos, spriteWidth, spriteHeight);
 		this.enemySpaceshipTexture = enemySpaceshipTexture;

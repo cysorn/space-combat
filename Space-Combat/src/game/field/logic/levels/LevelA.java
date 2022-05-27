@@ -3,7 +3,7 @@ package game.field.logic.levels;
 import java.util.ArrayList;
 
 public class LevelA extends Level{
-	int additionalYDistanceForIntroducing;
+	private int additionalYDistanceForIntroducing;
 	
 	@SuppressWarnings("serial")
 	public LevelA()
@@ -12,7 +12,7 @@ public class LevelA extends Level{
 		levelObjectInformation = new ArrayList<>(){{
 			add(new LevelObjectInformation('A', additionalYDistanceForIntroducing + 50));
 		}};
-		for(int i = 0; i < 50; ++i)
+		for(int i = 0; i < 6; ++i)
 		{
 			levelObjectInformation.add(new LevelObjectInformation('A', 400));
 		}

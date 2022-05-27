@@ -13,7 +13,7 @@ import game.ui.control.SpaceCombatKeyAdapter;
 @SuppressWarnings("serial")
 public class SpaceCombatPanel extends JPanel {
 
-	PaintSprites paintSprites;
+	private PaintSprites paintSprites;
 
     public SpaceCombatPanel(int windowWidth, int windowHeight) throws IOException 
     {

@@ -15,10 +15,10 @@ public class EnemyProjectileFly {
 	private boolean hit;
 	private SpaceshipLogic spaceshipLogic;
 	
-	public EnemyProjectileFly(EnemyLaserSprite enemyLaserSprite, SpaceshipLogic spaceshipLogic)
+	public EnemyProjectileFly(EnemyLaserSprite enemyLaserSprite, SpaceshipLogic spaceshipLogic, float laserFlySpeed)
 	{
 		this.enemyLaserSprite = enemyLaserSprite;
-		laserFlySpeed = 10f;
+		this.laserFlySpeed = laserFlySpeed;
 		freezeLaser = false;
 		hit = false;
 		findAndSetLaserXAndYSpeed(spaceshipLogic.spaceshipSprite);

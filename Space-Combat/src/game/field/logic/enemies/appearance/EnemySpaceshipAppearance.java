@@ -15,7 +15,6 @@ import game.objects.enemies.logic.EnemySpaceshipCodes;
 public class EnemySpaceshipAppearance {
 	private int winWidth;
 	private int winHeight;
-	private Random xRnd;
 	private int initialXPos;
 	private final int initialYPos;
 	private List<EnemySpaceshipSprite> enemySpaceshipSprites;
@@ -26,7 +25,6 @@ public class EnemySpaceshipAppearance {
 	
 	public EnemySpaceshipAppearance(int winWidth, int winHeight, List<EnemySpaceshipSprite> enemySpaceshipSprites,//
 			List<EnemySpaceshipLogic> enemySpaceshipLogics, EnemySpaceshipTextures enemySpaceshipTextures, List<EnemyLaserLogic> enemyLaserLogics) {
-		xRnd = new Random(); 
 		this.winWidth = winWidth;
 		this.winHeight = winHeight;
 		initialYPos = -200;
@@ -37,9 +35,13 @@ public class EnemySpaceshipAppearance {
 		this.enemyLaserLogics = enemyLaserLogics;
 	}
 	
-	private void generateNewInitialXPos(BufferedImage enemySpaceshipTexture)
+	private void generateNewInitialXPos(EnemySpaceshipSprite enemySpaceshipSprite, LevelObjectInformation levelObjectInformation)
 	{
-		initialXPos = Math.abs(xRnd.nextInt() % (int)(winWidth - enemySpaceshipTexture.getWidth() * 1.5f));
+		
+		int rangeBegin = getSpawnRangeBeginByCode(enemySpaceshipSprite, levelObjectInformation.enemySpaceshipCode);
+		int rangeEnd = getSpawnRangeEndByCode(enemySpaceshipSprite, levelObjectInformation.enemySpaceshipCode);
+		initialXPos = rangeBegin + Math.abs(new Random().nextInt() % rangeEnd);
+		System.out.println(initialXPos);
 	}
 
 	public void resetInitialYPosOfNextEnemySpaceship()
@@ -61,26 +63,75 @@ public class EnemySpaceshipAppearance {
 		while(true)
 		{
 			thereAreNoCollisionsOnThisCordinates = true;
-			generateNewInitialXPos(enemySpaceshipTexture);
-			for(EnemySpaceshipSprite enemyStarshipSprite: enemySpaceshipSprites)
+			for(EnemySpaceshipSprite enemySpaceshipSprite: enemySpaceshipSprites)
 			{
-				if(initialYPosOfNextEnemySpaceship - spaceshipHeight < enemyStarshipSprite.yPos
-				&& ((initialXPos > enemyStarshipSprite.xPos 
-					&& initialXPos < enemyStarshipSprite.xPos - enemyStarshipSprite.getSpriteWidth())
-				|| (initialXPos + spaceshipWidth > enemyStarshipSprite.xPos 
-					&& initialXPos + spaceshipWidth < enemyStarshipSprite.xPos - enemyStarshipSprite.getSpriteWidth())
-				|| (enemyStarshipSprite.xPos > initialXPos && enemyStarshipSprite.xPos < initialXPos + spaceshipWidth)))
+				generateNewInitialXPos(enemySpaceshipSprite, levelObjectInformation);
+				if(initialYPosOfNextEnemySpaceship - spaceshipHeight < enemySpaceshipSprite.yPos
+				&& ((initialXPos > enemySpaceshipSprite.xPos 
+					&& initialXPos < enemySpaceshipSprite.xPos - enemySpaceshipSprite.getSpriteWidth())
+				|| (initialXPos + spaceshipWidth > enemySpaceshipSprite.xPos 
+					&& initialXPos + spaceshipWidth < enemySpaceshipSprite.xPos - enemySpaceshipSprite.getSpriteWidth())
+				|| (enemySpaceshipSprite.xPos > initialXPos && enemySpaceshipSprite.xPos < initialXPos + spaceshipWidth)))
 				{
 					thereAreNoCollisionsOnThisCordinates = false;
 					break;
 				}
-			}
+			} 
 			if(thereAreNoCollisionsOnThisCordinates == true)
 			{
-				enemySpaceshipLogics.add(EnemySpaceshipCodes.createAndGetSpaceshipByCode(levelObjectInformation.enemySpaceshipCode, initialXPos,//
-						initialYPosOfNextEnemySpaceship, enemySpaceshipTexture, enemyLaserLogics));
+				try {
+					enemySpaceshipLogics.add(EnemySpaceshipCodes.createAndGetSpaceshipByCode(levelObjectInformation.enemySpaceshipCode, initialXPos,//
+							initialYPosOfNextEnemySpaceship, enemySpaceshipTexture, enemyLaserLogics));
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 				return;
 			}
+		}
+	}
+	
+	private int getSpawnRangeBeginByCode(EnemySpaceshipSprite enemySpaceshipSprite, char code)
+	{
+		float enemySpaceshipHalfWidth = enemySpaceshipSprite.getSpriteWidth() * 1.5f;
+		float xPos = enemySpaceshipSprite.xPos;
+		switch(code)
+		{
+		case 'A': return 0;
+		case 'B':
+			int halfRange = 200;
+			if(xPos - enemySpaceshipHalfWidth - halfRange > 0)
+			{
+				return (int)(xPos - enemySpaceshipHalfWidth - halfRange);
+			}
+			else
+			{
+				return 0;				
+			}
+//		TODO add throw
+		default: return 0;
+		}
+	}
+	
+	private int getSpawnRangeEndByCode(EnemySpaceshipSprite enemySpaceshipSprite, char code)
+	{
+		float enemySpaceshipHalfWidth = enemySpaceshipSprite.getSpriteWidth() * 1.5f;
+		float xPos = enemySpaceshipSprite.xPos;
+		switch(code)
+		{
+		case 'A': return (int)(winWidth - enemySpaceshipHalfWidth);
+		case 'B':
+			int halfRange = 200;
+			if(xPos + enemySpaceshipHalfWidth + halfRange < (int)(winWidth - enemySpaceshipHalfWidth))
+			{
+				return (int)(xPos + enemySpaceshipHalfWidth + halfRange);
+			}
+			else
+			{
+				return (int)(winWidth - enemySpaceshipHalfWidth);				
+			}
+//		TODO add throw
+		default: return (int)(winWidth - enemySpaceshipHalfWidth);
 		}
 	}
 	
