@@ -10,10 +10,10 @@ public class EnemyLaserLogic {
 	public EnemyLaserSprite enemyLaserSprite;
 	public EnemyProjectileFly enemyProjectileFly;
 	
-	public EnemyLaserLogic(float xPos, float yPos, SpaceshipLogic spaceshipLogic) throws IOException
+	public EnemyLaserLogic(float xPos, float yPos, SpaceshipLogic spaceshipLogic, float laserFlySpeed) throws IOException
 	{
 		enemyLaserSprite = new EnemyLaserSprite(xPos, yPos);
-		enemyProjectileFly = new EnemyProjectileFly(enemyLaserSprite, spaceshipLogic);
+		enemyProjectileFly = new EnemyProjectileFly(enemyLaserSprite, spaceshipLogic, laserFlySpeed);
 	}
 	
 	public void nextFrame()

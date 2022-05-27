@@ -12,12 +12,14 @@ public class EnemySpaceshipShoot {
 	public List<EnemyLaserLogic> enemyLaserLogics;
 	private float shootingSpeed;
 	private float shootingSpeedCounter;
+	private float projectileFlySpeed;
 	
-	public EnemySpaceshipShoot(List<EnemyLaserLogic> enemyLaserLogics)
+	public EnemySpaceshipShoot(List<EnemyLaserLogic> enemyLaserLogics, float projectileFlySpeed)
 	{
 		this.shootingSpeed = 50f;
 		this.shootingSpeedCounter = shootingSpeed;
 		this.enemyLaserLogics = enemyLaserLogics;
+		this.projectileFlySpeed = projectileFlySpeed;
 	}
 	
 	public void nextFrame(Sprite enemySpaceshipSprite, SpaceshipLogic spaceshipLogic)
@@ -30,7 +32,7 @@ public class EnemySpaceshipShoot {
 		else if(enemySpaceshipSprite.yPos > 0 && enemySpaceshipSprite.yPos < spaceshipLogic.spaceshipSprite.yPos && spaceshipLogic.spawnSpaceship.animationPlays() == false)
 		{
 			try {
-				enemyLaserLogics.add(new EnemyLaserLogic(enemySpaceshipSprite.xPos + 25, enemySpaceshipSprite.yPos + 50, spaceshipLogic));
+				enemyLaserLogics.add(new EnemyLaserLogic(enemySpaceshipSprite.xPos + 25, enemySpaceshipSprite.yPos + 50, spaceshipLogic, projectileFlySpeed));
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

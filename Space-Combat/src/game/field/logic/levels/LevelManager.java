@@ -13,9 +13,11 @@ public class LevelManager {
 	public LevelManager(List<EnemySpaceshipLogic> enemySpaceshipLogics)
 	{
 		level = new ArrayList<>();
+		level.add(new LevelA());
+		level.add(new LevelB());
 		for(int i = 0; i < 100; ++i)
 		{
-			level.add(new LevelA());
+			level.add(new LevelC());
 		}
 		currentLevelNr = -1;
 		this.enemySpaceshipLogics = enemySpaceshipLogics;

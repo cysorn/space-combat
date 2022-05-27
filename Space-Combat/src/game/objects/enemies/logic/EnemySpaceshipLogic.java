@@ -15,9 +15,9 @@ public abstract class EnemySpaceshipLogic implements EnemySpaceshipLogicInterfac
 	public SpaceshipExplosion spaceshipExplosion;
 	private boolean ramHappened;
 	
-	protected EnemySpaceshipLogic(EnemySpaceshipSprite enemyStarshipSprite) throws IOException
+	protected EnemySpaceshipLogic(EnemySpaceshipSprite enemyStarshipSprite, float moveSpeed) throws IOException
 	{
-		enemySpaceshipMove = new EnemySpaceshipMove(enemyStarshipSprite);
+		enemySpaceshipMove = new EnemySpaceshipMove(enemyStarshipSprite, moveSpeed);
 		this.enemySpaceshipSprite = enemyStarshipSprite;
 		healthBarLogic = new HealthBarLogic(enemyStarshipSprite, 100, false);
 		freezeSpaceship = false;
