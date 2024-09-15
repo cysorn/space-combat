@@ -16,4 +16,4 @@ This game was developed as part of the preparation for my final project during m
 As part of the preparation for my final project during my vocational training, I was tasked with creating a personal project. I chose to create a game, which led to the development of **Space Combat**.
 
 ## Demo
-![Preview](preview/preview.gif)
+![Preview](Space-Combat/preview/preview.gif)
