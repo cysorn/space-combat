@@ -18,17 +18,10 @@ public class EnemySpaceshipAppearanceManager {
 	private LevelManager levelManager;
 	private int spaceshipsToBeSpawnedCount;
 	private int objectToSpawnNr;
-//	private List<EnemyStarshipSprite> enemyStarshipSprites;
-//	private List<EnemyStarshipLogic> enemyStarshipLogics;
-//	private EnemyStarshipTextures enemyStarshipTextures;
-//	private Character tempEnemySpaceshipCodeToSpawn;
 
 	public EnemySpaceshipAppearanceManager(int winWidth, int winHeight, List<EnemySpaceshipSprite> enemySpaceshipSprites, List<EnemySpaceshipLogic> enemySpaceshipLogics, EnemySpaceshipTextures enemySpaceshipTextures, List<EnemyLaserLogic> enemyLaserLogics) {
 		enemySpaceshipAppearance = new EnemySpaceshipAppearance(winWidth, winHeight, enemySpaceshipSprites, enemySpaceshipLogics, enemySpaceshipTextures, enemyLaserLogics);
-//		this.enemyStarshipSprites = enemyStarshipSprites;
-//		this.enemyStarshipLogics = enemyStarshipLogics;
-//		this.enemyStarshipTextures = enemyStarshipTextures;
-//		tempEnemySpaceshipCodeToSpawn = null;
+
 		levelManager = new LevelManager(enemySpaceshipLogics);
 		spaceshipsToBeSpawnedCount = 0;
 		objectToSpawnNr = 0;
@@ -36,11 +29,7 @@ public class EnemySpaceshipAppearanceManager {
 	
 	public void nextFrame(Graphics2D g2d, SpaceCombatPanel spaceCombatPanel) throws IOException
 	{
-//		tempEnemySpaceshipCodeToSpawn = levelManager.getSpaceshipCodeOrContinueTimer();
-//		if(tempEnemySpaceshipCodeToSpawn != null)
-//		{
-//			enemySpaceshipAppearance.findCordinatgesAndAddEnemyStarship(tempEnemySpaceshipCodeToSpawn);
-//		}
+
 		if(levelManager.levelIsDone() == true)
 		{
 			levelManager.updateLevelNr();

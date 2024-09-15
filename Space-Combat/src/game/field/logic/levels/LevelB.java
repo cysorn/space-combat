@@ -7,7 +7,7 @@ public class LevelB extends Level{
 	{
 		levelObjectInformation = new ArrayList<>();
 		
-		for(int i = 0; i < 10; ++i)
+		for(int i = 0; i < 30; ++i)
 		{
 			levelObjectInformation.add(new LevelObjectInformation('B', 50));
 		}

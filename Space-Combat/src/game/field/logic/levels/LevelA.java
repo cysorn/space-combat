@@ -12,7 +12,7 @@ public class LevelA extends Level{
 		levelObjectInformation = new ArrayList<>(){{
 			add(new LevelObjectInformation('A', additionalYDistanceForIntroducing + 50));
 		}};
-		for(int i = 0; i < 6; ++i)
+		for(int i = 0; i < 20; ++i)
 		{
 			levelObjectInformation.add(new LevelObjectInformation('A', 400));
 		}
