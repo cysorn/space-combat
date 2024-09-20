@@ -4,7 +4,7 @@ This game was developed as part of the preparation for my final project during m
 
 ## Game Description
 
-**Space Combat** is a space simulation game where the player must destroy alien ships.
+**Space Combat** is a 2D space game where the player must destroy alien ships.
 
 ## Technologies
 
