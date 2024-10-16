@@ -1,6 +1,6 @@
 # Space Combat
 
-This game was developed as part of the preparation for my final project during my vocational training. It is written in native Java and uses free textures from the internet.
+This game was developed as part of the preparation for my final project during my vocational training.
 
 ## Game Description
 
