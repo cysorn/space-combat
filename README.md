@@ -13,7 +13,7 @@ This game was developed as part of the preparation for my final project during m
 
 ## Motivation
 
-As part of the preparation for my final project during my vocational training, I was tasked with creating a personal project. I chose to create a game, which led to the development of **Space Combat**.
+As part of the preparation for my final project during my vocational training, I was tasked with creating a personal project. I chose to create a game, which led to the development of this game.
 
 ## Demo
 ![Preview](Space-Combat/preview/preview.gif)
