@@ -6,6 +6,3 @@ This is a 2D space game where the player must destroy alien ships.
 
 - **Java Swing**
 - **Java AWT**
-
-## Demo
-![Preview](Space-Combat/preview/preview.gif)
